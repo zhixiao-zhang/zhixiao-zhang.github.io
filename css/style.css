@@ -1,0 +1,143 @@
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+}
+
+/* header and footer areas */
+.header {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.homeTitle {
+  flex: 1;
+}
+
+.nav {
+  display: flex;
+}
+.menu {
+  padding: 0;
+  font-size: 1.1em;
+}
+.menu li {
+  display: inline;
+  padding: 5px;
+}
+a {
+  text-decoration: none;
+}
+a:link, a:visited {
+  color: #000;
+}
+a:hover {
+  color: #f00;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .avatar {
+    border-radius: 50%;
+    margin-right: 20px;
+    max-width: 30%;
+    flex-shrink: 0;
+  }
+}
+.news {
+  margin: 15px;
+  display: block;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.1em;
+}
+.publications h3 {
+  margin-bottom: 5px;
+}
+.publication-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  .conference {
+    color: #f00;
+    font-weight: bold;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+  .info {
+    .paperTitle {
+      font-weight: bold;
+    }
+    .details {
+      color: #666;
+      font-style: italic;
+    }
+    .authors {
+      span {
+        border-bottom: 1px solid #000;
+      }
+    }
+    .links {
+      a {
+        border: 1px solid #000;
+        padding: 2px;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.article-meta {
+  text-decoration: none;
+}
+.menu, .article-meta, footer { text-align: center; }
+.title { font-size: 1.1em; }
+hr {
+  border-style: solid;
+  color: #222;
+}
+
+/* code */
+pre {
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 5px #eee;
+  padding: 1em;
+  overflow-x: auto;
+}
+code { background: #f9f9f9; }
+pre code { background: none; }
+
+/* misc elements */
+img, iframe, video { max-width: 100%; }
+main { hyphens: auto; }
+blockquote {
+  background: #f9f9f9;
+  border-left: 5px solid #ccc;
+  padding: 3px 1em 3px;
+}
+
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .avatar {
+    display: none;
+  }
+}
