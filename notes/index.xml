@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notes on Zhixiao Zhang (张志孝)</title>
+    <link>https://zhixiao-zhang.github.io/notes/</link>
+    <description>Recent content in Notes on Zhixiao Zhang (张志孝)</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://zhixiao-zhang.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Language-Based Approach to Security</title>
+      <link>https://zhixiao-zhang.github.io/notes/a-language-based-approach-to-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zhixiao-zhang.github.io/notes/a-language-based-approach-to-security/</guid>
+      <description>&lt;h4 id=&#34;authors-fred-b-schneider-greg-morrisett-robert-harper&#34;&gt;Authors: Fred B. Schneider, Greg Morrisett, Robert Harper&lt;/h4&gt;&#xA;&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Language-based security leverages program analysis and program rewriting to enforce security policies. The approach promises eﬃcient enforcement of ﬁne-grained access control policies and depends on a trusted computing base of only modest size. This paper surveys progress and prospects for the area, giving overviews of in-lined reference monitors, certifying compilers, and advances in type theory.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-why-do-we-need-language-based-security&#34;&gt;1. Why do we need language-based security?&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Two classic computer security principles:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
