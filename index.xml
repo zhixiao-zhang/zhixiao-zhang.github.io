@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Zhixiao Zhang (张志孝)</title>
+    <title>Zhixiao Zhang (&lt;ruby&gt;张&lt;rt&gt;zhāng&lt;/rt&gt;志&lt;rt&gt;zhì&lt;/rt&gt;孝&lt;rt&gt;xiào&lt;/rt&gt;&lt;/ruby&gt;)</title>
     <link>https://zhixiao-zhang.github.io/</link>
-    <description>Recent content on Zhixiao Zhang (张志孝)</description>
+    <description>Recent content on Zhixiao Zhang (&lt;ruby&gt;张&lt;rt&gt;zhāng&lt;/rt&gt;志&lt;rt&gt;zhì&lt;/rt&gt;孝&lt;rt&gt;xiào&lt;/rt&gt;&lt;/ruby&gt;)</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="https://zhixiao-zhang.github.io/index.xml" rel="self" type="application/rss+xml" />
