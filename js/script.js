@@ -23,3 +23,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+  function copyToClipboard(event) {
+    const button = event.currentTarget;
+    const targetId = button.getAttribute('data-target');
+    const textElement = document.getElementById(targetId);
+
+    if (textElement) {
+      // Copy text to clipboard
+      navigator.clipboard.writeText(textElement.textContent)
+        .then(() => {
+          // Change button text to a checkmark ✔
+          const originalText = button.textContent;
+          button.textContent = "✔";
+          button.disabled = true; // Temporarily disable the button
+          
+          // Restore original text after 2 seconds
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false; // Re-enable the button
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy text: ', err);
+        });
+    }
+  }
