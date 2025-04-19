@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zhixiao Zhang&#39;s academic website">
+    <title>Everything You Want to Know About Pointer Based Checking | Zhixiao Zhang</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/academicons.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/style.css" />
+    
+  </head>
+
+  <body>
+    <div class="header">
+      
+      <div class="homeTitle">Zhixiao Zhang (<ruby>张<rt>zhāng</rt>志<rt>zhì</rt>孝<rt>xiào</rt></ruby>)</div>
+      <button id="menu-toggle">⋯</button>
+      <nav id="menu" class="menu">
+        <ul>
+          
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#About">About</a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#Contact">Contact</a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#News">News</a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#Experience">Experience</a>
+            
+          </li>
+          
+          
+          <li>
+            <a href="https://zhixiao-zhang.github.io/bibliography">Bib</a>
+          </li>
+          
+        </ul>
+      </nav>
+      
+    </div>
+    <div class="content">
+
+<div class="articleMeta">
+  <h1><span class="title">Everything You Want to Know About Pointer Based Checking</span></h1>
+  
+  
+</div>
+
+<main>
+<p>Authors: Santosh Nagarakatte, Milo M. K. Martin, and Steve Zdancewic</p>
+<p>Keywords: Memory safety, Buﬀer overflows, Dangling pointers, Pointer-based check-
+ing, SoftBoundCETS</p>
+<p>[SNAPL'15]</p>
+<h2 id="what-problem-does-this-paper-try-to-solve">What problem does this paper try to solve?</h2>
+<p>Provide full memory safety for C.</p>
+<h2 id="why-is-the-problem-important">Why is the problem important?</h2>
+<p>Refer to Google&rsquo;s article: <a href="https://research.google/pubs/secure-by-design-googles-perspective-on-memory-safety/">Secure by Design: Google&rsquo;s Perspective on Memory Safety</a></p>
+<h2 id="what-is-this-papers-solution-to-the-problem">What is this paper&rsquo;s solution to the problem?</h2>
+<p>Employ a pointer-based approach which injecting code to maintain per-pointer metadata and checking the metadata before dereferencing a pointer. The metadata is stored in a disjoint space.</p>
+<h3 id="how-to-maintain-the-metadata">How to maintain the metadata?</h3>
+<p>metadata layout: [ base | bound ]|{ key | lock }</p>
+<blockquote>
+<p>Fields in [] are for spatial memory safety, fields in {} are for temporal memory safety.</p>
+</blockquote>
+<ul>
+<li>base (64-bit value): the base address of the value pointed by a pointer.</li>
+<li>bound (64-bit value): the end address of the value pointed by a pointer.</li>
+<li>key: an allocation identifier.</li>
+<li>lock: a pointer points to a location in memory. The key and the value pointed by lock should match.</li>
+</ul>
+<h3 id="how-they-handle-function-calls">How they handle function calls?</h3>
+<p><strong>Problem: variable arguments, function pointers (indirect calls).</strong></p>
+<ol>
+<li>adding metadata as extra arguments</li>
+<li>using a shadow stack</li>
+</ol>
+<h3 id="how-to-provide-backward-compatibility">How to provide backward compatibility?</h3>
+<ol>
+<li>provide wrappers for commonly used libraries</li>
+<li>write glue code for pointer modified by the external libray</li>
+</ol>
+<h2 id="what-are-the-strengths-of-this-paper">What are the strengths of this paper?</h2>
+<ol>
+<li>Backward Compatibility. (disjoint metadata)</li>
+<li>trie data structure</li>
+<li>comprehensive safety</li>
+<li>metadata can&rsquo;t be overwrited</li>
+<li>less invasiveness</li>
+</ol>
+<h2 id="what-are-the-limitations-of-this-paper">What are the limitations of this paper?</h2>
+<ol>
+<li>bad performance (70%-80%)</li>
+</ol>
+<blockquote>
+<p>They assume that these overheads are within the reach of the acceptable threshold for a large class of applications.
+But they don&rsquo;t provide any evidence.</p>
+</blockquote>
+<h2 id="what-are-other-solutions-and-what-are-the-most-relevant-works">What are other solutions and what are the most relevant works?</h2>
+<p>AddressSanitizer (tripwire approach)</p>
+<p>SAFECode, BaggyBound (Object-based approach)</p>
+<p>SafeC, CCured, Cyclone, MSCC (Pointer-based approach)</p>
+<h2 id="whats-your-favourite-part-of-this-work">What&rsquo;s your favourite part of this work?</h2>
+<p>Numerous design for their approach, from hardware to software.</p>
+
+</main>
+
+  </div>
+  <footer>
+  
+  
+  © Zhixiao Zhang 2025. Powered by <a href="https://gohugo.io/">Hugo</a> with theme <a href="https://github.com/zhixiao-zhang/hugo-min-academic/">min-academic</a>.
+  
+  </footer>
+  <script src="/js/script.js"></script>
+  </body>
+</html>
+

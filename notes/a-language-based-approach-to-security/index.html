@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zhixiao Zhang&#39;s academic website">
+    <title>A Language-Based Approach to Security | Zhixiao Zhang</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/academicons.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/style.css" />
+    
+  </head>
+
+  <body>
+    <div class="header">
+      
+      <div class="homeTitle">Zhixiao Zhang (<ruby>张<rt>zhāng</rt>志<rt>zhì</rt>孝<rt>xiào</rt></ruby>)</div>
+      <button id="menu-toggle">⋯</button>
+      <nav id="menu" class="menu">
+        <ul>
+          
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#About">About</a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#Contact">Contact</a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#News">News</a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://zhixiao-zhang.github.io/#Experience">Experience</a>
+            
+          </li>
+          
+          
+          <li>
+            <a href="https://zhixiao-zhang.github.io/bibliography">Bib</a>
+          </li>
+          
+        </ul>
+      </nav>
+      
+    </div>
+    <div class="content">
+
+<div class="articleMeta">
+  <h1><span class="title">A Language-Based Approach to Security</span></h1>
+  
+  
+</div>
+
+<main>
+<h4 id="authors-fred-b-schneider-greg-morrisett-robert-harper">Authors: Fred B. Schneider, Greg Morrisett, Robert Harper</h4>
+<h3 id="abstract">Abstract</h3>
+<blockquote>
+<p>Language-based security leverages program analysis and program rewriting to enforce security policies. The approach promises eﬃcient enforcement of ﬁne-grained access control policies and depends on a trusted computing base of only modest size. This paper surveys progress and prospects for the area, giving overviews of in-lined reference monitors, certifying compilers, and advances in type theory.</p>
+</blockquote>
+<h2 id="notes">Notes</h2>
+<h3 id="1-why-do-we-need-language-based-security">1. Why do we need language-based security?</h3>
+<blockquote>
+<p>Two classic computer security principles:</p>
+<ul>
+<li>Principle of Least Privilege: Throughout execution, each principal should be accorded the minimum access necessary to accomplish its task.</li>
+<li>Minimal Trusted Computing Base: Assurance that an enforcement mechanism behaves as intended is greatest when the mechanism is small and simple.</li>
+</ul>
+</blockquote>
+<p>Previously, the scale of systems was small. Hence, we can integrate the trusted computing base into the operating system and follow the principles.</p>
+<p>However, as systems grow, these policies become coarse-grained. Many resources are not even included in the operating system, making them more vulnerable.</p>
+<p>Therefore, we should employ some new approaches to handle them, such as <strong>language-based security</strong>.</p>
+<blockquote>
+<p>Normally, reference monitors are the tool to secure target systems by halting them whenever the security policies are violated. The prerequisite of this method is that reference monitors are secure. We can apply some mechanisms, such as memory protection hardware, to protect them, which has a performance cost and restricts the range of policies.</p>
+</blockquote>
+<h3 id="2-what-are-the-advantages-of-language-based-security">2. What are the advantages of language-based security?</h3>
+<p>Language-based security, based on program analysis and program rewriting, employs <strong>flexible</strong> and <strong>fine-grained</strong> methods to instantiate the two principles.</p>
+<p>Moreover, many technologies, such as just-in-time compilers, run-time code generation, and other programming language methods, can incorporate the language-based approach to <strong>reduce the overhead</strong>.</p>
+<blockquote>
+<p>Much work is directed at enforcing policies on the intermediate representation, even object code.</p>
+</blockquote>
+<h3 id="3-how-does-language-based-security-solve-the-problems">3. How does language-based security solve the problems?</h3>
+<p>Theoretically, there are two types of the language-based approach—<strong>program rewriting</strong> and <strong>program analysis</strong>. Today&rsquo;s research efforts can be categorized into two groups: one is <strong>in-lined reference monitors</strong>, and the other one is <strong>type-safe programming languages</strong>. They employ program rewriting and program analysis methods, respectively.</p>
+<h4 id="31-in-lined-reference-monitors">3.1 In-lined Reference Monitors</h4>
+<blockquote>
+<p>Reference monitors: Software that halts the system when specific security policies are <strong>violated</strong>.</p>
+</blockquote>
+<p><strong>Key idea</strong>: Inline the reference monitor into the target system code rather than separating them into different address spaces.</p>
+<h4 id="32-type-safe-programming-languages">3.2 Type-safe Programming Languages</h4>
+<blockquote>
+<p>Type systems: A rule set that determines which operations can be applied to which values through type abstraction.</p>
+</blockquote>
+<p><strong>Key idea</strong>: Shift the burden of proving that a program complies with a policy from the code recipient to the code producer.
+Type-based methods impose on the programmer the burden of demonstrating compliance with a given security policy.</p>
+<h4 id="33-certifying-compilers">3.3 Certifying Compilers</h4>
+<p><strong>Motivation</strong>: type-based approaches rely on the high-level language assumption.</p>
+<p><strong>Key idea</strong>: Replace a trusted compiler (used in the type-based approach) with an <strong>untrusted certifying compiler</strong> plus a <strong>trusted certificate checker</strong>, which is much smaller and simpler than the former.</p>
+<h4 id="34-mix-them">3.4 Mix them!</h4>
+<ul>
+<li>Integrated IRM enforcement with Type Systems.
+<ul>
+<li>Sometimes, security policies require dynamic information, which can&rsquo;t be retrieved at compile-time.</li>
+<li>Sometimes, inserting a dynamic check is simpler than creating a complex and error-prone proof.</li>
+</ul>
+</li>
+<li>Extending IRM enforcement with Certifying Compilers.
+<ul>
+<li>add checking code and security updates to do analysis and optimization to remove unnecessary checking code, provided the IRM rewriter produces a certificate along with the modified object code.</li>
+</ul>
+</li>
+<li>Extending Certifying Compilers with IRM enforcement.
+<ul>
+<li>Combine the static analysis and dynamic analysis. For instance, the compiler emits a run-time check; then, static analysis can guarantee the array access is safe.</li>
+</ul>
+</li>
+</ul>
+
+</main>
+
+  </div>
+  <footer>
+  
+  
+  © Zhixiao Zhang 2025. Powered by <a href="https://gohugo.io/">Hugo</a> with theme <a href="https://github.com/zhixiao-zhang/hugo-min-academic/">min-academic</a>.
+  
+  </footer>
+  <script src="/js/script.js"></script>
+  </body>
+</html>
+
