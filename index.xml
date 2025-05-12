@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zhixiao Zhang</title>
+    <link>https://zhixiao-zhang.github.io/</link>
+    <description>Recent content on Zhixiao Zhang</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://zhixiao-zhang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Language-Based Approach to Security</title>
+      <link>https://zhixiao-zhang.github.io/notes/a-language-based-approach-to-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zhixiao-zhang.github.io/notes/a-language-based-approach-to-security/</guid>
+      <description>&lt;h4 id=&#34;authors-fred-b-schneider-greg-morrisett-robert-harper&#34;&gt;Authors: Fred B. Schneider, Greg Morrisett, Robert Harper&lt;/h4&gt;&#xA;&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Language-based security leverages program analysis and program rewriting to enforce security policies. The approach promises eﬃcient enforcement of ﬁne-grained access control policies and depends on a trusted computing base of only modest size. This paper surveys progress and prospects for the area, giving overviews of in-lined reference monitors, certifying compilers, and advances in type theory.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-why-do-we-need-language-based-security&#34;&gt;1. Why do we need language-based security?&lt;/h3&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Two classic computer security principles:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>BibTeX</title>
+      <link>https://zhixiao-zhang.github.io/pages/bibtex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zhixiao-zhang.github.io/pages/bibtex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Everything You Want to Know About Pointer Based Checking</title>
+      <link>https://zhixiao-zhang.github.io/notes/everything-you-want-to-know-about-pointer-based-checking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zhixiao-zhang.github.io/notes/everything-you-want-to-know-about-pointer-based-checking/</guid>
+      <description>&lt;p&gt;Authors: Santosh Nagarakatte, Milo M. K. Martin, and Steve Zdancewic&lt;/p&gt;&#xA;&lt;p&gt;Keywords: Memory safety, Buﬀer overflows, Dangling pointers, Pointer-based check-&#xA;ing, SoftBoundCETS&lt;/p&gt;&#xA;&lt;p&gt;[SNAPL&#39;15]&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-problem-does-this-paper-try-to-solve&#34;&gt;What problem does this paper try to solve?&lt;/h2&gt;&#xA;&lt;p&gt;Provide full memory safety for C.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-is-the-problem-important&#34;&gt;Why is the problem important?&lt;/h2&gt;&#xA;&lt;p&gt;Refer to Google&amp;rsquo;s article: &lt;a href=&#34;https://research.google/pubs/secure-by-design-googles-perspective-on-memory-safety/&#34;&gt;Secure by Design: Google&amp;rsquo;s Perspective on Memory Safety&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-this-papers-solution-to-the-problem&#34;&gt;What is this paper&amp;rsquo;s solution to the problem?&lt;/h2&gt;&#xA;&lt;p&gt;Employ a pointer-based approach which injecting code to maintain per-pointer metadata and checking the metadata before dereferencing a pointer. The metadata is stored in a disjoint space.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Publications</title>
+      <link>https://zhixiao-zhang.github.io/pages/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zhixiao-zhang.github.io/pages/publications/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SoK: Eternal War in Memory</title>
+      <link>https://zhixiao-zhang.github.io/notes/sok-eternal-war-in-memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://zhixiao-zhang.github.io/notes/sok-eternal-war-in-memory/</guid>
+      <description>&lt;p&gt;Authors: László Szekeres, Mathias Payer, Tao Wei, Dawn Song&lt;/p&gt;&#xA;&lt;p&gt;Category: SoK&lt;/p&gt;&#xA;&lt;p&gt;Keywords: security, memory safety&lt;/p&gt;&#xA;&lt;h3 id=&#34;what-problem-does-this-paper-survey&#34;&gt;What problem does this paper survey?&lt;/h3&gt;&#xA;&lt;p&gt;Why do exploits still exist?&lt;/p&gt;&#xA;&lt;p&gt;How they defeat currently deployed protections?&lt;/p&gt;&#xA;&lt;p&gt;How to defeat them?&lt;/p&gt;&#xA;&lt;h3 id=&#34;questions-asked-by-this-paper&#34;&gt;Questions asked by this paper&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;How do exploits work?&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/zzxdyf1314/mycloudimg@master/attack-model.png&#34; alt=&#34;attack-model&#34;&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Q: Why is reading from a pointer &lt;strong&gt;under the attacker&amp;rsquo;s control&lt;/strong&gt; vulnerable?&lt;/p&gt;&#xA;&lt;p&gt;A: Because the attacker can control the value being read, for example, an ROP gadget.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
