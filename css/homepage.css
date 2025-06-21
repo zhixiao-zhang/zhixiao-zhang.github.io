@@ -1,0 +1,38 @@
+.intro-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 2em auto;
+  gap: 2rem;
+}
+
+.intro-left {
+  flex: 0 0 60%;
+}
+
+.intro-left img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.intro-right {
+  flex: 0 0 40%;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+@media (max-width: 600px) {
+  .intro-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-right {
+    padding-top: 1rem;
+  }
+}
+

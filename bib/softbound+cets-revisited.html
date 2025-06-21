@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoftBound+CETS Revisited: More Than a Decade Later</title>
+<link rel="stylesheet" href="https://zhixiao-zhang.github.io/css/basic-site-style.css" />
+
+</head>
+<body>
+<header>
+<div class="container header-bar">
+<div class="site-title">Zhixiao Zhang</div>
+<nav>
+<div class="menu-icon" id="menu-toggle">☰</div><ul class="menu hidden">
+<li class=""><a href="https://zhixiao-zhang.github.io/index.html">About</a>
+</li>
+<li class="">
+<a href="https://zhixiao-zhang.github.io/news/index.html">News</a>
+</li><li class="dropdown"">
+<a href="https://zhixiao-zhang.github.io/blog/index.html" class="deopbtn">Blog</a>
+<div class="dropdown-content"><a href="https://zhixiao-zhang.github.io/menu/index.html">Menu</a>
+<a href="https://zhixiao-zhang.github.io/lyrics/index.html">lyrics</a></div>
+</li><li class="active">
+<a href="https://zhixiao-zhang.github.io/bib/paper.html">Bib</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<h1 class="center">SoftBound+CETS Revisited: More Than a Decade Later</h1>
+<p class="center"></p>
+<p class="center"></p>
+<div id="toc-wrapper" class="no-transition">
+<div id="toc-toggle-bar" aria-label="Toggle TOC"></div>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc9c0769">1. What problem does this paper try to solve?</a></li>
+<li><a href="#org358fbd7">2. Why is the problem important?</a></li>
+<li><a href="#org795155d">3. What is this paper's solution to the problem?</a></li>
+<li><a href="#org596966c">4. What are the strengths of this paper?</a>
+<ul>
+<li><a href="#org045904a">4.1. How they detect sub-object overflows?</a></li>
+</ul>
+</li>
+<li><a href="#org5d9260e">5. What are the limitations and weaknesses of this paper?</a></li>
+<li><a href="#org4738592">6. What makes this paper publishable?</a></li>
+<li><a href="#org9dd887d">7. What are the key techniques on which this work depends?</a></li>
+<li><a href="#orgc68fb27">8. What are other solutions and what are the most relevant works?</a></li>
+<li><a href="#org4d4e074">9. Related links</a></li>
+<li><a href="#orgcc2d24b">10. Thing(s) that I like particularly about this paper.</a></li>
+<li><a href="#org4505981">11. What is the take-away message from this paper?</a></li>
+<li><a href="#org8542f95">12. Other comments</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Authors: Benjamin Orthen, Oliver Braunsdorf, Philipp Zieris, Julian Horsch
+</p>
+
+<p>Category: Security
+</p>
+
+<p>Keywords: memory safety, sanitization, buffer overflows, sub-object overflows, use-after-free, C
+</p>
+<div id="orgc9c0769">
+<h2 id="orgc9c0769">What problem does this paper try to solve?</h2>
+<p>Memory safety issues.
+</p>
+</div>
+<div id="org358fbd7">
+<h2 id="org358fbd7">Why is the problem important?</h2>
+<p>According to the Chromium project, approximately 70% of all severe security bugs are still caused by memory errors.
+</p>
+</div>
+<div id="org795155d">
+<h2 id="org795155d">What is this paper's solution to the problem?</h2>
+<p>Improve Softbound+CETS.
+</p>
+</div>
+<div id="org596966c">
+<h2 id="org596966c">What are the strengths of this paper?</h2>
+<p>Enhance the capability in detecting memory errors and usability of the orginal softbound+cets.
+</p>
+
+<p>For example, the original softbound doesn't handle sub-object out-of-bounds errors.
+</p>
+<div id="org045904a">
+<h3 id="org045904a">How they detect sub-object overflows?</h3>
+<p>They instrument the GEP to determine the address of a subelement within an aggregate.
+</p>
+</div>
+</div>
+<div id="org5d9260e">
+<h2 id="org5d9260e">What are the limitations and weaknesses of this paper?</h2>
+<p>Performance, which is 1.68x in geometric mean and 2x in average on SPEC CPU 2017.
+</p>
+
+<p>It only support fixed-sized vectors. (The original one only handles vectors with up to two pointer elements.)
+</p>
+</div>
+<div id="org4738592">
+<h2 id="org4738592">What makes this paper publishable?</h2>
+<p>The improvement of softbound+cets, and no new approach after softbound+cets.
+</p>
+</div>
+<div id="org9dd887d">
+<h2 id="org9dd887d">What are the key techniques on which this work depends?</h2>
+<p>LTO, LLVM
+</p>
+</div>
+<div id="orgc68fb27">
+<h2 id="orgc68fb27">What are other solutions and what are the most relevant works?</h2>
+<p>CCured
+</p>
+</div>
+<div id="org4d4e074">
+<h2 id="org4d4e074">Related links</h2>
+<p><a href="https://github.com/Fraunhofer-AISEC/softboundcets">https://github.com/Fraunhofer-AISEC/softboundcets</a>
+</p>
+</div>
+<div id="orgcc2d24b">
+<h2 id="orgcc2d24b">Thing(s) that I like particularly about this paper.</h2>
+<p>Simplism.
+</p>
+</div>
+<div id="org4505981">
+<h2 id="org4505981">What is the take-away message from this paper?</h2>
+<p>Softbound+cets is slow, it's time to evolve.
+</p>
+</div>
+<div id="org8542f95">
+<h2 id="org8542f95">Other comments</h2>
+<p>LLVM 12, move aggressive inlining of runtime functions, runtime library
+</p>
+
+<p>The orginal one misses proper metadata propagation and lacks support for nested aggregates that contain pointer arrays.
+</p>
+
+<p>They disable the constant offset consolidation within LLVM's "Instruction Combining" optimization.
+</p>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-bar">
+<p>&copy; 2025 Zhixiao Zhang · Powered by Emacs</p></div>
+</footer>
+<script src="https://zhixiao-zhang.github.io/js/script.js" defer></script>
+</body>
+</html>

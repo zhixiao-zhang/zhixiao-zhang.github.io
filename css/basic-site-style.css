@@ -1,0 +1,547 @@
+
+/* Reset + Base Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "PingFang SC", "Heiti SC", "Bree Serif", sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #222;
+    background-color: #fdfdfd;
+    padding-bottom: 50px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: #0077cc;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #005fa3;
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header Layout */
+.header-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    gap: 0.5rem;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Navigation Styling */
+nav {
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s ease;
+}
+
+nav li.active a {
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    color: #000;
+}
+
+nav a:hover {
+    color: #000;
+    border-bottom: 2px solid #999;
+}
+
+nav .menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.menu.hidden {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.25rem 0.5rem;
+    line-height: 1.2;
+    align-items: center;
+}
+
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    padding: 0;    
+    background: #f0f0f0;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    z-index: 1000;
+    box-shadow: 0 -1px 4px rgba(0,0,0,0.05);
+}
+
+blockquote {
+    position: relative;
+    font-style: italic;
+    color: #444;
+    border-left: 4px solid #bbb;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    background-color: #f7f7f7;
+}
+
+blockquote::before {
+    content: "“";
+    font-size: 3em;
+    color: #bbb;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    line-height: 1;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1em 0;
+    font-size: 0.95em;
+    color: #333;
+}
+
+th, td {
+    padding: 0.75em 1em;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    word-break: break-word;
+    white-space: normal;
+}
+
+th {
+    background-color: #f6f8fa;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f0f8ff;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+sup .footref {
+    text-decoration: none;
+    font-size: 0.8em;
+    vertical-align: super;
+    color: #0077cc;
+    cursor: pointer;
+}
+
+sup .footref:hover {
+    text-decoration: underline;
+}
+
+#footnotes {
+    margin-top: 2em;
+    padding-top: 1em;
+    font-size: 0.95em;
+    color: #444;
+}
+
+.footnotes {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: #222;
+}
+
+.footdef {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.75em;
+    gap: 0.5em;
+}
+
+.footdef sup {
+    font-size: 1em;
+    color: #0077cc;
+}
+
+.footpara {
+    flex: 1;
+    padding: 0 1em;
+}
+
+.footpara p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+#table-of-contents {
+    position: fixed;
+    top: 80px;
+    right: 10px;
+    width: 250px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding: 1rem;
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+    font-size: .9rem;
+    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+}
+
+#table-of-contents h2 {
+    font-size: 1.1rem;
+    margin: 0 0 .5rem 0;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#table-of-contents ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#table-of-contents li {
+    margin: .25rem 0;
+}
+
+#table-of-contents a {
+    display: block;
+    padding-left: .3rem;
+    color: #0366d6;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+}
+
+#table-of-contents a:hover {
+    color: #023e8a;
+}
+
+#table-of-contents a.active {
+    color: #d6336c;
+    font-weight: 600;
+    border-left-color: #d6336c;
+}
+
+#table-of-contents ul ul a { padding-left: 1.2rem; }
+#table-of-contents ul ul ul a { padding-left: 2rem; }
+
+#toc-toggle-bar {
+    position: fixed;
+    top: 120px;
+    right: 0;
+    width: 6px;
+    height: 80px;
+    background-color: #0077cc;
+    border-radius: 3px 0 0 3px;
+    cursor: pointer;
+    z-index: 1002;
+    transition: background-color 0.2s;
+}
+
+#toc-toggle-bar:hover {
+    background-color: #005fa3;
+}
+
+#toc-wrapper.collapsed #table-of-contents {
+    transform: translateX(120%);
+}
+
+.no-transition #table-of-contents {
+    transition: none !important;
+}
+
+ruby { font-size: 1.1em; }
+rt { font-size: 0.8em; }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #eee;
+}
+
+pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+}
+pre.src {
+    position: relative;
+    overflow: auto;
+}
+pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+}
+pre.src:hover:before { display: inline; margin-top: 14px;}
+/* Languages per Org manual */
+pre.src-asymptote:before { content: 'Asymptote'; }
+pre.src-awk:before { content: 'Awk'; }
+pre.src-authinfo::before { content: 'Authinfo'; }
+pre.src-C:before { content: 'C'; }
+pre.src-C\+\+:before { content: 'C++'; }
+pre.src-clojure:before { content: 'Clojure'; }
+pre.src-css:before { content: 'CSS'; }
+pre.src-D:before { content: 'D'; }
+pre.src-ditaa:before { content: 'ditaa'; }
+pre.src-dot:before { content: 'Graphviz'; }
+pre.src-calc:before { content: 'Emacs Calc'; }
+pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+pre.src-fortran:before { content: 'Fortran'; }
+pre.src-gnuplot:before { content: 'gnuplot'; }
+pre.src-haskell:before { content: 'Haskell'; }
+pre.src-hledger:before { content: 'hledger'; }
+pre.src-java:before { content: 'Java'; }
+pre.src-js:before { content: 'JavaScript'; }
+pre.src-latex:before { content: 'LaTeX'; }
+pre.src-ledger:before { content: 'Ledger'; }
+pre.src-lisp:before { content: 'Lisp'; }
+pre.src-lilypond:before { content: 'Lilypond'; }
+pre.src-lua:before { content: 'Lua'; }
+pre.src-matlab:before { content: 'MATLAB'; }
+pre.src-mscgen:before { content: 'Mscgen'; }
+pre.src-ocaml:before { content: 'Objective Caml'; }
+pre.src-octave:before { content: 'Octave'; }
+pre.src-org:before { content: 'Org mode'; }
+pre.src-oz:before { content: 'OZ'; }
+pre.src-plantuml:before { content: 'Plantuml'; }
+pre.src-processing:before { content: 'Processing.js'; }
+pre.src-python:before { content: 'Python'; }
+pre.src-R:before { content: 'R'; }
+pre.src-ruby:before { content: 'Ruby'; }
+pre.src-sass:before { content: 'Sass'; }
+pre.src-scheme:before { content: 'Scheme'; }
+pre.src-screen:before { content: 'Gnu Screen'; }
+pre.src-sed:before { content: 'Sed'; }
+pre.src-sh:before { content: 'shell'; }
+pre.src-sql:before { content: 'SQL'; }
+pre.src-sqlite:before { content: 'SQLite'; }
+/* additional languages in org.el's org-babel-load-languages alist */
+pre.src-forth:before { content: 'Forth'; }
+pre.src-io:before { content: 'IO'; }
+pre.src-J:before { content: 'J'; }
+pre.src-makefile:before { content: 'Makefile'; }
+pre.src-maxima:before { content: 'Maxima'; }
+pre.src-perl:before { content: 'Perl'; }
+pre.src-picolisp:before { content: 'Pico Lisp'; }
+pre.src-scala:before { content: 'Scala'; }
+pre.src-shell:before { content: 'Shell Script'; }
+pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+/* additional language identifiers per "defun org-babel-execute"
+     in ob-*.el */
+pre.src-cpp:before  { content: 'C++'; }
+pre.src-abc:before  { content: 'ABC'; }
+pre.src-coq:before  { content: 'Coq'; }
+pre.src-groovy:before  { content: 'Groovy'; }
+/* additional language identifiers from org-babel-shell-names in
+   ob-shell.el: ob-shell is the only babel language using a lambda to put
+   the execution function name together. */
+pre.src-bash:before  { content: 'bash'; }
+pre.src-csh:before  { content: 'csh'; }
+pre.src-ash:before  { content: 'ash'; }
+pre.src-dash:before  { content: 'dash'; }
+pre.src-ksh:before  { content: 'ksh'; }
+pre.src-mksh:before  { content: 'mksh'; }
+pre.src-posh:before  { content: 'posh'; }
+/* Additional Emacs modes also supported by the LaTeX listings package */
+pre.src-ada:before { content: 'Ada'; }
+pre.src-asm:before { content: 'Assembler'; }
+pre.src-caml:before { content: 'Caml'; }
+pre.src-delphi:before { content: 'Delphi'; }
+pre.src-html:before { content: 'HTML'; }
+pre.src-idl:before { content: 'IDL'; }
+pre.src-mercury:before { content: 'Mercury'; }
+pre.src-metapost:before { content: 'MetaPost'; }
+pre.src-modula-2:before { content: 'Modula-2'; }
+pre.src-pascal:before { content: 'Pascal'; }
+pre.src-ps:before { content: 'PostScript'; }
+pre.src-prolog:before { content: 'Prolog'; }
+pre.src-simula:before { content: 'Simula'; }
+pre.src-tcl:before { content: 'tcl'; }
+pre.src-tex:before { content: 'TeX'; }
+pre.src-plain-tex:before { content: 'Plain TeX'; }
+pre.src-verilog:before { content: 'Verilog'; }
+pre.src-vhdl:before { content: 'VHDL'; }
+pre.src-xml:before { content: 'XML'; }
+pre.src-nxml:before { content: 'XML'; }
+/* add a generic configuration mode; LaTeX export needs an additional
+   (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+pre.src-conf:before { content: 'Configuration File'; }
+
+code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Mobile Responsive Tweaks */
+@media (max-width: 600px) {
+    body {
+        font-size: 1.2em;
+        padding: 0;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .header-bar {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .site-title {
+        font-size: 1.5rem;
+    }
+
+    nav .menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        position: fixed;
+        top: 3.5rem;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        z-index: 999;
+        border-top: 1px solid #eee;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .dropdown {
+        display: block;
+        position: static;
+    }
+
+    .dropdown-content {
+        display: block;
+        position: static;
+        box-shadow: none;
+        background-color: inherit;
+        padding-left: 1em;
+    }
+
+    .dropdown-content a {
+        padding: 4px 8px;
+    }
+}
+
+/* Desktop force show menu */
+@media (min-width: 601px) {
+    .menu {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+    }
+
+    .menu-icon {
+        display: none;
+    }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Language-Based Approach to Security</title>
+<link rel="stylesheet" href="https://zhixiao-zhang.github.io/css/basic-site-style.css" />
+
+</head>
+<body>
+<header>
+<div class="container header-bar">
+<div class="site-title">Zhixiao Zhang</div>
+<nav>
+<div class="menu-icon" id="menu-toggle">☰</div><ul class="menu hidden">
+<li class=""><a href="https://zhixiao-zhang.github.io/index.html">About</a>
+</li>
+<li class="">
+<a href="https://zhixiao-zhang.github.io/news/index.html">News</a>
+</li><li class="dropdown"">
+<a href="https://zhixiao-zhang.github.io/blog/index.html" class="deopbtn">Blog</a>
+<div class="dropdown-content"><a href="https://zhixiao-zhang.github.io/menu/index.html">Menu</a>
+<a href="https://zhixiao-zhang.github.io/lyrics/index.html">lyrics</a></div>
+</li><li class="active">
+<a href="https://zhixiao-zhang.github.io/bib/paper.html">Bib</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<h1 class="center">A Language-Based Approach to Security</h1>
+<p class="center"></p>
+<p class="center"></p>
+<div id="toc-wrapper" class="no-transition">
+<div id="toc-toggle-bar" aria-label="Toggle TOC"></div>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4fa993b">0.1. Authors: Fred B. Schneider, Greg Morrisett, Robert Harper</a></li>
+</ul>
+</li>
+<li><a href="#org93b6cab">1. 1. Why do we need language-based security?</a></li>
+<li><a href="#org7f5db64">2. 2. What are the advantages of language-based security?</a></li>
+<li><a href="#org548f25f">3. 3. How does language-based security solve the problems?</a>
+<ul>
+<li><a href="#org0293d98">3.1. 3.1 In-lined Reference Monitors</a></li>
+<li><a href="#org86a5265">3.2. 3.2 Type-safe Programming Languages</a></li>
+<li><a href="#orgd05a54b">3.3. 3.3 Certifying Compilers</a></li>
+<li><a href="#org8e72ca1">3.4. 3.4 Mix them!</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="org4fa993b">
+<h3 id="org4fa993b">Authors: Fred B. Schneider, Greg Morrisett, Robert Harper</h3>
+</div>
+
+<div id="org93b6cab">
+<h2 id="org93b6cab">1. Why do we need language-based security?</h2>
+<blockquote>
+<p>Two classic computer security principles:
+</p>
+<ul>
+<li><p>Principle of Least Privilege: Throughout execution, each principal should be accorded the minimum access necessary to accomplish its task.
+</p>
+</li>
+<li><p>Minimal Trusted Computing Base: Assurance that an enforcement mechanism behaves as intended is greatest when the mechanism is small and simple.
+</p>
+</li>
+</ul>
+</blockquote>
+
+<p>Previously, the scale of systems was small. Hence, we can integrate the trusted computing base into the operating system and follow the principles. 
+</p>
+
+<p>However, as systems grow, these policies become coarse-grained. Many resources are not even included in the operating system, making them more vulnerable.
+</p>
+
+<p>Therefore, we should employ some new approaches to handle them, such as <strong><strong>language-based security</strong></strong>.
+</p>
+
+<blockquote>
+<p>Normally, reference monitors are the tool to secure target systems by halting them whenever the security policies are violated. The prerequisite of this method is that reference monitors are secure. We can apply some mechanisms, such as memory protection hardware, to protect them, which has a performance cost and restricts the range of policies.
+</p>
+</blockquote>
+</div>
+<div id="org7f5db64">
+<h2 id="org7f5db64">2. What are the advantages of language-based security?</h2>
+<p>Language-based security, based on program analysis and program rewriting, employs <strong><strong>flexible</strong></strong> and <strong><strong>fine-grained</strong></strong> methods to instantiate the two principles.
+</p>
+
+<p>Moreover, many technologies, such as just-in-time compilers, run-time code generation, and other programming language methods, can incorporate the language-based approach to <strong><strong>reduce the overhead</strong></strong>.
+</p>
+
+<blockquote>
+<p>Much work is directed at enforcing policies on the intermediate representation, even object code.
+</p>
+</blockquote>
+</div>
+<div id="org548f25f">
+<h2 id="org548f25f">3. How does language-based security solve the problems?</h2>
+<p>Theoretically, there are two types of the language-based approach—**program rewriting** and <strong><strong>program analysis</strong></strong>. Today's research efforts can be categorized into two groups: one is <strong><strong>in-lined reference monitors</strong></strong>, and the other one is <strong><strong>type-safe programming languages</strong></strong>. They employ program rewriting and program analysis methods, respectively.
+</p>
+<div id="org0293d98">
+<h3 id="org0293d98">3.1 In-lined Reference Monitors</h3>
+<blockquote>
+<p>Reference monitors: Software that halts the system when specific security policies are <strong><strong>violated</strong></strong>.
+</p>
+</blockquote>
+
+<p><strong>Key idea</strong>: Inline the reference monitor into the target system code rather than separating them into different address spaces.
+</p>
+</div>
+<div id="org86a5265">
+<h3 id="org86a5265">3.2 Type-safe Programming Languages</h3>
+<blockquote>
+<p>Type systems: A rule set that determines which operations can be applied to which values through type abstraction.
+</p>
+</blockquote>
+
+<p><strong>Key idea</strong>: Shift the burden of proving that a program complies with a policy from the code recipient to the code producer.
+Type-based methods impose on the programmer the burden of demonstrating compliance with a given security policy.
+</p>
+</div>
+<div id="orgd05a54b">
+<h3 id="orgd05a54b">3.3 Certifying Compilers</h3>
+<p><strong>Motivation</strong>: type-based approaches rely on the high-level language assumption.
+</p>
+
+<p><strong>Key idea</strong>: Replace a trusted compiler (used in the type-based approach) with an <strong><strong>untrusted certifying compiler</strong></strong> plus a <strong><strong>trusted certificate checker</strong></strong>, which is much smaller and simpler than the former.
+</p>
+</div>
+<div id="org8e72ca1">
+<h3 id="org8e72ca1">3.4 Mix them!</h3>
+<ul>
+<li><p>Integrated IRM enforcement with Type Systems.
+</p>
+<ul>
+<li><p>Sometimes, security policies require dynamic information, which can't be retrieved at compile-time.
+</p>
+</li>
+<li><p>Sometimes, inserting a dynamic check is simpler than creating a complex and error-prone proof.
+</p>
+</li>
+</ul>
+</li>
+<li><p>Extending IRM enforcement with Certifying Compilers.
+</p>
+<ul>
+<li><p>add checking code and security updates to do analysis and optimization to remove unnecessary checking code, provided the IRM rewriter produces a certificate along with the modified object code.
+</p>
+</li>
+</ul>
+</li>
+<li><p>Extending Certifying Compilers with IRM enforcement.
+</p>
+<ul>
+<li><p>Combine the static analysis and dynamic analysis. For instance, the compiler emits a run-time check; then, static analysis can guarantee the array access is safe.
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-bar">
+<p>&copy; 2025 Zhixiao Zhang · Powered by Emacs</p></div>
+</footer>
+<script src="https://zhixiao-zhang.github.io/js/script.js" defer></script>
+</body>
+</html>
