@@ -38,22 +38,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0acc013">1. What problem does this paper try to solve?</a></li>
-<li><a href="#org79e5d17">2. Why is the problem important?</a></li>
-<li><a href="#org8c44fed">3. What is this paper's solution to the problem?</a></li>
-<li><a href="#org7dea765">4. What are the strengths of this paper?</a>
+<li><a href="#org1b123d6">1. What problem does this paper try to solve?</a></li>
+<li><a href="#orgd18f86c">2. Why is the problem important?</a></li>
+<li><a href="#orgfb7c421">3. What is this paper's solution to the problem?</a></li>
+<li><a href="#org2be7f4d">4. What are the strengths of this paper?</a>
 <ul>
-<li><a href="#orgbaba5df">4.1. How they detect sub-object overflows?</a></li>
+<li><a href="#org86f8069">4.1. How they detect sub-object overflows?</a></li>
 </ul>
 </li>
-<li><a href="#org5ec6c67">5. What are the limitations and weaknesses of this paper?</a></li>
-<li><a href="#org7e49bca">6. What makes this paper publishable?</a></li>
-<li><a href="#orga813132">7. What are the key techniques on which this work depends?</a></li>
-<li><a href="#orgf3d0f53">8. What are other solutions and what are the most relevant works?</a></li>
-<li><a href="#org73bfb36">9. Related links</a></li>
-<li><a href="#org9ce5559">10. Thing(s) that I like particularly about this paper.</a></li>
-<li><a href="#orgfc29ae0">11. What is the take-away message from this paper?</a></li>
-<li><a href="#org07fd68c">12. Other comments</a></li>
+<li><a href="#orga0d5f52">5. What are the limitations and weaknesses of this paper?</a></li>
+<li><a href="#orgd9f1d68">6. What makes this paper publishable?</a></li>
+<li><a href="#org8446b21">7. What are the key techniques on which this work depends?</a></li>
+<li><a href="#org3397072">8. What are other solutions and what are the most relevant works?</a></li>
+<li><a href="#org7cfd599">9. Related links</a></li>
+<li><a href="#org48ffe72">10. Thing(s) that I like particularly about this paper.</a></li>
+<li><a href="#org0fd587c">11. What is the take-away message from this paper?</a></li>
+<li><a href="#orgc1ca708">12. Other comments</a></li>
 </ul>
 </div>
 </div>
@@ -66,74 +66,74 @@
 
 <p>Keywords: memory safety, sanitization, buffer overflows, sub-object overflows, use-after-free, C
 </p>
-<div id="org0acc013">
-<h2 id="org0acc013">What problem does this paper try to solve?</h2>
+<div id="org1b123d6">
+<h2 id="org1b123d6">What problem does this paper try to solve?</h2>
 <p>Memory safety issues.
 </p>
 </div>
-<div id="org79e5d17">
-<h2 id="org79e5d17">Why is the problem important?</h2>
+<div id="orgd18f86c">
+<h2 id="orgd18f86c">Why is the problem important?</h2>
 <p>According to the Chromium project, approximately 70% of all severe security bugs are still caused by memory errors.
 </p>
 </div>
-<div id="org8c44fed">
-<h2 id="org8c44fed">What is this paper's solution to the problem?</h2>
+<div id="orgfb7c421">
+<h2 id="orgfb7c421">What is this paper's solution to the problem?</h2>
 <p>Improve Softbound+CETS.
 </p>
 </div>
-<div id="org7dea765">
-<h2 id="org7dea765">What are the strengths of this paper?</h2>
+<div id="org2be7f4d">
+<h2 id="org2be7f4d">What are the strengths of this paper?</h2>
 <p>Enhance the capability in detecting memory errors and usability of the orginal softbound+cets.
 </p>
 
 <p>For example, the original softbound doesn't handle sub-object out-of-bounds errors.
 </p>
-<div id="orgbaba5df">
-<h3 id="orgbaba5df">How they detect sub-object overflows?</h3>
+<div id="org86f8069">
+<h3 id="org86f8069">How they detect sub-object overflows?</h3>
 <p>They instrument the GEP to determine the address of a subelement within an aggregate.
 </p>
 </div>
 </div>
-<div id="org5ec6c67">
-<h2 id="org5ec6c67">What are the limitations and weaknesses of this paper?</h2>
+<div id="orga0d5f52">
+<h2 id="orga0d5f52">What are the limitations and weaknesses of this paper?</h2>
 <p>Performance, which is 1.68x in geometric mean and 2x in average on SPEC CPU 2017.
 </p>
 
 <p>It only support fixed-sized vectors. (The original one only handles vectors with up to two pointer elements.)
 </p>
 </div>
-<div id="org7e49bca">
-<h2 id="org7e49bca">What makes this paper publishable?</h2>
+<div id="orgd9f1d68">
+<h2 id="orgd9f1d68">What makes this paper publishable?</h2>
 <p>The improvement of softbound+cets, and no new approach after softbound+cets.
 </p>
 </div>
-<div id="orga813132">
-<h2 id="orga813132">What are the key techniques on which this work depends?</h2>
+<div id="org8446b21">
+<h2 id="org8446b21">What are the key techniques on which this work depends?</h2>
 <p>LTO, LLVM
 </p>
 </div>
-<div id="orgf3d0f53">
-<h2 id="orgf3d0f53">What are other solutions and what are the most relevant works?</h2>
+<div id="org3397072">
+<h2 id="org3397072">What are other solutions and what are the most relevant works?</h2>
 <p>CCured
 </p>
 </div>
-<div id="org73bfb36">
-<h2 id="org73bfb36">Related links</h2>
+<div id="org7cfd599">
+<h2 id="org7cfd599">Related links</h2>
 <p><a href="https://github.com/Fraunhofer-AISEC/softboundcets">https://github.com/Fraunhofer-AISEC/softboundcets</a>
 </p>
 </div>
-<div id="org9ce5559">
-<h2 id="org9ce5559">Thing(s) that I like particularly about this paper.</h2>
+<div id="org48ffe72">
+<h2 id="org48ffe72">Thing(s) that I like particularly about this paper.</h2>
 <p>Simplism.
 </p>
 </div>
-<div id="orgfc29ae0">
-<h2 id="orgfc29ae0">What is the take-away message from this paper?</h2>
+<div id="org0fd587c">
+<h2 id="org0fd587c">What is the take-away message from this paper?</h2>
 <p>Softbound+cets is slow, it's time to evolve.
 </p>
 </div>
-<div id="org07fd68c">
-<h2 id="org07fd68c">Other comments</h2>
+<div id="orgc1ca708">
+<h2 id="orgc1ca708">Other comments</h2>
 <p>LLVM 12, move aggressive inlining of runtime functions, runtime library
 </p>
 
