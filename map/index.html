@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Floating top bar -->
+  <div id="top-bar">
+    <div class="search-container">
+      <input type="search" id="search-input" placeholder="Search location..." />
+      <span class="search-icon" id="search-btn" title="Search">🔍</span>
+    </div>
+    <select id="day-select"></select>
+    <button id="export-json">Export</button>
+    <input type="file" id="import-json" style="display: none;" />
+    <button id="import-json-btn">Import</button>
+  </div>
+
+  <!-- Floating batch toolbar -->
+  <div id="batch-toolbar" class="hidden">
+    <span id="batch-count">0 items selected</span>
+    <button id="batch-delete">🗑 Delete</button>
+  </div>
+
+  <!-- Sidebar Toggle Strip (always visible on desktop) -->
+  <div id="sidebar-toggle-strip" title="Toggle Sidebar">
+    <div class="sidebar-compact">
+      🧭<br />
+    </div>
+  </div>
+
+  <!-- Full Sidebar -->
+  <div id="sidebar" class="collapsed">
+    <div id="sidebar-header">Map Items</div>
+    <div id="sidebar-content">
+      <!-- Your markers/routes etc -->
+    </div>
+  </div>
+
+  <!-- Bottom drawer for mobile -->
+  <div id="bottom-drawer" class="hidden">
+    <div id="sidebar-content-mobile"></div>
+  </div>
+
+  <!-- Modals -->
+  <div id="input-modal">
+    <label>Name:<input type="text" id="modal-name"></label>
+    <label>Notes:<input type="text" id="modal-notes"></label>
+    <label>Icon (emoji):<input type="text" id="modal-icon"></label>
+    <label>Day<input type="number" id="modal-day" placeholder="Leave blank to assign to 'All Days'" /></label>
+    <div class="modal-buttons">
+      <button id="modal-save">Save</button>
+      <button id="modal-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <div id="route-modal">
+    <label>Name:<input type="text" id="route-name"></label>
+    <label>Icon (emoji):<input type="text" id="route-icon"></label>
+    <label>Transport Notes:<input type="text" id="route-notes"></label>
+    <div class="modal-buttons">
+      <button id="route-save">Add Route</button>
+      <button id="route-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
