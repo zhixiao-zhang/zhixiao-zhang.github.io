@@ -14,8 +14,7 @@ body {
   background-color: #f9fafb;
 }
 
-input[type="text"],
-select {
+input[type="text"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -33,17 +32,7 @@ select {
   position: relative;
 }
 
-select::after {
-  content: '▼';
-  position: absolute;
-  right: 1em;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-input[type="text"]:focus,
-select:focus {
+input[type="text"]:focus {
   outline: none;
   border-color: #999;
 }
@@ -79,8 +68,10 @@ button:hover {
   width: 280px;
   background: white;
   border-right: 1px solid #ccc;
-  z-index: 1001;  /* ✅ 更高，覆盖 strip */
+  z-index: 1001;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 #sidebar.collapsed {
@@ -108,33 +99,6 @@ button:hover {
   font-size: 0.95rem;
 }
 
-/* Mobile Drawer */
-#bottom-drawer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 50vh;
-  background: white;
-  z-index: 1001;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  transform: translateY(100%);
-}
-#bottom-drawer.open {
-  transform: translateY(0%);
-}
-
-#drawer-handle {
-  width: 40px;
-  height: 4px;
-  background: #ccc;
-  border-radius: 2px;
-  margin: 8px auto;
-}
-
 #sidebar-header {
   padding: 0.75rem 1rem;
   font-size: 0.95rem;
@@ -148,19 +112,7 @@ button:hover {
   padding: 0.75rem 0.75rem;
   overflow-y: auto;
   flex: 1;
-}
-
-.sidebar-section {
-  margin-bottom: 1.5rem;
-}
-
-.sidebar-section h4 {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #6b7280;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  min-height: 0;
 }
 
 .sidebar-entry {
@@ -179,6 +131,40 @@ button:hover {
   display: block;
   font-weight: 500;
   margin-bottom: 0.25rem;
+}
+
+/* 汉堡按钮样式 */
+#menu-toggle {
+  color: #111;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Drawer默认隐藏 */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 240px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+  padding: 20px;
+  z-index: 1001;
+  transition: right 0.3s ease;
+}
+
+/* Drawer展开 */
+.drawer.open {
+  right: 0;
 }
 
 #map {
@@ -357,24 +343,13 @@ button:hover {
   border: none;
 }
 
-#top-bar > * {
-  background: transparent;
-  color: #111;
-  border: 1px solid #ddd;
-  padding: 0.4em 0.8em;
-  font-size: 0.9em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-#top-bar button,
-#top-bar select,
-#top-bar input[type="text"],
-#top-bar input[type="search"] {
+#top-bar-controls button,
+#top-bar-controls input[type="text"],
+#top-bar-controls input[type="search"] {
   font-size: 15px;
   font-weight: 500;
   padding: 0.5em 1em;
   border-radius: 25px;
-  border: 1px solid #ccc;
   background: white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   min-height: 38px;
@@ -382,8 +357,8 @@ button:hover {
   color: #222;
 }
 
-#top-bar input[type="search"],
-#top-bar input[type="text"] {
+#top-bar-controls input[type="search"],
+#top-bar-controls input[type="text"] {
   min-width: 180px;
 }
 
@@ -393,9 +368,8 @@ button:hover {
   align-items: center;
   background: transparent;
   border-radius: 24px;
-  border: 1px solid #ccc;
-  padding: 0.2em 1em;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  z-index: 1000;
 }
 
 .search-container input {
@@ -405,19 +379,7 @@ button:hover {
   padding: 0.6em 2em 0.6em 0.5em; /* space for icon */
   border-radius: 24px;
   flex: 1;
-  background: transparent;
-}
-
-.search-icon {
-  position: absolute;
-  right: 1em;
-  cursor: pointer;
-  font-size: 1.2em;
-  color: #666;
-}
-
-.search-icon:hover {
-  color: #333;
+  background: white;
 }
 
 /* Optional: tighten search input */
@@ -426,26 +388,236 @@ button:hover {
   min-width: 160px;
 }
 
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 24px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.search-results::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.search-results div {
+  padding: 0.5em;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.2s;
+}
+
+.search-results div:hover {
+  background: #f3f4f6;
+}
+
+.choices__inner {
+  background: #ffffff;
+  padding: 0.5em 1em;
+  min-height: 38px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  max-width: 150px;
+  min-width: 104px;
+  border-radius: 25px;
+}
+
+.choices.is-open .choices__inner {
+  border-radius: 25px 25px 0 0;  /* 只有底下圆角 */
+}
+
+.choices__item--selectable.is-highlighted {
+  background-color: #e5f0ff;
+}
+
+#top-bar .choices {
+  display: inline-flex;
+  vertical-align: middle;
+  margin: 0 0.4em;
+}
+
+#drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3); /* 半透明黑色 */
+  z-index: 1000; /* 小于drawer */
+  display: none; /* 默认隐藏 */
+}
+#drawer-overlay.open {
+  display: block;
+}
+
+.bottom-drawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60%;
+  background: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+  z-index: 1002;
+  transform: translateY(90%); /* 初始显示底部一小块 */
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-drawer.open {
+  transform: translateY(0);
+}
+
+.drawer-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  cursor: grab;
+}
+
+.drawer-handle {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+}
+#sidebar-content-mobile {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5em 1em;
+}
+
+.bottom-drawer {
+  transform: translateY(90%);
+}
+.bottom-drawer.open {
+  transform: translateY(0);
+}
+
+.leaflet-bottom.leaflet-right .leaflet-control-zoom {
+  margin-bottom: 45px; /* 自己调高度 */
+}
 
 /* Responsive top bar stacking */
 @media (max-width: 768px) {
-  #top-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.4em;
-  }
-
-  #top-bar > * {
-    width: 100%;
-  }
-
-  #bottom-drawer {
-    display: block;
-  }
-
   #sidebar,
   #sidebar-toggle-strip {
     display: none;
+  }
+  #top-bar-controls {
+    display: none;
+  }
+
+  #top-bar {
+    left: 0; /* 全宽 */
+    right: 0;
+    justify-content: center; /* 居中 */
+    padding: 0.6em 0.8em;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: 600px; /* 你可以自行调整最大宽度 */
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 0.3em 0.6em;
+  }
+
+  .search-container input {
+    flex: 1;
+    width: auto; /* 用flex撑开 */
+    min-width: 0;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding: 0.6em 0.5em;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #menu-toggle {
+    display: inline-block;
+    position: static; /* 不要fixed */
+    font-size: 22px;
+    padding: 0.4em 0.6em;
+    background: transparent;
+  }
+
+  #mobile-drawer {
+    display: block;
+  }
+  #mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 240px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+    padding: 1em;
+    z-index: 1001;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1em; /* 元素之间留空 */
+    overflow-y: auto; /* 内容溢出可滚动 */
+  }
+  
+  #mobile-drawer.open {
+    right: 0;
+  }
+  
+  /* 调整内部控件的宽度和样式 */
+  #mobile-drawer select,
+  #mobile-drawer input[type="text"],
+  #mobile-drawer button {
+    width: 100%;       /* 占满宽度 */
+    box-sizing: border-box;
+  }
+  
+  /* 如果需要按钮一致高度 */
+  #mobile-drawer button {
+    padding: 0.6em;
+    font-size: 1rem;
+    background: white;
+    color: #111;
+    border: 1px solid #ddd;   /* 这是浅灰色边框 */
+    border-radius: 25px;       /* 可选：圆角 */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  #mobile-drawer button:hover {
+    background: #f3f4f6;      /* 鼠标悬停高亮 */
+  }
+
+  .choices__inner {
+    min-width: 210px;
+  }
+
+  /* 如果希望按钮有分隔线 */
+  #mobile-drawer button + button {
+    margin-top: 0.5em;
   }
 }
 
@@ -453,7 +625,10 @@ button:hover {
   #bottom-drawer {
     display: none;
   }
-  #sidebar {
-    display: block;
+  #menu-toggle {
+    display: none;
+  }
+  #mobile-drawer {
+    display: none;
   }
 }

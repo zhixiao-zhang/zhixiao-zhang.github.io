@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,17 +15,29 @@
   <div id="top-bar">
     <div class="search-container">
       <input type="search" id="search-input" placeholder="Search location..." />
-      <span class="search-icon" id="search-btn" title="Search">🔍</span>
+      <div id="search-results" class="search-results"></div>
+      <button id="menu-toggle">☰</button>
     </div>
-    <select id="day-select"></select>
-    <button id="export-json">Export</button>
-    <input type="file" id="import-json" style="display: none;" />
-    <button id="import-json-btn">Import</button>
+    <div id="top-bar-controls">
+      <select id="day-select"></select>
+      <input type="text" id="room-id" placeholder="Room ID..." />
+      <button id="save-to-room">Save</button>
+      <button id="load-from-room">Load</button>
+    </div>
+  </div>
+
+  <div id="drawer-overlay"></div>
+  <div id="mobile-drawer" class="drawer">
+    <select id="day-select-mobile"></select>
+    <input type="text" id="room-id-mobile" placeholder="Room ID..." />
+    <button id="save-to-room-mobile">Save</button>
+    <button id="load-from-room-mobile">Load</button>
   </div>
 
   <!-- Floating batch toolbar -->
   <div id="batch-toolbar" class="hidden">
     <span id="batch-count">0 items selected</span>
+    <button id="batch-create-route" style="display:none;">➕ Create Route</button>
     <button id="batch-delete">🗑 Delete</button>
   </div>
 
@@ -43,8 +56,11 @@
     </div>
   </div>
 
-  <!-- Bottom drawer for mobile -->
-  <div id="bottom-drawer" class="hidden">
+  <div id="bottom-drawer" class="bottom-drawer">
+    <div class="drawer-header">
+      <div class="drawer-handle"></div>
+      Map Items
+    </div>
     <div id="sidebar-content-mobile"></div>
   </div>
 
@@ -72,7 +88,36 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAsZ6Topk8bI6wZKByw3ZVA9NWkaU07jtU",
+      authDomain: "travel-map-2dc7b.firebaseapp.com",
+      projectId: "travel-map-2dc7b",
+      storageBucket: "travel-map-2dc7b.firebasestorage.app",
+      messagingSenderId: "911796652751",
+      appId: "1:911796652751:web:4a1f3d8eb68f9840d9c5ba"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.db = db;
+    window.firestoreDoc = doc;
+    window.firestoreSetDoc = setDoc;
+    window.firestoreGetDoc = getDoc;
+    window.db = db;
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <!-- 加载 Google Maps JavaScript API（含Places库） -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB504IiEsfGbArXMT1oEUVG5nqXtWkhovI&libraries=places&language=zh-CN"></script>
   <script src="script.js"></script>
 </body>
 </html>
