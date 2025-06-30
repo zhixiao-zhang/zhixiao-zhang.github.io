@@ -17,13 +17,15 @@
 </li>
 <li class="">
 <a href="https://zhixiao-zhang.github.io/news/index.html">News</a>
-</li><li class="dropdown"">
+</li><li class="dropdown">
 <a href="https://zhixiao-zhang.github.io/blog/index.html" class="deopbtn">Blog</a>
 <div class="dropdown-content"><a href="https://zhixiao-zhang.github.io/menu/index.html">Menu</a>
 <a href="https://zhixiao-zhang.github.io/lyrics/index.html">lyrics</a></div>
 </li><li class="active">
 <a href="https://zhixiao-zhang.github.io/bib/paper.html">Bib</a></li>
-</ul>
+<li class="">
+<a href="https://zhixiao-zhang.github.io/map/index.html">Map</a>
+</li></ul>
 </nav>
 </div>
 </header>
@@ -38,19 +40,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1cdb751">1. What problem does this paper try to solve?</a></li>
-<li><a href="#org75eacd2">2. Why is the problem important?</a></li>
-<li><a href="#org56e4149">3. What is this paper's solution to the problem?</a>
+<li><a href="#org99e570c">1. What problem does this paper try to solve?</a></li>
+<li><a href="#org2a7ffe3">2. Why is the problem important?</a></li>
+<li><a href="#org51b7392">3. What is this paper's solution to the problem?</a>
 <ul>
-<li><a href="#orgdac260d">3.1. How to maintain the metadata?</a></li>
-<li><a href="#org3e90de1">3.2. How they handle function calls?</a></li>
-<li><a href="#orgb235d99">3.3. How to provide backward compatibility?</a></li>
+<li><a href="#org5f2f757">3.1. How to maintain the metadata?</a></li>
+<li><a href="#orgb5b3187">3.2. How they handle function calls?</a></li>
+<li><a href="#orgfaa2238">3.3. How to provide backward compatibility?</a></li>
 </ul>
 </li>
-<li><a href="#orga5d7566">4. What are the strengths of this paper?</a></li>
-<li><a href="#org80f5300">5. What are the limitations of this paper?</a></li>
-<li><a href="#org75ba450">6. What are other solutions and what are the most relevant works?</a></li>
-<li><a href="#org891a2cd">7. What's your favourite part of this work?</a></li>
+<li><a href="#orgaf98efa">4. What are the strengths of this paper?</a></li>
+<li><a href="#org601a41b">5. What are the limitations of this paper?</a></li>
+<li><a href="#org25db62d">6. What are other solutions and what are the most relevant works?</a></li>
+<li><a href="#orge9e88ff">7. What's your favourite part of this work?</a></li>
 </ul>
 </div>
 </div>
@@ -64,22 +66,22 @@ ing, SoftBoundCETS
 
 <p>[SNAPL'15]
 </p>
-<div id="org1cdb751">
-<h2 id="org1cdb751">What problem does this paper try to solve?</h2>
+<div id="org99e570c">
+<h2 id="org99e570c">What problem does this paper try to solve?</h2>
 <p>Provide full memory safety for C.
 </p>
 </div>
-<div id="org75eacd2">
-<h2 id="org75eacd2">Why is the problem important?</h2>
+<div id="org2a7ffe3">
+<h2 id="org2a7ffe3">Why is the problem important?</h2>
 <p>Refer to Google's article: <a href="https://research.google/pubs/secure-by-design-googles-perspective-on-memory-safety/">Secure by Design: Google's Perspective on Memory Safety</a>
 </p>
 </div>
-<div id="org56e4149">
-<h2 id="org56e4149">What is this paper's solution to the problem?</h2>
+<div id="org51b7392">
+<h2 id="org51b7392">What is this paper's solution to the problem?</h2>
 <p>Employ a pointer-based approach which injecting code to maintain per-pointer metadata and checking the metadata before dereferencing a pointer. The metadata is stored in a disjoint space. 
 </p>
-<div id="orgdac260d">
-<h3 id="orgdac260d">How to maintain the metadata?</h3>
+<div id="org5f2f757">
+<h3 id="org5f2f757">How to maintain the metadata?</h3>
 <p>metadata layout: [ base | bound ]|{ key | lock }
 </p>
 
@@ -103,8 +105,8 @@ ing, SoftBoundCETS
 </li>
 </ul>
 </div>
-<div id="org3e90de1">
-<h3 id="org3e90de1">How they handle function calls?</h3>
+<div id="orgb5b3187">
+<h3 id="orgb5b3187">How they handle function calls?</h3>
 <p><strong>Problem: variable arguments, function pointers (indirect calls).</strong>
 </p>
 
@@ -117,8 +119,8 @@ ing, SoftBoundCETS
 </li>
 </ol>
 </div>
-<div id="orgb235d99">
-<h3 id="orgb235d99">How to provide backward compatibility?</h3>
+<div id="orgfaa2238">
+<h3 id="orgfaa2238">How to provide backward compatibility?</h3>
 <ol>
 <li><p>provide wrappers for commonly used libraries
 </p>
@@ -129,8 +131,8 @@ ing, SoftBoundCETS
 </ol>
 </div>
 </div>
-<div id="orga5d7566">
-<h2 id="orga5d7566">What are the strengths of this paper?</h2>
+<div id="orgaf98efa">
+<h2 id="orgaf98efa">What are the strengths of this paper?</h2>
 <ol>
 <li><p>Backward Compatibility. (disjoint metadata)
 </p>
@@ -149,8 +151,8 @@ ing, SoftBoundCETS
 </li>
 </ol>
 </div>
-<div id="org80f5300">
-<h2 id="org80f5300">What are the limitations of this paper?</h2>
+<div id="org601a41b">
+<h2 id="org601a41b">What are the limitations of this paper?</h2>
 <ol>
 <li><p>bad performance (70%-80%)
 </p>
@@ -163,8 +165,8 @@ But they don't provide any evidence.
 </p>
 </blockquote>
 </div>
-<div id="org75ba450">
-<h2 id="org75ba450">What are other solutions and what are the most relevant works?</h2>
+<div id="org25db62d">
+<h2 id="org25db62d">What are other solutions and what are the most relevant works?</h2>
 <p>AddressSanitizer (tripwire approach)
 </p>
 
@@ -174,8 +176,8 @@ But they don't provide any evidence.
 <p>SafeC, CCured, Cyclone, MSCC (Pointer-based approach)
 </p>
 </div>
-<div id="org891a2cd">
-<h2 id="org891a2cd">What's your favourite part of this work?</h2>
+<div id="orge9e88ff">
+<h2 id="orge9e88ff">What's your favourite part of this work?</h2>
 <p>Numerous design for their approach, from hardware to software.
 </p>
 </div>
