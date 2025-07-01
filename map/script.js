@@ -279,9 +279,13 @@ function updateSidebar() {
   sidebarMobile.innerHTML = '';
 
   // MARKERS
-  data
-    .filter(e => !e.deleted && (currentDay === 0 || e.day === 0 || e.day === currentDay))
-    .forEach(entry => {
+  let markerEntries = data
+    .filter(e => !e.deleted && (currentDay === 0 || e.day === 0 || e.day === currentDay));
+  
+  if (currentDay === 0) {
+    markerEntries.sort((a, b) => (a.day || 0) - (b.day || 0));
+  }
+  markerEntries.forEach(entry => {
       const key = `${entry.coords[0]}_${entry.coords[1]}`;
       // 创建桌面元素
       const el = document.createElement('div');
@@ -331,7 +335,15 @@ function updateSidebar() {
     });
 
   // ROUTES
-  Object.entries(routes).forEach(([day, group]) => {
+  let routeEntries = Object.entries(routes);
+  if (currentDay === 0) {
+    routeEntries.sort((a, b) => {
+      const dayA = parseInt(a[0]) || 0;
+      const dayB = parseInt(b[0]) || 0;
+      return dayA - dayB;
+    });
+  }
+  routeEntries.forEach(([day, group]) => {
     const dayInt = parseInt(day);
     if (currentDay !== 0 && dayInt !== 0 && dayInt !== currentDay) return;
 
