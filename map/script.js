@@ -247,12 +247,22 @@ function renderDayOptions() {
 }
 
 function switchDay(day) {
+  // 先全部移除
   Object.values(layers).forEach(layer => map.removeLayer(layer));
   Object.values(routes).forEach(route => map.removeLayer(route));
 
+  // 始终加上 All Days (day=0) 的Layer
+  if (layers[0]) map.addLayer(layers[0]);
+  if (routes[0]) map.addLayer(routes[0]);
+
+  // 如果切到All Days，显示全部
   if (day === 0) {
-    Object.values(layers).forEach(layer => map.addLayer(layer));
-    Object.values(routes).forEach(route => map.addLayer(route));
+    Object.keys(layers).forEach(k => {
+      if (k !== "0") map.addLayer(layers[k]);
+    });
+    Object.keys(routes).forEach(k => {
+      if (k !== "0") map.addLayer(routes[k]);
+    });
   } else {
     if (layers[day]) map.addLayer(layers[day]);
     if (routes[day]) map.addLayer(routes[day]);
@@ -270,7 +280,7 @@ function updateSidebar() {
 
   // MARKERS
   data
-    .filter(e => !e.deleted && (currentDay === 0 || e.day === currentDay))
+    .filter(e => !e.deleted && (currentDay === 0 || e.day === 0 || e.day === currentDay))
     .forEach(entry => {
       const key = `${entry.coords[0]}_${entry.coords[1]}`;
       // 创建桌面元素
@@ -322,7 +332,8 @@ function updateSidebar() {
 
   // ROUTES
   Object.entries(routes).forEach(([day, group]) => {
-    if (currentDay !== 0 && parseInt(day) !== currentDay) return;
+    const dayInt = parseInt(day);
+    if (currentDay !== 0 && dayInt !== 0 && dayInt !== currentDay) return;
 
     group.eachLayer(polyline => {
       const id = polyline._leaflet_id;
