@@ -38,19 +38,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org284f694">1. What problem does this paper try to solve?</a></li>
-<li><a href="#org527e135">2. Why is the problem important?</a></li>
-<li><a href="#orgf051793">3. What is this paper's solution to the problem?</a>
+<li><a href="#orge460a1e">1. What problem does this paper try to solve?</a></li>
+<li><a href="#org8eff40a">2. Why is the problem important?</a></li>
+<li><a href="#org5515af3">3. What is this paper's solution to the problem?</a>
 <ul>
-<li><a href="#orgdb629b7">3.1. How to maintain the metadata?</a></li>
-<li><a href="#orgfa2d028">3.2. How they handle function calls?</a></li>
-<li><a href="#org1c00b48">3.3. How to provide backward compatibility?</a></li>
+<li><a href="#org3ec840e">3.1. How to maintain the metadata?</a></li>
+<li><a href="#org908e3fc">3.2. How they handle function calls?</a></li>
+<li><a href="#org4f55458">3.3. How to provide backward compatibility?</a></li>
 </ul>
 </li>
-<li><a href="#org832cae5">4. What are the strengths of this paper?</a></li>
-<li><a href="#org00d766d">5. What are the limitations of this paper?</a></li>
-<li><a href="#org8c2ed25">6. What are other solutions and what are the most relevant works?</a></li>
-<li><a href="#org60e0cc0">7. What's your favourite part of this work?</a></li>
+<li><a href="#orgb19e4c8">4. What are the strengths of this paper?</a></li>
+<li><a href="#org0c327b7">5. What are the limitations of this paper?</a></li>
+<li><a href="#orgf861346">6. What are other solutions and what are the most relevant works?</a></li>
+<li><a href="#org2848304">7. What's your favourite part of this work?</a></li>
 </ul>
 </div>
 </div>
@@ -64,22 +64,22 @@ ing, SoftBoundCETS
 
 <p>[SNAPL'15]
 </p>
-<div id="org284f694">
-<h2 id="org284f694">What problem does this paper try to solve?</h2>
+<div id="orge460a1e">
+<h2 id="orge460a1e">What problem does this paper try to solve?</h2>
 <p>Provide full memory safety for C.
 </p>
 </div>
-<div id="org527e135">
-<h2 id="org527e135">Why is the problem important?</h2>
+<div id="org8eff40a">
+<h2 id="org8eff40a">Why is the problem important?</h2>
 <p>Refer to Google's article: <a href="https://research.google/pubs/secure-by-design-googles-perspective-on-memory-safety/">Secure by Design: Google's Perspective on Memory Safety</a>
 </p>
 </div>
-<div id="orgf051793">
-<h2 id="orgf051793">What is this paper's solution to the problem?</h2>
+<div id="org5515af3">
+<h2 id="org5515af3">What is this paper's solution to the problem?</h2>
 <p>Employ a pointer-based approach which injecting code to maintain per-pointer metadata and checking the metadata before dereferencing a pointer. The metadata is stored in a disjoint space. 
 </p>
-<div id="orgdb629b7">
-<h3 id="orgdb629b7">How to maintain the metadata?</h3>
+<div id="org3ec840e">
+<h3 id="org3ec840e">How to maintain the metadata?</h3>
 <p>metadata layout: [ base | bound ]|{ key | lock }
 </p>
 
@@ -103,8 +103,8 @@ ing, SoftBoundCETS
 </li>
 </ul>
 </div>
-<div id="orgfa2d028">
-<h3 id="orgfa2d028">How they handle function calls?</h3>
+<div id="org908e3fc">
+<h3 id="org908e3fc">How they handle function calls?</h3>
 <p><strong>Problem: variable arguments, function pointers (indirect calls).</strong>
 </p>
 
@@ -117,8 +117,8 @@ ing, SoftBoundCETS
 </li>
 </ol>
 </div>
-<div id="org1c00b48">
-<h3 id="org1c00b48">How to provide backward compatibility?</h3>
+<div id="org4f55458">
+<h3 id="org4f55458">How to provide backward compatibility?</h3>
 <ol>
 <li><p>provide wrappers for commonly used libraries
 </p>
@@ -129,8 +129,8 @@ ing, SoftBoundCETS
 </ol>
 </div>
 </div>
-<div id="org832cae5">
-<h2 id="org832cae5">What are the strengths of this paper?</h2>
+<div id="orgb19e4c8">
+<h2 id="orgb19e4c8">What are the strengths of this paper?</h2>
 <ol>
 <li><p>Backward Compatibility. (disjoint metadata)
 </p>
@@ -149,8 +149,8 @@ ing, SoftBoundCETS
 </li>
 </ol>
 </div>
-<div id="org00d766d">
-<h2 id="org00d766d">What are the limitations of this paper?</h2>
+<div id="org0c327b7">
+<h2 id="org0c327b7">What are the limitations of this paper?</h2>
 <ol>
 <li><p>bad performance (70%-80%)
 </p>
@@ -163,8 +163,8 @@ But they don't provide any evidence.
 </p>
 </blockquote>
 </div>
-<div id="org8c2ed25">
-<h2 id="org8c2ed25">What are other solutions and what are the most relevant works?</h2>
+<div id="orgf861346">
+<h2 id="orgf861346">What are other solutions and what are the most relevant works?</h2>
 <p>AddressSanitizer (tripwire approach)
 </p>
 
@@ -174,8 +174,8 @@ But they don't provide any evidence.
 <p>SafeC, CCured, Cyclone, MSCC (Pointer-based approach)
 </p>
 </div>
-<div id="org60e0cc0">
-<h2 id="org60e0cc0">What's your favourite part of this work?</h2>
+<div id="org2848304">
+<h2 id="org2848304">What's your favourite part of this work?</h2>
 <p>Numerous design for their approach, from hardware to software.
 </p>
 </div>
