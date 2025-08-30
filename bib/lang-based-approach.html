@@ -38,27 +38,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org62fb34f">0.1. Authors: Fred B. Schneider, Greg Morrisett, Robert Harper</a></li>
+<li><a href="#org8368181">0.1. Authors: Fred B. Schneider, Greg Morrisett, Robert Harper</a></li>
 </ul>
 </li>
-<li><a href="#org12e89cb">1. 1. Why do we need language-based security?</a></li>
-<li><a href="#orgdef3315">2. 2. What are the advantages of language-based security?</a></li>
-<li><a href="#orgd35ad95">3. 3. How does language-based security solve the problems?</a>
+<li><a href="#orgf006365">1. 1. Why do we need language-based security?</a></li>
+<li><a href="#orgc51ad9c">2. 2. What are the advantages of language-based security?</a></li>
+<li><a href="#orga0e26f6">3. 3. How does language-based security solve the problems?</a>
 <ul>
-<li><a href="#orgd1227d4">3.1. 3.1 In-lined Reference Monitors</a></li>
-<li><a href="#org5ebf95c">3.2. 3.2 Type-safe Programming Languages</a></li>
-<li><a href="#org7d40003">3.3. 3.3 Certifying Compilers</a></li>
-<li><a href="#org1b18449">3.4. 3.4 Mix them!</a></li>
+<li><a href="#orgdaee441">3.1. 3.1 In-lined Reference Monitors</a></li>
+<li><a href="#org419ebbe">3.2. 3.2 Type-safe Programming Languages</a></li>
+<li><a href="#org3995ba7">3.3. 3.3 Certifying Compilers</a></li>
+<li><a href="#org3994d6b">3.4. 3.4 Mix them!</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="org62fb34f">
-<h3 id="org62fb34f">Authors: Fred B. Schneider, Greg Morrisett, Robert Harper</h3>
+<div id="org8368181">
+<h3 id="org8368181">Authors: Fred B. Schneider, Greg Morrisett, Robert Harper</h3>
 </div>
 
-<div id="org12e89cb">
-<h2 id="org12e89cb">1. Why do we need language-based security?</h2>
+<div id="orgf006365">
+<h2 id="orgf006365">1. Why do we need language-based security?</h2>
 <blockquote>
 <p>Two classic computer security principles:
 </p>
@@ -86,8 +86,8 @@
 </p>
 </blockquote>
 </div>
-<div id="orgdef3315">
-<h2 id="orgdef3315">2. What are the advantages of language-based security?</h2>
+<div id="orgc51ad9c">
+<h2 id="orgc51ad9c">2. What are the advantages of language-based security?</h2>
 <p>Language-based security, based on program analysis and program rewriting, employs <strong><strong>flexible</strong></strong> and <strong><strong>fine-grained</strong></strong> methods to instantiate the two principles.
 </p>
 
@@ -99,12 +99,12 @@
 </p>
 </blockquote>
 </div>
-<div id="orgd35ad95">
-<h2 id="orgd35ad95">3. How does language-based security solve the problems?</h2>
+<div id="orga0e26f6">
+<h2 id="orga0e26f6">3. How does language-based security solve the problems?</h2>
 <p>Theoretically, there are two types of the language-based approach—**program rewriting** and <strong><strong>program analysis</strong></strong>. Today's research efforts can be categorized into two groups: one is <strong><strong>in-lined reference monitors</strong></strong>, and the other one is <strong><strong>type-safe programming languages</strong></strong>. They employ program rewriting and program analysis methods, respectively.
 </p>
-<div id="orgd1227d4">
-<h3 id="orgd1227d4">3.1 In-lined Reference Monitors</h3>
+<div id="orgdaee441">
+<h3 id="orgdaee441">3.1 In-lined Reference Monitors</h3>
 <blockquote>
 <p>Reference monitors: Software that halts the system when specific security policies are <strong><strong>violated</strong></strong>.
 </p>
@@ -113,8 +113,8 @@
 <p><strong>Key idea</strong>: Inline the reference monitor into the target system code rather than separating them into different address spaces.
 </p>
 </div>
-<div id="org5ebf95c">
-<h3 id="org5ebf95c">3.2 Type-safe Programming Languages</h3>
+<div id="org419ebbe">
+<h3 id="org419ebbe">3.2 Type-safe Programming Languages</h3>
 <blockquote>
 <p>Type systems: A rule set that determines which operations can be applied to which values through type abstraction.
 </p>
@@ -124,16 +124,16 @@
 Type-based methods impose on the programmer the burden of demonstrating compliance with a given security policy.
 </p>
 </div>
-<div id="org7d40003">
-<h3 id="org7d40003">3.3 Certifying Compilers</h3>
+<div id="org3995ba7">
+<h3 id="org3995ba7">3.3 Certifying Compilers</h3>
 <p><strong>Motivation</strong>: type-based approaches rely on the high-level language assumption.
 </p>
 
 <p><strong>Key idea</strong>: Replace a trusted compiler (used in the type-based approach) with an <strong><strong>untrusted certifying compiler</strong></strong> plus a <strong><strong>trusted certificate checker</strong></strong>, which is much smaller and simpler than the former.
 </p>
 </div>
-<div id="org1b18449">
-<h3 id="org1b18449">3.4 Mix them!</h3>
+<div id="org3994d6b">
+<h3 id="org3994d6b">3.4 Mix them!</h3>
 <ul>
 <li><p>Integrated IRM enforcement with Type Systems.
 </p>
