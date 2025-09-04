@@ -38,14 +38,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7a1d87f">1. What problem does this paper try to solve?</a></li>
-<li><a href="#org330105a">2. Why is the problem important?</a></li>
-<li><a href="#org8d3086b">3. What is this paper's solution to the problem?</a></li>
-<li><a href="#orga65acbd">4. What are the strengths of this paper?</a></li>
-<li><a href="#orgfc71ee2">5. What are the limitations of this paper?</a></li>
-<li><a href="#orga8d7c8a">6. What makes this paper publishable?</a></li>
-<li><a href="#orgb40a8ed">7. What are other solutions and what are the most relevant works?</a></li>
-<li><a href="#orgeceb1c7">8. What's your favourite part of this work?</a></li>
+<li><a href="#org96dead9">1. What problem does this paper try to solve?</a></li>
+<li><a href="#orgd96ca79">2. Why is the problem important?</a></li>
+<li><a href="#org9e8af8a">3. What is this paper's solution to the problem?</a></li>
+<li><a href="#org26189c3">4. What are the strengths of this paper?</a></li>
+<li><a href="#org8728802">5. What are the limitations of this paper?</a></li>
+<li><a href="#orgdb11102">6. What makes this paper publishable?</a></li>
+<li><a href="#orgd9a7759">7. What are other solutions and what are the most relevant works?</a></li>
+<li><a href="#orga290dbd">8. What's your favourite part of this work?</a></li>
 </ul>
 </div>
 </div>
@@ -58,26 +58,26 @@
 
 <p>[USENIX SECURITY'24]
 </p>
-<div id="org7a1d87f">
-<h2 id="org7a1d87f">What problem does this paper try to solve?</h2>
+<div id="org96dead9">
+<h2 id="org96dead9">What problem does this paper try to solve?</h2>
 <p>Narrowing down the target set of indirect calls.
 </p>
 </div>
-<div id="org330105a">
-<h2 id="org330105a">Why is the problem important?</h2>
+<div id="orgd96ca79">
+<h2 id="orgd96ca79">Why is the problem important?</h2>
 <p>Precise identification of indirect calls plays an essential role in constructing CFGs, which are widely used in many security-related fields.
 </p>
 </div>
-<div id="org8d3086b">
-<h2 id="org8d3086b">What is this paper's solution to the problem?</h2>
+<div id="org9e8af8a">
+<h2 id="org9e8af8a">What is this paper's solution to the problem?</h2>
 <p>SMLTA (Strong Multi-Layer Type Analysis). It enhances the original MLTA to achieve better performance and effectiveness.
 </p>
 
 <p>SMLTA employs entire multi-layer types as keys for information storage (Type Lookup Map) instead of only two layers of MLTA. It introduces 'friend type' to share targets through the information flow. Direct friend types are stored in Type-Type map, and indirect friend types are found by an exhaustive breadth-first algorithm.
 </p>
 </div>
-<div id="orga65acbd">
-<h2 id="orga65acbd">What are the strengths of this paper?</h2>
+<div id="org26189c3">
+<h2 id="org26189c3">What are the strengths of this paper?</h2>
 <ol>
 <li><p>Improves a state-of-the-art approach on this topic.
 </p>
@@ -87,8 +87,8 @@
 </li>
 </ol>
 </div>
-<div id="orgfc71ee2">
-<h2 id="orgfc71ee2">What are the limitations of this paper?</h2>
+<div id="org8728802">
+<h2 id="org8728802">What are the limitations of this paper?</h2>
 <ol>
 <li><p>The evaluation results imply that the target set of DeepType isn't always smaller than that of TypeDive.
 </p>
@@ -101,13 +101,13 @@
 </li>
 </ol>
 </div>
-<div id="orga8d7c8a">
-<h2 id="orga8d7c8a">What makes this paper publishable?</h2>
+<div id="orgdb11102">
+<h2 id="orgdb11102">What makes this paper publishable?</h2>
 <p>It significantly narrows down the target set of indirect calls in most of the evaluation and has better performance.
 </p>
 </div>
-<div id="orgb40a8ed">
-<h2 id="orgb40a8ed">What are other solutions and what are the most relevant works?</h2>
+<div id="orgd9a7759">
+<h2 id="orgd9a7759">What are other solutions and what are the most relevant works?</h2>
 <p>MLTA-CCS19
 </p>
 
@@ -117,8 +117,8 @@
 </li>
 </ul>
 </div>
-<div id="orgeceb1c7">
-<h2 id="orgeceb1c7">What's your favourite part of this work?</h2>
+<div id="orga290dbd">
+<h2 id="orga290dbd">What's your favourite part of this work?</h2>
 <p>The explanation of the seeming poor evaluation result.
 </p>
 </div>
