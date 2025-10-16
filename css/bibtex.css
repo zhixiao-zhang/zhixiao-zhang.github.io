@@ -1,0 +1,14 @@
+.bibs {
+    position: relative;
+}
+.info {
+    color: #666;
+    font-style: italic;
+}
+.bib-item {
+    position: relative;
+    border-radius: 8px;
+    padding: 10px  15px;
+    margin: 10px  0;
+    border: 1px  solid  #ddd;
+}

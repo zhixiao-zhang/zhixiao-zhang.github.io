@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="stylesheet" href="https://zhixiao-zhang.github.io/css/basic-site-style.css" />
+
+</head>
+<body>
+<header>
+<div class="container header-bar">
+<div class="site-title">Zhixiao Zhang</div>
+<nav>
+<div class="menu-icon" id="menu-toggle">☰</div><ul class="menu hidden">
+<li class=""><a href="https://zhixiao-zhang.github.io/index.html">About</a>
+</li>
+<li class="">
+<a href="https://zhixiao-zhang.github.io/news/index.html">News</a>
+</li><li class="active">
+<a href="https://zhixiao-zhang.github.io/bib/paper.html">Bib</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<h1 class="center"></h1>
+<p class="center"></p>
+<p class="center"></p>
+<div id="toc-wrapper" class="no-transition">
+<div id="toc-toggle-bar" aria-label="Toggle TOC"></div>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6eb1466">1. Before calling main()</a>
+<ul>
+<li><a href="#org774c52a">1.1. Execve</a>
+<ul>
+<li><a href="#org31559d7">1.1.1. What's its role?</a></li>
+<li><a href="#org51c6c00">1.1.2. How does it accomplish these things?</a></li>
+</ul>
+</li>
+<li><a href="#org1966724">1.2. <code>__start</code></a>
+<ul>
+<li><a href="#org37b25d8">1.2.1. <code>_init_tls()</code></a></li>
+<li><a href="#org1fc69d3">1.2.2. After TLS initialization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge966c40">2. Calling main()</a></li>
+<li><a href="#orgcbb7cc7">3. Exiting</a></li>
+<li><a href="#orga3ddc58">4. Dynamic linking</a></li>
+<li><a href="#org3e12a1d">5. Summary</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Author: Brooks Davis
+</p>
+<div id="org6eb1466">
+<h2 id="org6eb1466">Before calling main()</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="org774c52a">
+<h3 id="org774c52a">Execve</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="org31559d7">
+<h4 id="org31559d7">What's its role?</h4>
+<p>The <code>execve()</code> system call's job:
+</p>
+
+<ul>
+<li><p>open the file to be executed;
+</p>
+</li>
+<li><p>clear the memory image of the current process;
+</p>
+</li>
+<li><p>map the file to be executed into the process space;
+</p>
+</li>
+<li><p>set up a stack with argument and environment vectors embedded;
+</p>
+</li>
+<li><p>return to user space with argument and program counter registers set up to call the <code>__start()</code> function.
+</p>
+</li>
+</ul>
+</div>
+<div id="org51c6c00">
+<h4 id="org51c6c00">How does it accomplish these things?</h4>
+<ol>
+<li><p>copyies the program name, argument vector, and environment vector into kernel memory by <code>exec_copyin_args</code>
+</p>
+</li>
+<li><p>calls <code>do_execve</code> via a wrapper <code>kern_execve()</code>
+</p>
+<ol>
+<li><p>resolves the path of the executable into a file by <code>namei()</code>
+</p>
+</li>
+<li><p>verifies the caller's permission by <code>exec_check_permissions</code>
+</p>
+</li>
+</ol>
+</li>
+<li><p>allows the program headers to be parsed and the binary format determined by <code>exec_map_first_page</code>
+</p>
+</li>
+<li><p>updates the credentials of the new process if the binary is marked <code>setuid</code> or <code>getuid</code>
+</p>
+</li>
+<li><p>parse and configure the process address space by calling <code>image activator</code> (a binary-specific function)
+</p>
+<ul>
+<li><p>the use of <code>exec_map_first_page</code> requires that any information required to set up the address space be stored in the first page of the binary, which is not necessary.
+</p>
+</li>
+</ul>
+</li>
+<li><p>copies out the argument array, environmenta array, and ELF auxiliary arguments by <code>exec_copyout_strings</code>
+</p>
+</li>
+<li><p>initialize the state of the registers when <code>execve()</code> returns to the process by <code>exec_setregs</code>
+</p>
+</li>
+<li><p>does a bit of cleanup and then returns to userspace finally.
+</p>
+</li>
+</ol>
+</div>
+</div>
+<div id="org1966724">
+<h3 id="org1966724"><code>__start</code></h3>
+<blockquote>
+<p>The <code>__start()=</code> function and related infrastructure account for much of the size of a minimal hello-world program.
+</p>
+</blockquote>
+
+<p>Overview of the internal of <code>=__start()=</code>:
+</p>
+
+<ol>
+<li><p>calls <code>_init_tls()</code>, which sets up <strong>thread-local storage</strong> and cost so much time
+</p>
+</li>
+<li><p>calls <code>main()</code>
+</p>
+</li>
+<li><p>calls <code>exit()</code>
+</p>
+</li>
+</ol>
+<div id="org37b25d8">
+<h4 id="org37b25d8"><code>_init_tls()</code></h4>
+<p>job: allocate and initialize the TLS area for the first <strong>thread</strong>.
+</p>
+
+<p>It spends most of its time in malloc initialization code. In fact, every program linked against <code>libc</code> initializes the <code>malloc()</code> subsystem <strong>before main()</strong>.
+</p>
+
+<ul>
+<li><p>the majority of thread-local variables are initialized to 0, the other's value is stored in the executable at a localtion accessible via the ELF auxiliary arguments.
+</p>
+</li>
+</ul>
+
+<blockquote>
+<p>How to find the specific value?
+</p>
+
+<ol>
+<li><p>locates the auxiliary arguments vector
+</p>
+</li>
+</ol>
+
+<pre class="src src-c">Elf_Addr *sp;
+sp = (Elf_Addr *) environ;
+while (*sp++ != 0) ;
+aux = (Elf_Auxinfo *) sp;
+</pre>
+
+<p>Actually this depends on a UB.
+</p>
+
+<ol>
+<li><p>finds the ELF program headers in the auxiliary argument vector
+</p>
+</li>
+<li><p>finds the <code>PT_TLS</code> sement, copies the value to the beginning of the previous allocated TLS entry and sets the TLS pointer.
+</p>
+</li>
+</ol>
+</blockquote>
+</div>
+<div id="org1fc69d3">
+<h4 id="org1fc69d3">After TLS initialization</h4>
+<p><code>handle_static_init()</code> calls various initialization functions:
+</p>
+
+<ol>
+<li><p>functions in the <code>.pre_init_array</code> section;
+</p>
+</li>
+<li><p><code>_init()</code> comprises all <code>.init</code> section in the program;
+</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="orge966c40">
+<h2 id="orge966c40">Calling main()</h2>
+<p><code>printf()</code> is implemented as a call to <code>vfprintf()</code>, which in turn retrieves the current thread’s locale via <code>__get_locale()</code> and passes it to the function <code>vfprintf_l()</code>. <code>vfprintf_l()</code> finally calls <code>__vfprintf()</code> to do the actual work.
+</p>
+
+<blockquote>
+<p>The majority of time in <code>printf()</code> is actually spent allocating an internal buffer in <code>__swsetup()</code>.
+</p>
+</blockquote>
+</div>
+<div id="orgcbb7cc7">
+<h2 id="orgcbb7cc7">Exiting</h2>
+<p>Processes exit either by being killed or by calling the <code>_exit()</code> system call. Programs call the <code>exit()</code> libc function to do this.
+</p>
+
+<p><code>_cleanup</code> called by <code>_exit</code> uses a buffered file stream to traverse buffered streams and flush any with outstanding data.
+</p>
+</div>
+<div id="orga3ddc58">
+<h2 id="orga3ddc58">Dynamic linking</h2>
+<p>Difference with statical linked programs:
+</p>
+
+<ul>
+<li><p>statically linked programs include all code they may call;
+</p>
+</li>
+<li><p>statically linked programs are non-relocable;
+</p>
+</li>
+<li><p>for dynamically linked programs, the kernel loads both the program and the runtime linker.
+</p>
+<ul>
+<li><p>when <code>execve()</code> returns to userspace, it returns calling <code>rtld_start()</code> in the linker rather than =_<sub>start</sub>()__ in the program.
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>Looking upan external symbol is expensive at the first time, which need to search all of userspace functions. It will then being stored in the Global Offset Table and being called.
+</p>
+
+<p>Each undefined function has an entry in the GOT.
+</p>
+</div>
+<div id="org3e12a1d">
+<h2 id="org3e12a1d">Summary</h2>
+<p>A few things of the low-level design are influenced by the need to support legacy code. However, most of them are there currently for good reasons.
+</p>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-bar">
+<p>&copy; 2025 Zhixiao Zhang · Powered by <a href="https://www.gnu.org/software/emacs/" target="_blank">Emacs</a> and <a href="https://github.com/zhixiao-zhang/emacs-based-site" target="_blank">emacs-based-site</a></p></div>
+</footer>
+<script src="https://zhixiao-zhang.github.io/js/script.js" defer></script>
+</body>
+</html>

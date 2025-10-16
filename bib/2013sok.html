@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="stylesheet" href="https://zhixiao-zhang.github.io/css/basic-site-style.css" />
+
+</head>
+<body>
+<header>
+<div class="container header-bar">
+<div class="site-title">Zhixiao Zhang</div>
+<nav>
+<div class="menu-icon" id="menu-toggle">☰</div><ul class="menu hidden">
+<li class=""><a href="https://zhixiao-zhang.github.io/index.html">About</a>
+</li>
+<li class="">
+<a href="https://zhixiao-zhang.github.io/news/index.html">News</a>
+</li><li class="active">
+<a href="https://zhixiao-zhang.github.io/bib/paper.html">Bib</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class="container">
+<h1 class="center"></h1>
+<p class="center"></p>
+<p class="center"></p>
+<div id="toc-wrapper" class="no-transition">
+<div id="toc-toggle-bar" aria-label="Toggle TOC"></div>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc0c665c">1. What problem does this paper survey?</a></li>
+<li><a href="#org73fd7e3">2. Questions asked by this paper</a></li>
+<li><a href="#org10062c0">3. What are the strengths of this paper?</a></li>
+<li><a href="#orgb7a9b4b">4. What are the limitations and weaknesses of this paper?</a></li>
+<li><a href="#orgcb6a919">5. What makes this paper publishable?</a></li>
+<li><a href="#org3cd6d0f">6. What are other solutions and what are the most relevant works?</a></li>
+<li><a href="#org16cf33c">7. Thing(s) that I like particularly about this paper.</a></li>
+<li><a href="#orga110fd7">8. What is the take-away message from this paper?</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Authors: László Szekeres, Mathias Payer, Tao Wei, Dawn Song
+</p>
+
+<p>Category: SoK
+</p>
+
+<p>Keywords: security, memory safety
+</p>
+<div id="orgc0c665c">
+<h2 id="orgc0c665c">What problem does this paper survey?</h2>
+<p>Why do exploits still exist?
+</p>
+
+<p>How they defeat currently deployed protections?
+</p>
+
+<p>How to defeat them?
+</p>
+</div>
+<div id="org73fd7e3">
+<h2 id="org73fd7e3">Questions asked by this paper</h2>
+<ol>
+<li><p>How do exploits work?
+</p>
+</li>
+</ol>
+
+<p><img src="https://cdn.jsdelivr.net/gh/zzxdyf1314/mycloudimg@master/attack-model.png" alt="attack-model.png" />
+</p>
+
+<blockquote>
+<p>Q: Why is reading from a pointer <strong><strong>under the attacker's control</strong></strong> vulnerable?
+</p>
+
+<p>A: Because the attacker can control the value being read, for example, an ROP gadget.
+</p>
+</blockquote>
+
+<ol>
+<li><p>How to protect against exploits?
+</p>
+</li>
+</ol>
+
+<p>The most widely deployed protection mechanisms are stack smashing protection, DEP/W⊕X and ASLR.
+</p>
+
+<ol>
+<li><p>Why or why not is a policy being deployed?
+</p>
+</li>
+
+<li><p>Protection
+</p>
+<ul>
+<li><p>Enforced policy.
+</p>
+</li>
+<li><p>False negatives.
+</p>
+</li>
+<li><p>False positives.
+</p>
+</li>
+</ul>
+</li>
+<li><p>Cost
+</p>
+<ul>
+<li><p>Performance overhead
+</p>
+</li>
+<li><p>Memory overhead
+</p>
+</li>
+</ul>
+</li>
+<li><p>Compatibility
+</p>
+<ul>
+<li><p>Source Compatibility
+</p>
+</li>
+<li><p>Binary Compatibility
+</p>
+</li>
+<li><p>Modularity Support
+</p>
+</li>
+</ul>
+</li>
+
+<li><p>What's the popular work in different perspective of memory war?
+</p>
+<ul>
+<li><p>Memory Safety (focus on transformming exist unsafe code to enforce similar policies)
+</p>
+
+<blockquote>
+<p>The only way to enforce complete spatial safety is to keep track of pointer bounds.
+</p>
+</blockquote>
+
+<ul>
+<li><p>Spatial safety with
+</p>
+<ul>
+<li><p>pointer bounds (<strong>overhead</strong>, <strong>compatibility</strong>)
+</p>
+
+<p>CCurd ("fat pointers")
+</p>
+
+<p>Cyclone ("fat pointers")
+</p>
+
+<p>SoftBound (67%)
+</p>
+</li>
+<li><p>object bounds (<strong>overhead</strong>, <strong>no complete safety</strong>)
+</p>
+
+<p>J&amp;K (11-12x)
+</p>
+
+<p>CRED (2x)
+</p>
+
+<p>J&amp;K with a automatic allocation pool (1.2x)
+</p>
+
+<p>BBC (60%)
+</p>
+
+<p>PAriCheck (60%)
+</p>
+</li>
+</ul>
+</li>
+<li><p>Temporal safety
+</p>
+<ul>
+<li><p>Special allocators (<strong>no complete safety</strong>): Cling
+</p>
+</li>
+
+<li><p>Object based approaches (<strong>no complete safety</strong>, <strong>overhead</strong>):
+</p>
+
+<p>Valgrind's Memcheck (10x)
+</p>
+
+<p>AddressSanitizer (73% at compile-time)
+</p>
+</li>
+
+<li><p>Pointer based approaches (<strong>overhead</strong>, <strong>compatibility</strong>)
+</p>
+
+<p>CETS (116%)
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li><p>Data Integrity
+</p>
+<ul>
+<li><p>Integrity of safe objects:
+</p>
+
+<p>Yong's system (50%-100%, compatibility)
+</p>
+</li>
+
+<li><p>Integrity of points-to sets:
+</p>
+
+<p>WIT (5-25%, compatibility)
+</p>
+
+<p>BinArmor (180%)
+</p>
+</li>
+</ul>
+</li>
+
+<li><p>Data-flow Integrity
+</p>
+
+<p>Castro's approach (50%-100%, compatibility)
+</p>
+</li>
+
+<li><p>Code Pointer Integrity
+</p>
+
+<p>infeasible
+</p>
+</li>
+
+<li><p>Control-flow Integrity
+</p>
+
+<ul>
+<li><p>Dynamic return integrity
+</p>
+
+<p>stack cookies (canaries, less than 1%, partial safety), shadow stacks (5%, compatibility)
+</p>
+</li>
+
+<li><p>Static control-flow graph integrity
+</p>
+
+<p>Abadi's approach (15% on average, 45% max, 10% due to implementation, compatibility)
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div id="org10062c0">
+<h2 id="org10062c0">What are the strengths of this paper?</h2>
+<p>A systematic and graphic model of all layers of memory corruption mechanism and defenses
+</p>
+</div>
+<div id="orgb7a9b4b">
+<h2 id="orgb7a9b4b">What are the limitations and weaknesses of this paper?</h2>
+<p>Without a same metric for shown approaches. Only use the data derived from the original paper.
+</p>
+</div>
+<div id="orgcb6a919">
+<h2 id="orgcb6a919">What makes this paper publishable?</h2>
+<p>The systematic classification and illustration.
+</p>
+</div>
+<div id="org3cd6d0f">
+<h2 id="org3cd6d0f">What are other solutions and what are the most relevant works?</h2>
+<p><a href="https://oaklandsok.github.io/papers/song2019.pdf">SoK: Sanitizing for Security</a>
+</p>
+</div>
+<div id="org16cf33c">
+<h2 id="org16cf33c">Thing(s) that I like particularly about this paper.</h2>
+<p>the clear graph
+</p>
+</div>
+<div id="orga110fd7">
+<h2 id="orga110fd7">What is the take-away message from this paper?</h2>
+<blockquote>
+<p>Researchers have to step back, and instead of focusing on specific attacks, we need to look at the big picture.
+</p>
+</blockquote>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-bar">
+<p>&copy; 2025 Zhixiao Zhang · Powered by <a href="https://www.gnu.org/software/emacs/" target="_blank">Emacs</a> and <a href="https://github.com/zhixiao-zhang/emacs-based-site" target="_blank">emacs-based-site</a></p></div>
+</footer>
+<script src="https://zhixiao-zhang.github.io/js/script.js" defer></script>
+</body>
+</html>
