@@ -1,0 +1,384 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-10-28T14:27:09.727229+00:00'
+papers:
+- arxiv_id: 2510.23517v1
+  title: "Linear effects, exceptions, and resource safety: a Curry-Howard\n  correspondence\
+    \ for destructors"
+  authors:
+  - Sidney Congard
+  - Guillaume Munch-Maccagnoni
+  - Rémi Douence
+  summary: "We analyse the problem of combining linearity, effects, and exceptions,\
+    \ in\nabstract models of programming languages, as the issue of providing some\
+    \ kind\nof strength for a monad $T(- \\oplus E)$ in a linear setting. We consider\
+    \ in\nparticular for $T$ the allocation monad, which we introduce to model and\
+    \ study\nresource-safety properties. We apply these results to a series of two\
+    \ linear\neffectful calculi for which we establish their resource-safety properties.\n\
+    \  The first calculus is a linear call-by-push-value language with two\nallocation\
+    \ effects $\\mathit{new}$ and $\\mathit{delete}$. The resource-safety\nproperties\
+    \ follow from the linear (and even ordered) character of the typing\nrules.\n\
+    \  We then explain how to integrate exceptions on top of linearity and effects\n\
+    by adjoining default destruction actions to types, as inspired by C++/Rust\ndestructors.\
+    \ We see destructors as objects $\\delta : A\\rightarrow TI$ in the\nslice category\
+    \ over $TI$. This construction gives rise to a second calculus, an\naffine ordered\
+    \ call-by-push-value language with exceptions and destructors, in\nwhich the weakening\
+    \ rule performs a side-effect. As in C++/Rust, a ``move''\noperation is necessary\
+    \ to allow random-order release of resources, as opposed\nto last-in-first-out\
+    \ order. Moving resources is modelled as an exchange rule\nthat performs a side-effect."
+  tldr: '- Addresses the risk of resource leaks and unsafe memory handling when combining
+    linear types, effects, and exceptions in programming languages, which can undermine
+    memory safety guarantees.
+
+    - Uses a monadic framework with allocation effects (new/delete) and models destructors
+    as objects in a slice category to enforce ordered resource management, integrating
+    exceptions via default destruction actions and side-effecting moves.
+
+    - Matters because it provides a formal basis for languages like Rust/C++ to ensure
+    resource safety (no leaks, correct deallocation) even with exceptions, crucial
+    for preventing memory corruption and security vulnerabilities in systems programming.'
+  ai_score: 8
+  ai_reason: The paper directly addresses memory safety, resource safety, and type
+    systems through linear/affine types and destructors with explicit connections
+    to Rust's approach, while employing formal semantics and type theory foundations.
+  updated: '2025-10-27T16:56:44Z'
+  published: '2025-10-27T16:56:44Z'
+  pdf_url: http://arxiv.org/pdf/2510.23517v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.LO
+- arxiv_id: 2510.23487v1
+  title: "Are Agents Just Automata? On the Formal Equivalence Between Agentic AI\n\
+    \  and the Chomsky Hierarchy"
+  authors:
+  - Roham Koohestani
+  - Ziyou Li
+  - Anton Podkopaev
+  - Maliheh Izadi
+  summary: 'This paper establishes a formal equivalence between the architectural
+    classes
+
+    of modern agentic AI systems and the abstract machines of the Chomsky
+
+    hierarchy. We posit that the memory architecture of an AI agent is the
+
+    definitive feature determining its computational power and that it directly
+
+    maps it to a corresponding class of automaton. Specifically, we demonstrate
+
+    that simple reflex agents are equivalent to Finite Automata, hierarchical
+
+    task-decomposition agents are equivalent to Pushdown Automata, and agents
+
+    employing readable/writable memory for reflection are equivalent to TMs. This
+
+    Automata-Agent Framework provides a principled methodology for right-sizing
+
+    agent architectures to optimize computational efficiency and cost. More
+
+    critically, it creates a direct pathway to formal verification, enables the
+
+    application of mature techniques from automata theory to guarantee agent safety
+
+    and predictability. By classifying agents, we can formally delineate the
+
+    boundary between verifiable systems and those whose behavior is fundamentally
+
+    undecidable. We address the inherent probabilistic nature of LLM-based agents
+
+    by extending the framework to probabilistic automata that allow quantitative
+
+    risk analysis. The paper concludes by outlining an agenda for developing static
+
+    analysis tools and grammars for agentic frameworks.'
+  tldr: '- Addresses the lack of formal methods for verifying AI agent behavior, creating
+    risks of unpredictable or unsafe system actions in security-critical applications.
+
+    - Maps agent architectures to automata classes: reflex agents to finite automata,
+    hierarchical agents to pushdown automata, and memory-equipped agents to Turing
+    machines.
+
+    - Enables formal verification of agent behavior using established automata theory,
+    allowing safety guarantees for memory-safe operations and predictable low-level
+    system interactions.
+
+    - Provides quantitative risk analysis through probabilistic automata extensions,
+    crucial for assessing security vulnerabilities in LLM-based agent systems.'
+  ai_score: 8
+  ai_reason: The paper connects agent architectures to formal automata theory, enabling
+    formal verification and safety guarantees through static analysis techniques that
+    align with program analysis and formal semantics.
+  updated: '2025-10-27T16:22:02Z'
+  published: '2025-10-27T16:22:02Z'
+  pdf_url: http://arxiv.org/pdf/2510.23487v1
+  primary_category: cs.AI
+  categories:
+  - cs.AI
+  - cs.FL
+- arxiv_id: 2510.18936v2
+  title: "SBAN: A Framework & Multi-Dimensional Dataset for Large Language Model\n\
+    \  Pre-Training and Software Code Mining"
+  authors:
+  - Hamed Jelodar
+  - Mohammad Meymani
+  - Samita Bai
+  - Roozbeh Razavi-Far
+  - Ali A. Ghorbani
+  summary: 'This paper introduces SBAN (Source code, Binary, Assembly, and Natural
+
+    Language Description), a large-scale, multi-dimensional dataset designed to
+
+    advance the pre-training and evaluation of large language models (LLMs) for
+
+    software code analysis. SBAN comprises more than 3 million samples, including
+
+    2.9 million benign and 672,000 malware respectively, each represented across
+
+    four complementary layers: binary code, assembly instructions, natural language
+
+    descriptions, and source code. This unique multimodal structure enables
+
+    research on cross-representation learning, semantic understanding of software,
+
+    and automated malware detection. Beyond security applications, SBAN supports
+
+    broader tasks such as code translation, code explanation, and other software
+
+    mining tasks involving heterogeneous data. It is particularly suited for
+
+    scalable training of deep models, including transformers and other LLM
+
+    architectures. By bridging low-level machine representations and high-level
+
+    human semantics, SBAN provides a robust foundation for building intelligent
+
+    systems that reason about code. We believe that this dataset opens new
+
+    opportunities for mining software behavior, improving security analytics, and
+
+    enhancing LLM capabilities in pre-training and fine-tuning tasks for software
+
+    code mining.'
+  tldr: '- Addresses the lack of large-scale datasets linking binary code, assembly,
+    source code, and natural language descriptions for training machine learning models
+    on software behavior.
+
+    - Provides a multimodal dataset of 3+ million samples with parallel representations
+    across binary, assembly, source code, and natural language to enable cross-representation
+    learning.
+
+    - Enables accurate malware detection by mapping low-level code patterns to semantic
+    behaviors, improving identification of malicious software variants and obfuscated
+    threats.
+
+    - Supports automated reverse engineering and vulnerability analysis by bridging
+    machine code with human-readable semantics, reducing manual effort in security
+    auditing.'
+  ai_score: 7
+  ai_reason: The paper's focus on automated malware detection and bridging low-level
+    machine representations with high-level semantics directly supports program analysis
+    and security applications relevant to memory safety and sanitizers.
+  updated: '2025-10-27T12:01:51Z'
+  published: '2025-10-21T17:52:13Z'
+  pdf_url: http://arxiv.org/pdf/2510.18936v2
+  primary_category: cs.IR
+  categories:
+  - cs.IR
+  - cs.SE
+- arxiv_id: 2510.23211v1
+  title: "Proceedings of the Combined 32nd International Workshop on\n  Expressiveness\
+    \ in Concurrency and 22nd Workshop on Structural Operational\n  Semantics"
+  authors:
+  - Cinzia Di Giusto
+  - Giorgio Bacci
+  summary: 'This volume contains the proceedings of EXPRESS/SOS 2025: the Combined
+    32nd
+
+    International Workshop on Expressiveness in Concurrency and the 22nd Workshop
+
+    on Structural Operational Semantics, which was held in Aarhus, Denmark, as an
+
+    affiliated workshop of CONFEST 2025. The EXPRESS/SOS workshop series aims at
+
+    bringing together researchers interested in the formal semantics of systems and
+
+    programming concepts, and in the expressiveness of computational models.'
+  tldr: '- The paper itself is a proceedings volume; the described problem is the
+    general research gap in formally specifying and comparing the expressive power
+    of computational models and operational semantics for concurrent systems.
+
+    - The core method is the workshop''s focus on using formal tools, like structural
+    operational semantics (SOS), to define and analyze the behavior of concurrent
+    and distributed systems precisely.
+
+    - This matters for system security because rigorous semantic models are foundational
+    for verifying memory safety, absence of races, and correct concurrency in low-level
+    code, preventing vulnerabilities from ill-defined behaviors.'
+  ai_score: 7
+  ai_reason: The paper's focus on formal semantics directly aligns with the researcher's
+    interest in formal semantics and program analysis, though it doesn't explicitly
+    address memory safety, type systems, or Rust-specific topics.
+  updated: '2025-10-27T11:01:38Z'
+  published: '2025-10-27T11:01:38Z'
+  pdf_url: http://arxiv.org/pdf/2510.23211v1
+  primary_category: cs.LO
+  categories:
+  - cs.LO
+  - cs.FL
+- arxiv_id: 2510.23101v1
+  title: "Beyond Imprecise Distance Metrics: LLM-Predicted Target Call Stacks for\n\
+    \  Directed Greybox Fuzzing"
+  authors:
+  - Yifan Zhang
+  - Xin Zhang
+  summary: 'Directed greybox fuzzing (DGF) aims to efficiently trigger bugs at specific
+
+    target locations by prioritizing seeds whose execution paths are more likely to
+
+    mutate into triggering target bugs. However, existing DGF approaches suffer
+
+    from imprecise probability calculations due to their reliance on complex
+
+    distance metrics derived from static analysis. The over-approximations inherent
+
+    in static analysis cause a large number of irrelevant execution paths to be
+
+    mistakenly considered to potentially mutate into triggering target bugs,
+
+    significantly reducing fuzzing efficiency. We propose to replace static
+
+    analysis-based distance metrics with precise call stack representations. Call
+
+    stacks represent precise control flows, thereby avoiding false information in
+
+    static analysis. We leverage large language models (LLMs) to predict
+
+    vulnerability-triggering call stacks for guiding seed prioritization. Our
+
+    approach constructs call graphs through static analysis to identify methods
+
+    that can potentially reach target locations, then utilizes LLMs to predict the
+
+    most likely call stack sequence that triggers the vulnerability. Seeds whose
+
+    execution paths have higher overlap with the predicted call stack are
+
+    prioritized for mutation. This is the first work to integrate LLMs into the
+
+    core seed prioritization mechanism of DGF. We implement our approach and
+
+    evaluate it against several state-of-the-art fuzzers. On a suite of real-world
+
+    programs, our approach triggers vulnerabilities $1.86\times$ to $3.09\times$
+
+    faster compared to baselines. In addition, our approach identifies 10 new
+
+    vulnerabilities and 2 incomplete fixes in the latest versions of programs used
+
+    in our controlled experiments through directed patch testing, with 10 assigned
+
+    CVE IDs.'
+  tldr: '- Problem: Existing directed greybox fuzzers use static analysis to estimate
+    bug-triggering probabilities, but these metrics are imprecise and prioritize many
+    irrelevant execution paths, slowing down vulnerability discovery.
+
+
+    - Method: Uses LLMs to predict the exact call stack sequence needed to trigger
+    a vulnerability, then prioritizes seeds whose execution paths have the highest
+    overlap with this predicted call stack during fuzzing.
+
+
+    - Impact: Achieves 1.86× to 3.09× faster vulnerability triggering than state-of-the-art
+    fuzzers and found 10 new CVEs, demonstrating precise control-flow targeting that
+    directly improves memory safety testing efficiency.'
+  ai_score: 7
+  ai_reason: The paper's focus on improving directed greybox fuzzing through precise
+    call stack analysis and program analysis techniques aligns with the researcher's
+    interests in program analysis and formal semantics, though it has limited direct
+    connection to memory safety, type systems, or Rust.
+  updated: '2025-10-27T08:17:03Z'
+  published: '2025-10-27T08:17:03Z'
+  pdf_url: http://arxiv.org/pdf/2510.23101v1
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.PL
+  - cs.SE
+- arxiv_id: 2503.19447v2
+  title: 'Anvil: A General-Purpose Timing-Safe Hardware Description Language'
+  authors:
+  - Jason Zhijingcheng Yu
+  - Aditya Ranjan Jha
+  - Umang Mathur
+  - Trevor E. Carlson
+  - Prateek Saxena
+  summary: 'Expressing hardware designs using hardware description languages (HDLs)
+
+    routinely involves using stateless signals whose values change according to
+
+    their underlying registers. Unintended behaviours can arise when the stored
+
+    values in these underlying registers are mutated while their dependent signals
+
+    are expected to remain constant across multiple cycles. Such timing hazards are
+
+    common because, with a few exceptions, existing HDLs lack abstractions for
+
+    values that remain unchanged over multiple clock cycles, delegating this
+
+    responsibility to hardware designers. Designers must then carefully decide
+
+    whether a value should remain unchanged, sometimes even across hardware
+
+    modules. This paper proposes Anvil, an HDL which statically prevents timing
+
+    hazards with a novel type system. Anvil is the only HDL we know of that
+
+    guarantees timing safety, i.e., absence of timing hazards, without sacrificing
+
+    expressiveness for cycle-level timing control or dynamic timing behaviours.
+
+    Unlike many HLS languages that abstract away the differences between registers
+
+    and signals, Anvil''s type system exposes them fully while capturing the timing
+
+    relationships between register value mutations and signal usages to enforce
+
+    timing safety. This, in turn, enables safe composition of communicating
+
+    hardware modules by static enforcement of timing contracts that encode timing
+
+    constraints on shared signals. Such timing contracts can be specified
+
+    parametric on abstract time points that can vary during run-time, allowing the
+
+    type system to statically express dynamic timing behaviour. We have implemented
+
+    Anvil and successfully used it to implement key timing-sensitive modules,
+
+    comparing them against open-source SystemVerilog counterparts to demonstrate
+
+    the practicality and expressiveness of the generated hardware.'
+  tldr: '- Addresses timing hazards in hardware design where signal values change
+    unexpectedly due to register mutations across clock cycles, causing functional
+    errors.
+
+    - Uses a static type system to enforce timing safety by exposing register-signal
+    distinctions and tracking value mutations relative to signal usages.
+
+    - Prevents memory corruption and system crashes in hardware by eliminating timing-related
+    bugs, enabling secure composition of modules with dynamic timing constraints.'
+  ai_score: 7
+  ai_reason: The paper directly addresses timing safety through a novel type system
+    and static analysis, aligning with memory/temporal safety and type system research
+    while using formal methods for hardware verification.
+  updated: '2025-10-27T04:57:34Z'
+  published: '2025-03-25T08:37:45Z'
+  pdf_url: http://arxiv.org/pdf/2503.19447v2
+  primary_category: cs.AR
+  categories:
+  - cs.AR
+  - cs.PL
+  - B.5.2; D.3.1

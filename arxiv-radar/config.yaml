@@ -1,0 +1,43 @@
+categories:
+  - cs.CR
+  - cs.PL
+  - cs.OS
+  - cs.SE
+  - cs.FL
+  - cs.CL
+  - cs.CC
+
+must_include:
+  - "memory safety"
+  - "temporary safety"
+  - "spatial safety"
+  - "type system"
+  - "pointer analysis"
+  - "program analysis"
+  - "formal semantics"
+  - "rust"
+  - "abstract interpretation"
+  - "type theory"
+  - "sanitizer"
+
+exclude:
+  - "quantum"
+  - "biology"
+
+important_authors:
+  - "John Regehr"
+  - "Dawn Song"
+
+# Fallback window if this is the very first run
+# (we don't have a previous timestamp yet).
+recent_days: 3
+
+# How many results to ask arXiv for each run.
+max_results: 200
+
+site_title: "Memory Safety / PL / Systems Radar"
+site_description: "Recent arXiv papers filtered by my interests in systems security, PL, and memory safety."
+
+# Where to store the daily YAML snapshot for Hugo.
+# Put this under Hugo's data/ so templates can access .Site.Data.arxiv
+output_dir: "../data/arxiv"

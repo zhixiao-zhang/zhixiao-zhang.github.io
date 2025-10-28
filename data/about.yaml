@@ -1,0 +1,11 @@
+content: "
+#+OPTIONS: toc:nil
+
+** Welcome to my homepage
+
+I'm a first year PhD student of [[https://jiezhoucs.github.io/][Prof. Jie Zhou]]'s system security group at GWU.
+
+** Research Interests
+
+I am interested in type system, program analysis, computation theory, formal semantics, abstract interpretation and system security. Broadly, I aim to leverage theoretical techniques–such as type theory–to enhance the performance, robustness, and reliability of software systems. Currently, I am working on memory safety. My ultimate goal is to build fault-free softwares.
+"

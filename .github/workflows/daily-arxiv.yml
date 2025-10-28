@@ -1,0 +1,82 @@
+name: Daily Arxiv Radar
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # 2. Set up Python (for crawler + DeepSeek integration)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3. Install Python deps
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests feedparser pyyaml openai
+
+      # 4. Run crawler to update data/arxiv/*.yaml
+      - name: Generate new snapshot with build_yaml.py (correct env)
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          python build_yaml.py
+
+      # 5. 
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/arxiv state.json
+          git commit -m "chore: daily arxiv radar update" || true
+          git push origin HEAD:${{ github.ref_name }}
+
+      # 6. Set up Hugo to build site
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          extended: true
+
+      # 7. Build site (output goes to ./public)
+      - name: Build site
+        run: |
+          hugo --minify
+
+      # 8. Upload the ./public dir as artifact for Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # 9. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

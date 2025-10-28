@@ -1,0 +1,33 @@
+baseurl: "https://zhixiao-zhang.github.io"
+languageCode: "en-us"
+title: "Welcome to my academic page"
+theme: "hugo-academic-min"
+footnotereturnlinkcontents: "↩"
+
+params:
+  author: "Zhixiao Zhang"
+  name: "Zhixiao Zhang"
+  description: "An academic website"
+  mail: "zhixiao.zhang at gwu dot edu"
+  footer: "© Zhixiao Zhang 2025 -- Present"
+  avatar: "profile.jpeg"
+  homepage:
+    - about
+    - news
+    - contact
+    - experience
+
+menus:
+  main:
+  - name: "About"
+    url: "#about"
+    weight: 10
+  - name: "Arxiv"
+    url: "/pages/arxiv/"
+    weight: 10
+#  - name: "BibTeX"
+#    weight: 20
+#    url: "/pages/bibtex/"
+
+markup:
+  defaultMarkdownHandler: org
