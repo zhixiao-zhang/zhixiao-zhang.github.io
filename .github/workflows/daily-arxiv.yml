@@ -18,6 +18,9 @@ jobs:
       # 1. Checkout repo
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
 
       # 2. Set up Python (for crawler + DeepSeek integration)
       - name: Set up Python
@@ -36,6 +39,7 @@ jobs:
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
+          cd arxiv-radar/
           python build_yaml.py
 
       # 5. 
@@ -44,7 +48,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add data/arxiv state.json
+          git add data/arxiv arxiv-radar/state.json
           git commit -m "chore: daily arxiv radar update" || true
           git push origin HEAD:${{ github.ref_name }}
 
