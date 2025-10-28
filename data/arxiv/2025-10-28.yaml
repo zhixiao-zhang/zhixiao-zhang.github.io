@@ -1,7 +1,7 @@
 title: Memory Safety / PL / Systems Radar
 description: Recent arXiv papers filtered by my interests in systems security, PL,
   and memory safety.
-generated_at: '2025-10-28T14:27:09.727229+00:00'
+generated_at: '2025-10-28T16:09:09.478980+00:00'
 papers:
 - arxiv_id: 2510.23517v1
   title: "Linear effects, exceptions, and resource safety: a Curry-Howard\n  correspondence\
@@ -27,21 +27,20 @@ papers:
     \ rule performs a side-effect. As in C++/Rust, a ``move''\noperation is necessary\
     \ to allow random-order release of resources, as opposed\nto last-in-first-out\
     \ order. Moving resources is modelled as an exchange rule\nthat performs a side-effect."
-  tldr: '- Addresses the risk of resource leaks and unsafe memory handling when combining
-    linear types, effects, and exceptions in programming languages, which can undermine
-    memory safety guarantees.
+  tldr: '- Addresses the challenge of combining linear types, effects (like resource
+    allocation/deallocation), and exceptions while preserving resource safety guarantees
+    in programming languages.
 
-    - Uses a monadic framework with allocation effects (new/delete) and models destructors
-    as objects in a slice category to enforce ordered resource management, integrating
-    exceptions via default destruction actions and side-effecting moves.
+    - Uses a monadic framework with destructors (inspired by C++/Rust) that trigger
+    automatic cleanup actions, modeling moves and exceptions through side-effecting
+    type system rules.
 
-    - Matters because it provides a formal basis for languages like Rust/C++ to ensure
-    resource safety (no leaks, correct deallocation) even with exceptions, crucial
-    for preventing memory corruption and security vulnerabilities in systems programming.'
+    - Ensures resources like memory are never leaked even when exceptions occur, directly
+    improving memory safety and reliability in low-level systems programming.'
   ai_score: 8
-  ai_reason: The paper directly addresses memory safety, resource safety, and type
-    systems through linear/affine types and destructors with explicit connections
-    to Rust's approach, while employing formal semantics and type theory foundations.
+  ai_reason: The paper's focus on linear type systems, resource safety, destructors
+    inspired by C++/Rust, and formal semantics directly addresses memory/temporary/spatial
+    safety, type systems, and program analysis from the researcher's focus areas.
   updated: '2025-10-27T16:56:44Z'
   published: '2025-10-27T16:56:44Z'
   pdf_url: http://arxiv.org/pdf/2510.23517v1
@@ -93,23 +92,19 @@ papers:
     risk analysis. The paper concludes by outlining an agenda for developing static
 
     analysis tools and grammars for agentic frameworks.'
-  tldr: '- Addresses the lack of formal methods for verifying AI agent behavior, creating
-    risks of unpredictable or unsafe system actions in security-critical applications.
+  tldr: '- Addresses the inability to formally verify the safety and predictability
+    of AI agents due to their undefined computational power boundaries.
 
-    - Maps agent architectures to automata classes: reflex agents to finite automata,
-    hierarchical agents to pushdown automata, and memory-equipped agents to Turing
+    - Maps agent memory architectures to automata classes: reflex agents to finite
+    automata, hierarchical agents to pushdown automata, and reflective agents to Turing
     machines.
 
-    - Enables formal verification of agent behavior using established automata theory,
-    allowing safety guarantees for memory-safe operations and predictable low-level
-    system interactions.
-
-    - Provides quantitative risk analysis through probabilistic automata extensions,
-    crucial for assessing security vulnerabilities in LLM-based agent systems.'
-  ai_score: 8
-  ai_reason: The paper connects agent architectures to formal automata theory, enabling
-    formal verification and safety guarantees through static analysis techniques that
-    align with program analysis and formal semantics.
+    - Enables formal verification of agent behavior, allowing security guarantees
+    for memory-safe agent designs and risk quantification for undecidable systems.'
+  ai_score: 7
+  ai_reason: The paper's focus on formal verification, safety guarantees, static analysis
+    tools, and memory architecture directly connects to program analysis, formal semantics,
+    and memory safety aspects of the researcher's interests.
   updated: '2025-10-27T16:22:02Z'
   published: '2025-10-27T16:22:02Z'
   pdf_url: http://arxiv.org/pdf/2510.23487v1
@@ -117,76 +112,6 @@ papers:
   categories:
   - cs.AI
   - cs.FL
-- arxiv_id: 2510.18936v2
-  title: "SBAN: A Framework & Multi-Dimensional Dataset for Large Language Model\n\
-    \  Pre-Training and Software Code Mining"
-  authors:
-  - Hamed Jelodar
-  - Mohammad Meymani
-  - Samita Bai
-  - Roozbeh Razavi-Far
-  - Ali A. Ghorbani
-  summary: 'This paper introduces SBAN (Source code, Binary, Assembly, and Natural
-
-    Language Description), a large-scale, multi-dimensional dataset designed to
-
-    advance the pre-training and evaluation of large language models (LLMs) for
-
-    software code analysis. SBAN comprises more than 3 million samples, including
-
-    2.9 million benign and 672,000 malware respectively, each represented across
-
-    four complementary layers: binary code, assembly instructions, natural language
-
-    descriptions, and source code. This unique multimodal structure enables
-
-    research on cross-representation learning, semantic understanding of software,
-
-    and automated malware detection. Beyond security applications, SBAN supports
-
-    broader tasks such as code translation, code explanation, and other software
-
-    mining tasks involving heterogeneous data. It is particularly suited for
-
-    scalable training of deep models, including transformers and other LLM
-
-    architectures. By bridging low-level machine representations and high-level
-
-    human semantics, SBAN provides a robust foundation for building intelligent
-
-    systems that reason about code. We believe that this dataset opens new
-
-    opportunities for mining software behavior, improving security analytics, and
-
-    enhancing LLM capabilities in pre-training and fine-tuning tasks for software
-
-    code mining.'
-  tldr: '- Addresses the lack of large-scale datasets linking binary code, assembly,
-    source code, and natural language descriptions for training machine learning models
-    on software behavior.
-
-    - Provides a multimodal dataset of 3+ million samples with parallel representations
-    across binary, assembly, source code, and natural language to enable cross-representation
-    learning.
-
-    - Enables accurate malware detection by mapping low-level code patterns to semantic
-    behaviors, improving identification of malicious software variants and obfuscated
-    threats.
-
-    - Supports automated reverse engineering and vulnerability analysis by bridging
-    machine code with human-readable semantics, reducing manual effort in security
-    auditing.'
-  ai_score: 7
-  ai_reason: The paper's focus on automated malware detection and bridging low-level
-    machine representations with high-level semantics directly supports program analysis
-    and security applications relevant to memory safety and sanitizers.
-  updated: '2025-10-27T12:01:51Z'
-  published: '2025-10-21T17:52:13Z'
-  pdf_url: http://arxiv.org/pdf/2510.18936v2
-  primary_category: cs.IR
-  categories:
-  - cs.IR
-  - cs.SE
 - arxiv_id: 2510.23211v1
   title: "Proceedings of the Combined 32nd International Workshop on\n  Expressiveness\
     \ in Concurrency and 22nd Workshop on Structural Operational\n  Semantics"
@@ -205,21 +130,18 @@ papers:
     bringing together researchers interested in the formal semantics of systems and
 
     programming concepts, and in the expressiveness of computational models.'
-  tldr: '- The paper itself is a proceedings volume; the described problem is the
-    general research gap in formally specifying and comparing the expressive power
-    of computational models and operational semantics for concurrent systems.
+  tldr: '- This is a workshop proceedings, not a research paper addressing a specific
+    security problem or presenting a technical method.
 
-    - The core method is the workshop''s focus on using formal tools, like structural
-    operational semantics (SOS), to define and analyze the behavior of concurrent
-    and distributed systems precisely.
+    - It contains multiple papers on formal semantics and concurrency theory rather
+    than proposing a single security mechanism.
 
-    - This matters for system security because rigorous semantic models are foundational
-    for verifying memory safety, absence of races, and correct concurrency in low-level
-    code, preventing vulnerabilities from ill-defined behaviors.'
+    - Understanding formal semantics matters for memory safety as it provides mathematical
+    foundations for verifying correctness of low-level systems and concurrent programs.'
   ai_score: 7
-  ai_reason: The paper's focus on formal semantics directly aligns with the researcher's
-    interest in formal semantics and program analysis, though it doesn't explicitly
-    address memory safety, type systems, or Rust-specific topics.
+  ai_reason: The paper's focus on formal semantics and computational models directly
+    aligns with the researcher's interests in formal semantics, program analysis,
+    and type systems.
   updated: '2025-10-27T11:01:38Z'
   published: '2025-10-27T11:01:38Z'
   pdf_url: http://arxiv.org/pdf/2510.23211v1
@@ -280,24 +202,24 @@ papers:
     in our controlled experiments through directed patch testing, with 10 assigned
 
     CVE IDs.'
-  tldr: '- Problem: Existing directed greybox fuzzers use static analysis to estimate
-    bug-triggering probabilities, but these metrics are imprecise and prioritize many
-    irrelevant execution paths, slowing down vulnerability discovery.
+  tldr: '- Problem: Directed greybox fuzzers waste time on irrelevant execution paths
+    due to imprecise static analysis-based distance metrics that over-approximate
+    mutation probabilities.
 
 
-    - Method: Uses LLMs to predict the exact call stack sequence needed to trigger
-    a vulnerability, then prioritizes seeds whose execution paths have the highest
-    overlap with this predicted call stack during fuzzing.
+    - Method: Uses LLMs to predict vulnerability-triggering call stacks from static
+    call graphs, then prioritizes seeds whose execution paths overlap most with these
+    precise call sequences.
 
 
-    - Impact: Achieves 1.86× to 3.09× faster vulnerability triggering than state-of-the-art
-    fuzzers and found 10 new CVEs, demonstrating precise control-flow targeting that
-    directly improves memory safety testing efficiency.'
+    - Impact: Achieves 1.86x–3.09x faster vulnerability triggering in real programs
+    and found 10 new CVEs, demonstrating concrete improvements in fuzzing efficiency
+    and memory safety bug discovery.'
   ai_score: 7
-  ai_reason: The paper's focus on improving directed greybox fuzzing through precise
-    call stack analysis and program analysis techniques aligns with the researcher's
-    interests in program analysis and formal semantics, though it has limited direct
-    connection to memory safety, type systems, or Rust.
+  ai_reason: The paper's focus on improving fuzzing efficiency through precise call
+    stack analysis and program analysis techniques aligns with the researcher's interests
+    in program analysis and memory safety, though it has limited direct connection
+    to type systems and formal semantics.
   updated: '2025-10-27T08:17:03Z'
   published: '2025-10-27T08:17:03Z'
   pdf_url: http://arxiv.org/pdf/2510.23101v1
@@ -361,19 +283,22 @@ papers:
     comparing them against open-source SystemVerilog counterparts to demonstrate
 
     the practicality and expressiveness of the generated hardware.'
-  tldr: '- Addresses timing hazards in hardware design where signal values change
-    unexpectedly due to register mutations across clock cycles, causing functional
-    errors.
+  tldr: '- Addresses timing hazards in hardware design caused by unintended signal
+    value changes during multi-cycle operations, a common source of critical bugs
+    in digital circuits.
 
-    - Uses a static type system to enforce timing safety by exposing register-signal
-    distinctions and tracking value mutations relative to signal usages.
+    - Uses a type system that statically enforces timing contracts between register
+    mutations and signal usages, preventing unsafe value changes without sacrificing
+    cycle-level timing control.
 
-    - Prevents memory corruption and system crashes in hardware by eliminating timing-related
-    bugs, enabling secure composition of modules with dynamic timing constraints.'
+    - Eliminates a major class of hardware vulnerabilities by ensuring timing safety
+    across module boundaries, directly preventing erratic behavior that could compromise
+    system reliability and security.'
   ai_score: 7
-  ai_reason: The paper directly addresses timing safety through a novel type system
-    and static analysis, aligning with memory/temporal safety and type system research
-    while using formal methods for hardware verification.
+  ai_reason: The paper's novel type system for statically preventing timing hazards
+    in hardware description languages directly relates to type systems, formal semantics,
+    and program analysis from the researcher's focus areas, though it addresses hardware
+    timing safety rather than software memory safety.
   updated: '2025-10-27T04:57:34Z'
   published: '2025-03-25T08:37:45Z'
   pdf_url: http://arxiv.org/pdf/2503.19447v2
