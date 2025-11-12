@@ -1,0 +1,50 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-11-12T13:36:58.277471+00:00'
+papers:
+- arxiv_id: 2511.08462v1
+  title: 'QLCoder: A Query Synthesizer For Static Analysis of Security Vulnerabilities'
+  authors:
+  - Claire Wang
+  - Ziyang Li
+  - Saikat Dutta
+  - Mayur Naik
+  summary: Static analysis tools provide a powerful means to detect security vulnerabilities
+    by specifying queries that encode vulnerable code patterns. However, writing such
+    queries is challenging and requires diverse expertise in security and program
+    analysis. To address this challenge, we present QLCoder - an agentic framework
+    that automatically synthesizes queries in CodeQL, a powerful static analysis engine,
+    directly from a given CVE metadata. QLCode embeds an LLM in a synthesis loop with
+    execution feedback, while constraining its reasoning using a custom MCP interface
+    that allows structured interaction with a Language Server Protocol (for syntax
+    guidance) and a RAG database (for semantic retrieval of queries and documentation).
+    This approach allows QLCoder to generate syntactically and semantically valid
+    security queries. We evaluate QLCode on 176 existing CVEs across 111 Java projects.
+    Building upon the Claude Code agent framework, QLCoder synthesizes correct queries
+    that detect the CVE in the vulnerable but not in the patched versions for 53.4%
+    of CVEs. In comparison, using only Claude Code synthesizes 10% correct queries.
+  tldr: '- Addresses the difficulty of manually writing static analysis queries (e.g.,
+    in CodeQL) to detect vulnerabilities from CVE descriptions, which requires specialized
+    security and program analysis expertise.
+
+    - Uses an LLM-driven agent with execution feedback, constrained by a structured
+    interface to a Language Server Protocol for syntax and a RAG database for semantic
+    guidance, to automatically generate CodeQL queries from CVE metadata.
+
+    - Achieves 53.4% success in generating queries that correctly identify vulnerabilities
+    in vulnerable code versions but not in patched ones, compared to 10% without the
+    framework, enhancing scalable detection of memory safety and security flaws in
+    software.'
+  ai_score: 8
+  ai_reason: The paper directly addresses program analysis and security vulnerability
+    detection through static analysis, which strongly intersects with memory safety,
+    pointer analysis, program analysis, and sanitizer techniques.
+  updated: '2025-11-12T01:59:49Z'
+  published: '2025-11-11T17:06:04Z'
+  pdf_url: null
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.PL
+  - cs.SE
