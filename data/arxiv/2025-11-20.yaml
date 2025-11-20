@@ -1,0 +1,48 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-11-20T13:34:21.601585+00:00'
+papers:
+- arxiv_id: 2511.08729v3
+  title: 'Soteria: Efficient Symbolic Execution as a Functional Library'
+  authors:
+  - Sacha-Élie Ayoun
+  - Opale Sjöstedt
+  - Azalea Raad
+  summary: Symbolic execution (SE) tools often rely on intermediate languages (ILs)
+    to support multiple programming languages, promising reusability and efficiency.
+    In practice, this approach introduces trade-offs between performance, accuracy,
+    and language feature support. We argue that building SE engines \emph{directly}
+    for each source language is both simpler and more effective. We present Soteria,
+    a lightweight OCaml library for writing SE engines in a functional style, without
+    compromising on performance, accuracy or feature support. Soteria enables developers
+    to construct SE engines that operate directly over source-language semantics,
+    offering \emph{configurability}, compositional reasoning, and ease of implementation.
+    Using Soteria, we develop Soteria$^{\text{Rust}}$, the \emph{first} Rust SE engine
+    supporting Tree Borrows (the intricate aliasing model of Rust), and Soteria$^{\text{C}}$,
+    a compositional SE engine for C. Both tools are competitive with or outperform
+    state-of-the-art tools such as Kani, Pulse, CBMC and Gillian-C in performance
+    and the number of bugs detected. We formalise the theoretical foundations of Soteria
+    and prove its soundness, demonstrating that sound, efficient, accurate, and expressive
+    SE can be achieved without the compromises of ILs.
+  tldr: '- Addresses performance and feature limitations in symbolic execution tools
+    caused by intermediate languages, which hinder accurate analysis of complex language
+    semantics like Rust''s aliasing rules.
+
+    - Provides a functional OCaml library for building symbolic execution engines
+    directly in source languages, enabling precise, configurable analysis without
+    intermediate translation.
+
+    - Enables the first sound Rust symbolic execution engine supporting Tree Borrows,
+    crucial for verifying memory safety and preventing bugs in unsafe code blocks
+    of systems software.'
+  ai_score: 8
+  ai_reason: The paper directly addresses Rust, formal semantics, program analysis,
+    and symbolic execution while contributing to memory safety through bug detection
+    and supporting Rust's aliasing model.
+  updated: '2025-11-19T14:16:41Z'
+  published: '2025-11-11T19:42:14Z'
+  pdf_url: https://arxiv.org/pdf/2511.08729v3
+  primary_category: cs.PL
+  categories:
+  - cs.PL
