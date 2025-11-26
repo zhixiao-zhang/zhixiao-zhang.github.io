@@ -1,0 +1,51 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-11-26T13:38:23.564486+00:00'
+papers:
+- arxiv_id: 2511.20617v1
+  title: Translating Large-Scale C Repositories to Idiomatic Rust
+  authors:
+  - Saman Dehghan
+  - Tianran Sun
+  - Tianxiang Wu
+  - Zihan Li
+  - Reyhaneh Jabbarvand
+  summary: 'Existing C to Rust translation techniques fail to balance quality and
+    scalability: transpilation-based approaches scale to large projects but produce
+    code with poor safety, idiomaticity, and readability. In contrast, LLM-based techniques
+    are prohibitively expensive due to their reliance on frontier models (without
+    which they cannot reliably generate compilable translations), thus limiting scalability.
+    This paper proposes Rustine, a fully automated pipeline for effective and efficient
+    repository-level C to idiomatic safe Rust translation. Evaluating on a diverse
+    set of 23 C programs, ranging from 27 to 13,200 lines of code, Rustine can generate
+    fully compilable Rust code for all and achieve 87% functional equivalence (passing
+    1,063,099 assertions out of 1,221,192 in test suites with average function and
+    line coverage of 74.7% and 72.2%). Compared to six prior repository-level C to
+    Rust translation techniques, the translations by Rustine are overall safer (fewer
+    raw pointers, pointer arithmetic, and unsafe constructs), more idiomatic (fewer
+    Rust linter violations), and more readable. When the translations cannot pass
+    all tests to fulfill functional equivalence, human developers were able to complete
+    the task in 4.5 hours, on average, using Rustine as debugging support.'
+  tldr: '- Addresses the gap in C-to-Rust translation where existing methods either
+    produce unsafe, unidiomatic code at scale or are too computationally expensive
+    to apply to large repositories.
+
+    - Uses a fully automated pipeline (Rustine) that generates compilable, idiomatic
+    Rust by balancing safety features and readability, avoiding excessive unsafe constructs
+    and raw pointers.
+
+    - Matters because it enables practical migration of legacy C systems to memory-safe
+    Rust, reducing security risks from memory corruption vulnerabilities without requiring
+    prohibitive resources.'
+  ai_score: 8
+  ai_reason: The paper directly addresses memory safety through automated C-to-Rust
+    translation that produces safer code with fewer unsafe constructs and raw pointers,
+    while also leveraging Rust's type system and program analysis techniques.
+  updated: '2025-11-25T18:42:46Z'
+  published: '2025-11-25T18:42:46Z'
+  pdf_url: https://arxiv.org/pdf/2511.20617v1
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+  - cs.PL
