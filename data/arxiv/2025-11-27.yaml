@@ -1,0 +1,52 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-11-27T13:35:52.390829+00:00'
+papers:
+- arxiv_id: 2511.21509v1
+  title: 'SV-LIB 1.0: A Standard Exchange Format for Software-Verification Tasks'
+  authors:
+  - Dirk Beyer
+  - Gidon Ernst
+  - Martin Jonáš
+  - Marian Lingsch-Rosenfeld
+  summary: In the past two decades, significant research and development effort went
+    into the development of verification tools for individual languages, such asC,
+    C++, and Java. Many of the used verification approaches are in fact language-agnostic
+    and it would be beneficial for the technology transfer to allow for using the
+    implementations also for other programming and modeling languages. To address
+    the problem, we propose SV-LIB, an exchange format and intermediate language for
+    software-verification tasks, including programs, specifications, and verification
+    witnesses. SV-LIBis based on well-known concepts from imperative programming languages
+    and uses SMT-LIB to represent expressions and sorts used in the program. This
+    makes it easy to parse and to build into existing infrastructure, since many verification
+    tools are based on SMT solvers already. Furthermore, SV-LIBdefines a witness format
+    for both correct and incorrect SV-LIB programs, together with means for specifying
+    witness-validation tasks. This makes it possible both to implement independent
+    witness validators and to reuse some verifiers also as validators for witnesses.
+    This paper presents version 1.0 of the SV-LIBformat, including its design goals,
+    the syntax, and informal semantics. Formal semantics and further extensions to
+    concurrency are planned for future versions.
+  tldr: '- Addresses the fragmentation in verification tools by creating a common
+    exchange format (SV-LIB) that allows tools designed for one language (e.g., C)
+    to be reused for others, reducing redundant development.
+
+    - Uses an imperative-style intermediate language with SMT-LIB expressions to represent
+    programs, specifications, and verification witnesses, enabling interoperability
+    with existing SMT-solver-based verification infrastructure.
+
+    - Enhances memory and system security by enabling independent witness validation
+    and broader tool reuse, ensuring verification results (proofs or counterexamples)
+    are trustworthy and not tool-specific.'
+  ai_score: 7
+  ai_reason: The paper's focus on a verification exchange format directly supports
+    program analysis and formal semantics tools that could implement memory safety,
+    spatial safety, and pointer analysis techniques.
+  updated: '2025-11-26T15:44:54Z'
+  published: '2025-11-26T15:44:54Z'
+  pdf_url: https://arxiv.org/pdf/2511.21509v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.SC
+  - cs.SE
