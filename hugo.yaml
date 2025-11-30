@@ -23,7 +23,7 @@ menus:
     url: "#about"
     weight: 10
   - name: "Arxiv"
-    url: "/pages/arxiv/"
+    url: "pages/arxiv/"
     weight: 10
 #  - name: "BibTeX"
 #    weight: 20
