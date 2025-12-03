@@ -1,0 +1,117 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-12-03T13:40:10.024909+00:00'
+papers:
+- arxiv_id: 2511.23358v2
+  title: 'TypeDis: A Type System for Disentanglement'
+  authors:
+  - Alexandre Moine
+  - Stephanie Balzer
+  - Alex Xu
+  - Sam Westrick
+  summary: "Disentanglement is a runtime property of parallel programs guaranteeing\
+    \ that parallel tasks remain oblivious to each other's allocations. As demonstrated\
+    \ in the MaPLe compiler and run-time system, disentanglement can be exploited\
+    \ for fast automatic memory management, especially task-local garbage collection\
+    \ with no synchronization between parallel tasks. However, as a low-level property,\
+    \ disentanglement can be difficult to reason about for programmers. The only means\
+    \ of statically verifying disentanglement so far has been DisLog, an Iris-fueled\
+    \ variant of separation logic, mechanized in the Rocq proof assistant. DisLog\
+    \ is a fully-featured program logic, allowing for proof of functional correctness\
+    \ as well as verification of disentanglement. Yet its employment requires significant\
+    \ expertise and per-program proof effort.\n  This paper explores the route of\
+    \ automatic verification via a type system, ensuring that any well-typed program\
+    \ is disentangled and lifting the burden of carrying out manual proofs from the\
+    \ programmer. It contributes TypeDis, a type system inspired by region types,\
+    \ where each type is annotated with a timestamp, identifying the task that allocated\
+    \ it. TypeDis supports iso-recursive types as well as polymorphism over both types\
+    \ and timestamps. Crucially, timestamps are allowed to change during type-checking,\
+    \ at join points as well as via a form of subtyping, dubbed subtiming. The paper\
+    \ illustrates TypeDis and its features on a range of examples. The soundness of\
+    \ TypeDis and the examples are mechanized in the Rocq proof assistant, using an\
+    \ improved version of DisLog, dubbed DisLog2."
+  tldr: '- The paper addresses the difficulty of statically verifying *disentanglement*—a
+    runtime property where parallel tasks operate on separate memory regions—without
+    requiring complex, manual proofs in separation logic.
+
+
+    - It introduces **TypeDis**, a type system using **timestamps** on types to identify
+    the allocating task, with features like *subtiming* (a form of subtyping) and
+    polymorphism to allow timestamp changes at control-flow join points.
+
+
+    - This matters for memory safety and system security because it enables **automatic,
+    task-local garbage collection without synchronization**, reducing runtime overhead
+    and preventing data races in parallel programs through compile-time guarantees.'
+  ai_score: 9
+  ai_reason: The paper directly addresses memory safety and type systems by presenting
+    a type system for statically verifying disentanglement, a property crucial for
+    safe parallel memory management, which intersects with program analysis, formal
+    semantics, and type theory.
+  updated: '2025-12-02T18:17:07Z'
+  published: '2025-11-28T17:05:52Z'
+  pdf_url: https://arxiv.org/pdf/2511.23358v2
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2512.02918v1
+  title: 'Belobog: Move Language Fuzzing Framework For Real-World Smart Contracts'
+  authors:
+  - Wanxu Xia
+  - Ziqiao Kong
+  - Zhengwei Li
+  - Yi Lu
+  - Pan Li
+  - Liqun Yang
+  - Yang Liu
+  - Xiapu Luo
+  - Shaohua Li
+  summary: Move is a research-oriented programming language design for secure and
+    verifiable smart contract development and has been widely used in managing billions
+    of digital assets in blockchains, such as Sui and Aptos. Move features a strong
+    static type system and explicit resource semantics to enforce safety properties
+    such as the prevention of data races, invalid asset transfers, and entry vulnerabilities.
+    However, smart contracts written in Move may still contain certain vulnerabilities
+    that are beyond the reach of its type system. It is thus essential to validate
+    Move smart contracts. Unfortunately, due to its strong type system, existing smart
+    contract fuzzers are ineffective in producing syntactically or semantically valid
+    transactions to test Move smart contracts. This paper introduces the first fuzzing
+    framework, Belobog, for Move smart contracts. Belobog is type-aware and ensures
+    that all generated and mutated transactions are well-typed. More specifically,
+    for a target Move smart contract, Belobog first constructs a type graph based
+    on Move's type system, and then generates or mutates a transaction based on the
+    graph trace derived from the type graph. In order to overcome the complex checks
+    in Move smart contracts, we further design and implement a concolic executor in
+    Belobog. We evaluated Belobog on 109 real-world Move smart contract projects.
+    The experimental results show that Belobog is able to detect 100\% critical and
+    79\% major vulnerabilities manually audited by human experts. We further selected
+    two recent notorious incidents in Move smart contracts, i.e., Cetus and Nemo.
+    Belobog successfully reproduced full exploits for both of them, without any prior
+    knowledge.
+  tldr: '- Addresses the risk that Move smart contracts, despite strong static typing,
+    still contain vulnerabilities (like logic errors or complex condition bugs) that
+    evade the type system and can lead to financial losses in blockchains managing
+    billions in assets.
+
+    - Uses a type-aware fuzzer that builds a type graph from the contract’s code to
+    generate and mutate only well-typed transactions, combined with concolic execution
+    to handle complex runtime checks and explore deeper paths.
+
+    - Matters because it provides the first effective automated testing for Move contracts,
+    detecting real-world exploits (e.g., in Cetus and Nemo) and critical vulnerabilities
+    that human audits find, directly enhancing memory and asset safety in low‑contract
+    environments.'
+  ai_score: 8
+  ai_reason: The paper presents a type-aware fuzzing framework for the Move language,
+    directly engaging with its strong static type system and program analysis to uncover
+    vulnerabilities beyond type safety, aligning with the researcher's interests in
+    type systems, program analysis, and formal semantics.
+  updated: '2025-12-02T16:36:13Z'
+  published: '2025-12-02T16:36:13Z'
+  pdf_url: https://arxiv.org/pdf/2512.02918v1
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.PL
+  - cs.SE
