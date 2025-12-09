@@ -1,0 +1,58 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-12-09T13:39:44.142209+00:00'
+papers:
+- arxiv_id: 2304.03393v3
+  title: Polymorphic Coverage Types
+  authors:
+  - Zhe Zhou
+  - Ashish Mishra
+  - Benjamin Delaware
+  - Suresh Jagannathan
+  summary: Test input generators are an important part of property-based testing (PBT)
+    frameworks, and a key expectation is that they be capable of producing all acceptable
+    elements that satisfy both the function's input type and the generator-provided
+    constraints. However, it is not readily apparent how to validate whether a particular
+    generator's output satisfies this coverage requirement. In practice, developers
+    typically rely on manual inspection and post-mortem analysis of test runs to determine
+    whether a generator provides sufficient coverage; these approaches are error-prone
+    and difficult to scale as generators grow more complex. To address this problem,
+    we present a new refinement-type-based verification procedure for validating the
+    coverage provided by input test generators, based on a novel interpretation of
+    types that embeds "must-style" underapproximate reasoning principles as a fundamental
+    part of the type system. In our formulation, the types associated with expressions
+    capture the set of values guaranteed to be produced by the expression, rather
+    than the usual interpretation in which types represent the set of values an expression
+    may produce. We formalize the notion of coverage types in a rich core language
+    supporting higher-order functions and inductive datatypes. To better support real-world
+    test generators, we extend this type system with type and qualifier polymorphism,
+    enabling static verification of coverage guarantees for test input generators
+    constructed using the monadic combinators found in most PBT frameworks. Finally,
+    we have implemented a coverage type checker for OCaml programs based on this core
+    calculus and present a detailed evaluation of its utility using a corpus of benchmarks
+    drawn from both the PBT literature and open-source projects.
+  tldr: '- Addresses the problem of verifying whether property-based testing generators
+    can produce all required inputs, as current manual or post-mortem checks are unreliable
+    and don''t scale with generator complexity.
+
+
+    - Introduces coverage types as refinement types that statically guarantee the
+    set of values an expression must produce, using a polymorphic type system to support
+    higher-order functions and monadic combinators common in testing frameworks.
+
+
+    - Provides a formal, automated method to ensure test generators achieve full input
+    coverage, which is critical for memory and system security because incomplete
+    testing can miss vulnerabilities in low-level code.'
+  ai_score: 8
+  ai_reason: The paper introduces a refinement-type system for verifying test generator
+    coverage, directly engaging with type theory, formal semantics, and program analysis
+    to ensure underapproximate guarantees, which aligns with the researcher's focus
+    on type systems, program analysis, and formal verification techniques.
+  updated: '2025-12-08T18:19:24Z'
+  published: '2023-04-06T21:46:54Z'
+  pdf_url: https://arxiv.org/pdf/2304.03393v3
+  primary_category: cs.PL
+  categories:
+  - cs.PL
