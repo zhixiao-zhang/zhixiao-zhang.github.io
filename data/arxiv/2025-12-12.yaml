@@ -1,0 +1,88 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-12-12T13:38:58.846057+00:00'
+papers:
+- arxiv_id: 2512.10861v1
+  title: Towards Cumulative Abstract Semantics via Handlers
+  authors:
+  - Cade Lueker
+  - Andrew Fox
+  - Bor-Yuh Evan Chang
+  summary: 'We consider the problem of modularizing control flow in a generic abstract
+    interpretation framework. A generic abstract interpretation framework is not truly
+    flexible if it does not allow interpreting with different path- and flow-sensitivities,
+    by going forwards or backwards, and over- or under-approximately. Most interpreters
+    inherently intertwine syntax and semantics, making the implementation antagonistic
+    to modularity. Current approaches to modular designs require the use of complex
+    data structures (e.g., monad transformers), providing modularity but often proving
+    unwieldy (e.g., lifts). We observe that leveraging scoped effects within an interpreter
+    facilitates the accumulation of semantic fragments against a fixed syntax. In
+    this paper, we define cumulative abstract semantics, illustrating the potential
+    for creating multiple dynamic evaluators and static analyses from one interpreter.
+    This modularity is achieved by grouping effects into two categories: syntax elimination
+    and domain-semantic introduction handlers. Our contribution shows the benefits
+    of using effects as an instrument for designing a clean, elegant, and modular
+    abstract interpretation framework.'
+  tldr: '- Addresses the rigidity in abstract interpretation frameworks that intertwine
+    syntax and semantics, hindering modular adjustments like path sensitivity or direction
+    of analysis.
+
+    - Uses scoped effects and effect handlers to separate syntax elimination from
+    domain-specific semantics, allowing semantic fragments to accumulate against a
+    fixed syntax.
+
+    - Enables flexible, reusable interpreters for diverse static analyses, enhancing
+    memory safety by supporting precise, customizable low-level program analyses without
+    complex monad transformers.'
+  ai_score: 8
+  ai_reason: The paper's focus on modular abstract interpretation frameworks, effects,
+    and static analysis directly aligns with the researcher's interests in program
+    analysis, formal semantics, and abstract interpretation, though it does not explicitly
+    address memory safety, Rust, or sanitizers.
+  updated: '2025-12-11T17:55:35Z'
+  published: '2025-12-11T17:55:35Z'
+  pdf_url: https://arxiv.org/pdf/2512.10861v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2512.10779v1
+  title: Lax Modal Lambda Calculi
+  authors:
+  - Nachiappan Valliappan
+  summary: Intuitionistic modal logics (IMLs) extend intuitionistic propositional
+    logic with modalities such as the box and diamond connectives. Advances in the
+    study of IMLs have inspired several applications in programming languages via
+    the development of corresponding type theories with modalities. Until recently,
+    IMLs with diamonds have been misunderstood as somewhat peculiar and unstable,
+    causing the development of type theories with diamonds to lag behind type theories
+    with boxes. In this article, we develop a family of typed-lambda calculi corresponding
+    to sublogics of a peculiar IML with diamonds known as Lax logic. These calculi
+    provide a modal logical foundation for various strong functors in typed-functional
+    programming. We present possible-world and categorical semantics for these calculi
+    and constructively prove normalization, equational completeness and proof-theoretic
+    inadmissibility results. Our main results have been formalized using the proof
+    assistant Agda.
+  tldr: '- Addresses the underdevelopment of programming language type theories that
+    incorporate diamond modalities, which are essential for modeling certain computational
+    effects and strong functors in functional programming.
+
+    - Introduces a family of typed lambda calculi based on sublogics of Lax logic,
+    providing formal semantics and proving properties like normalization and equational
+    completeness, with Agda formalizations.
+
+    - Enhances memory and system security by enabling more precise type systems that
+    can statically enforce safety properties for effectful computations, reducing
+    runtime errors and vulnerabilities.'
+  ai_score: 7
+  ai_reason: The paper develops modal lambda calculi rooted in type theory, which
+    directly connects to the researcher's focus on type systems, formal semantics,
+    and type theory, though it does not directly address memory safety, Rust, or program
+    analysis.
+  updated: '2025-12-11T16:15:39Z'
+  published: '2025-12-11T16:15:39Z'
+  pdf_url: https://arxiv.org/pdf/2512.10779v1
+  primary_category: cs.LO
+  categories:
+  - cs.LO
+  - cs.PL
