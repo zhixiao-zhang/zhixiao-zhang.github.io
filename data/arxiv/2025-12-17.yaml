@@ -1,0 +1,164 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-12-17T13:36:53.990311+00:00'
+papers:
+- arxiv_id: 2510.14522v3
+  title: 'Lexo: Eliminating Stealthy Supply-Chain Attacks via LLM-Assisted Program
+    Regeneration'
+  authors:
+  - Evangelos Lamprou
+  - Julian Dai
+  - Grigoris Ntousakis
+  - Martin C. Rinard
+  - Nikos Vasilakis
+  summary: Software supply-chain attacks are an important and ongoing concern in the
+    open source software ecosystem. These attacks maintain the standard functionality
+    that a component implements, but additionally hide malicious functionality activated
+    only when the component reaches its target environment. Lexo addresses such stealthy
+    attacks by automatically learning and regenerating vulnerability-free versions
+    of potentially malicious components. Lexo first generates a set of input-output
+    pairs to model a component's full observable behavior, which it then uses to synthesize
+    a new version of the original component. The new component implements the original
+    functionality but avoids stealthy malicious behavior. Throughout this regeneration
+    process, Lexo consults several distinct instances of Large Language Models (LLMs),
+    uses correctness and coverage metrics to shepherd these instances, and guardrails
+    their results. An evaluation on 100+ real-world packages, including high-profile
+    stealthy supply-chain attacks, indicates that Lexo scales across multiple domains,
+    regenerates code efficiently (<30m on average), maintains compatibility, and succeeds
+    in eliminating malicious code in several real-world supply-chain-attacks, even
+    in cases when a state-of-the-art LLM fails to eliminate malicious code when given
+    the source code of the component and prompted to do so.
+  tldr: '- **Problem:** Stealthy supply-chain attacks in open-source software, where
+    components appear normal but execute hidden malicious code only in specific target
+    environments, evading conventional detection.
+
+
+    - **Core method:** Lexo automatically learns a component''s full observable behavior
+    by generating input-output pairs, then uses multiple LLM instances guided by correctness
+    and coverage metrics to synthesize a new, functionally equivalent version that
+    excludes malicious code.
+
+
+    - **Security impact:** It provides a concrete defense against memory-safety and
+    system-security threats by regenerating components to eliminate hidden malicious
+    functionality, even when direct LLM prompts fail, ensuring low-level safety without
+    breaking compatibility.'
+  ai_score: 7
+  ai_reason: The paper's focus on automated program regeneration and behavior modeling
+    for security aligns with program analysis and sanitizer aspects of the researcher's
+    focus, though it does not directly address memory safety, type systems, or formal
+    semantics.
+  updated: '2025-12-16T04:40:36Z'
+  published: '2025-10-16T10:12:14Z'
+  pdf_url: https://arxiv.org/pdf/2510.14522v3
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+- arxiv_id: 2510.07851v2
+  title: 'The Functional Machine Calculus III: Control'
+  authors:
+  - Willem Heijltjes
+  summary: "The Functional Machine Calculus (Heijltjes 2022) is a new approach to\
+    \ unifying the imperative and functional programming paradigms. It extends the\
+    \ lambda-calculus, preserving the key features of confluent reduction and typed\
+    \ termination, to embed computational effects, evaluation strategies, and control\
+    \ flow operations. The first instalment modelled sequential higher-order computation\
+    \ with global store, input/output, probabilities, and non-determinism, and embedded\
+    \ both the call-by-name and call-by-value lambda-calculus, as well as Moggi's\
+    \ computational metalanguage and Levy's call-by-push-value. The present paper\
+    \ extends the calculus from sequential to branching and looping control flow.\
+    \ This allows the faithful embedding of a minimal but complete imperative language,\
+    \ including conditionals, exception handling, and iteration, as well as constants\
+    \ and algebraic data types.\n  The calculus is defined through a simple operational\
+    \ semantics, extending the (simplified) Krivine machine for the lambda-calculus\
+    \ with multiple operand stacks to model effects and a continuation stack to model\
+    \ sequential, branching, and looping computation. It features a confluent reduction\
+    \ relation and a system of simple types that guarantees termination of the machine\
+    \ and strong normalization of reduction (in the absence of iteration). These properties\
+    \ carry over to the embedded imperative language, providing a unified functional-imperative\
+    \ model of computation that supports simple types, a direct and intuitive operational\
+    \ semantics, and a confluent reduction semantics."
+  tldr: '- Addresses the gap between functional and imperative programming by extending
+    a foundational calculus to model control flow like conditionals, loops, and exceptions,
+    which are essential for real-world programming but not natively captured in pure
+    lambda-calculus.
+
+
+    - Introduces an operational semantics based on a Krivine machine extended with
+    multiple operand stacks and a continuation stack, enabling precise modeling of
+    sequential, branching, and looping computation within a functional framework.
+
+
+    - Provides a unified model where an imperative language can be embedded with guarantees
+    like confluence and type-based termination, directly enhancing memory safety and
+    system security by enabling formal verification of low-level control flow in a
+    well-behaved, analyzable calculus.'
+  ai_score: 7
+  ai_reason: The paper's development of a unified calculus with formal semantics,
+    control flow modeling, and type-based termination guarantees is highly relevant
+    to program analysis, formal semantics, and type theory, though its direct focus
+    on memory/temporary/spatial safety or Rust is limited.
+  updated: '2025-12-15T21:21:25Z'
+  published: '2025-10-09T06:48:54Z'
+  pdf_url: https://arxiv.org/pdf/2510.07851v2
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.LO
+- arxiv_id: 2501.08947v4
+  title: Taint Analysis for Graph APIs Focusing on Broken Access Control
+  authors:
+  - Leen Lambers
+  - Lucas Sakizloglou
+  - Taisiya Khakharova
+  - Fernando Orejas
+  summary: 'We present the first systematic approach to static and dynamic taint analysis
+    for Graph APIs focusing on broken access control. The approach comprises the following.
+    We taint nodes of the Graph API if they represent data requiring specific privileges
+    in order to be retrieved or manipulated, and identify API calls which are related
+    to sources and sinks. Then, we statically analyze whether a tainted information
+    flow between API source and sink calls occurs. To this end, we model the API calls
+    using graph transformation rules. We subsequently use Critical Pair Analysis to
+    automatically analyze potential dependencies between rules representing source
+    calls and rules representing sink calls. We distinguish direct from indirect tainted
+    information flow and argue under which conditions the Critical Pair Analysis is
+    able to detect not only direct, but also indirect tainted flow. The static taint
+    analysis (i) identifies flows that need to be further reviewed, since tainted
+    nodes may be created by an API call and used or manipulated by another API call
+    later without having the necessary privileges, and (ii) can be used to systematically
+    design dynamic security tests for broken access control. The dynamic taint analysis
+    checks if potential broken access control risks detected during the static taint
+    analysis really occur. We apply the approach to a part of the GitHub GraphQL API.
+    The application illustrates that our analysis supports the detection of two types
+    of broken access control systematically: the case where users of the API may not
+    be able to access or manipulate information, although they should be able to do
+    so; and the case where users (or attackers) of the API may be able to access/manipulate
+    information that they should not.'
+  tldr: '- Addresses broken access control in Graph APIs, where users may improperly
+    access or manipulate data without required privileges, a critical security vulnerability
+    in modern web services.
+
+
+    - Uses static taint analysis by modeling GraphQL API calls as graph transformation
+    rules, applying Critical Pair Analysis to detect both direct and indirect tainted
+    information flows between privileged data sources and sensitive sinks.
+
+
+    - Enables systematic identification of privilege escalation risks in GraphQL APIs,
+    such as unauthorized data access, and guides dynamic testing to verify these vulnerabilities,
+    directly enhancing memory safety and system security by preventing exploitation
+    of access control flaws.'
+  ai_score: 7
+  ai_reason: The paper's focus on static and dynamic taint analysis for program security,
+    particularly access control, aligns with the researcher's interests in program
+    analysis, formal semantics, and sanitizers, though it does not directly address
+    memory safety, Rust, or type systems.
+  updated: '2025-12-15T16:54:27Z'
+  published: '2025-01-15T16:49:32Z'
+  pdf_url: https://arxiv.org/pdf/2501.08947v4
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.LO
+  - cs.SE
