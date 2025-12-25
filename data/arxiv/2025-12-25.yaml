@@ -1,0 +1,55 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-12-25T13:36:05.890688+00:00'
+papers:
+- arxiv_id: 2512.21250v1
+  title: CoTDeceptor:Adversarial Code Obfuscation Against CoT-Enhanced LLM Code Agents
+  authors:
+  - Haoyang Li
+  - Mingjin Li
+  - Jinxin Zuo
+  - Siqi Li
+  - Xiao Li
+  - Hao Wu
+  - Yueming Lu
+  - Xiaochuan He
+  summary: LLM-based code agents(e.g., ChatGPT Codex) are increasingly deployed as
+    detector for code review and security auditing tasks. Although CoT-enhanced LLM
+    vulnerability detectors are believed to provide improved robustness against obfuscated
+    malicious code, we find that their reasoning chains and semantic abstraction processes
+    exhibit exploitable systematic weaknesses.This allows attackers to covertly embed
+    malicious logic, bypass code review, and propagate backdoored components throughout
+    real-world software supply chains.To investigate this issue, we present CoTDeceptor,
+    the first adversarial code obfuscation framework targeting CoT-enhanced LLM detectors.
+    CoTDeceptor autonomously constructs evolving, hard-to-reverse multi-stage obfuscation
+    strategy chains that effectively disrupt CoT-driven detection logic.We obtained
+    malicious code provided by security enterprise, experimental results demonstrate
+    that CoTDeceptor achieves stable and transferable evasion performance against
+    state-of-the-art LLMs and vulnerability detection agents. CoTDeceptor bypasses
+    14 out of 15 vulnerability categories, compared to only 2 bypassed by prior methods.
+    Our findings highlight potential risks in real-world software supply chains and
+    underscore the need for more robust and interpretable LLM-powered security analysis
+    systems.
+  tldr: '- Addresses the risk that advanced LLM code-review agents, which use Chain-of-Thought
+    reasoning, can be systematically fooled by obfuscated malicious code, allowing
+    backdoors to slip into software supply chains.
+
+    - Uses an automated framework (CoTDeceptor) that generates multi-stage, evolving
+    code obfuscation strategies specifically designed to disrupt the LLM''s reasoning
+    and semantic analysis processes.
+
+    - Matters because it demonstrates a critical weakness in current AI-powered security
+    auditing; such evasion enables the propagation of hidden vulnerabilities, undermining
+    trust in automated code review and supply chain safety.'
+  ai_score: 7
+  ai_reason: The paper directly addresses program analysis and security auditing using
+    LLMs, which intersects with memory safety, pointer analysis, and sanitizer topics
+    by exploring adversarial evasion in vulnerability detection systems.
+  updated: '2025-12-24T15:55:42Z'
+  published: '2025-12-24T15:55:42Z'
+  pdf_url: https://arxiv.org/pdf/2512.21250v1
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.MA
