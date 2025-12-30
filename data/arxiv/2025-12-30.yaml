@@ -1,0 +1,64 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2025-12-30T13:39:58.096120+00:00'
+papers:
+- arxiv_id: 2507.02976v3
+  title: How Safe Are AI-Generated Patches? A Large-scale Study on Security Risks
+    in LLM and Agentic Automated Program Repair on SWE-bench
+  authors:
+  - Amirali Sajadi
+  - Kostadin Damevski
+  - Preetha Chatterjee
+  summary: Large language models (LLMs) and their agentic frameworks are increasingly
+    adopted to perform development tasks such as automated program repair (APR). While
+    prior work has identified security risks in LLM-generated code, most have focused
+    on synthetic, simplified, or isolated tasks that lack the complexity of real-world
+    program repair. In this study, we present the first large-scale security analysis
+    of LLM-generated patches using 20,000+ GitHub issues. We evaluate patches proposed
+    by developers, a standalone LLM (Llama 3.3 Instruct-70B), and three top-performing
+    agentic frameworks (OpenHands, AutoCodeRover, HoneyComb). Finally, we analyze
+    a wide range of code, issue, and project-level factors to understand the conditions
+    under which generating insecure patches is more likely. Our findings reveal that
+    Llama introduces many new vulnerabilities, exhibiting unique patterns not found
+    in developers' code. Agentic workflows also generate a number of vulnerabilities,
+    particularly when given more autonomy. We find that vulnerabilities in LLM-generated
+    patches are associated with distinctive code characteristics and are commonly
+    observed in issues missing specific types of information. These results suggest
+    that contextual factors play a critical role in the security of the generated
+    patches and point toward the need for proactive risk assessment methods that account
+    for both issue and code-level information.
+  tldr: '- The paper addresses the real risk that LLM-generated patches for fixing
+    software bugs can introduce new security vulnerabilities, particularly in complex
+    real-world codebases, unlike prior studies on simpler synthetic tasks.
+
+
+    - It conducts a large-scale security analysis of over 20,000 GitHub issues, comparing
+    patches from developers, a standalone LLM (Llama 3.3), and three agentic frameworks,
+    using automated vulnerability detection tools to identify introduced flaws.
+
+
+    - The core finding is that LLM-generated patches often exhibit unique vulnerability
+    patterns not seen in developer patches, with agentic frameworks producing more
+    insecure patches when granted higher autonomy, highlighting a gap in current automated
+    repair tools.
+
+
+    - This matters for system security because it shows that deploying LLM-based program
+    repair without safeguards can degrade memory safety and low-level security, necessitating
+    proactive risk assessments that consider both code characteristics and issue context
+    to prevent exploitation.'
+  ai_score: 7
+  ai_reason: The paper's large-scale security analysis of AI-generated code patches
+    directly addresses memory safety and program analysis by evaluating real-world
+    vulnerabilities introduced during automated program repair, which aligns with
+    the researcher's focus on security risks, program analysis, and sanitizers in
+    practical software development contexts.
+  updated: '2025-12-29T16:44:07Z'
+  published: '2025-06-30T21:10:19Z'
+  pdf_url: https://arxiv.org/pdf/2507.02976v3
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.LG
+  - cs.SE
