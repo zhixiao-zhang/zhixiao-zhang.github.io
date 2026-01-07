@@ -1,0 +1,55 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-01-07T13:43:11.955515+00:00'
+papers:
+- arxiv_id: 2502.03203v6
+  title: 'FSLH: Flexible Mechanized Speculative Load Hardening'
+  authors:
+  - Jonathan Baumann
+  - Roberto Blanco
+  - Léon Ducruet
+  - Sebastian Harwig
+  - Catalin Hritcu
+  summary: 'The Spectre speculative side-channel attacks pose formidable threats for
+    security. Research has shown that code following the cryptographic constant-time
+    discipline can be efficiently protected against Spectre v1 using a selective variant
+    of Speculative Load Hardening (SLH). SLH was, however, not strong enough for protecting
+    non-cryptographic code, leading to the introduction of Ultimate SLH, which provides
+    protection for arbitrary programs, but has too large overhead for general use,
+    since it conservatively assumes that all data is secret. In this paper we introduce
+    a flexible SLH notion that achieves the best of both worlds by generalizing both
+    Selective and Ultimate SLH. We give a suitable security definition for such transformations
+    protecting arbitrary programs: any transformed program running with speculation
+    should not leak more than what the source program leaks sequentially. We formally
+    prove using the Rocq prover that two flexible SLH variants enforce this relative
+    security guarantee. As easy corollaries we also obtain that, in our setting, Ultimate
+    SLH enforces our relative security notion, and two selective SLH variants enforce
+    speculative constant-time security.'
+  tldr: '- Addresses the incomplete security of Speculative Load Hardening (SLH) against
+    Spectre v1 attacks: Selective SLH only protects constant-time cryptographic code,
+    while Ultimate SLH secures arbitrary programs but imposes prohibitive performance
+    overhead by treating all data as secret.
+
+
+    - Introduces a flexible SLH mechanism that generalizes both Selective and Ultimate
+    SLH, allowing security policies to be tailored per program—applying strong hardening
+    only where needed—and formally proves its security using the Rocq theorem prover.
+
+
+    - Provides a practical, verifiable defense for non-cryptographic software, enabling
+    efficient memory safety against speculative execution attacks without assuming
+    all data is secret, thus bridging the gap between security and performance for
+    low-level system code.'
+  ai_score: 8
+  ai_reason: The paper addresses speculative side-channel attacks (Spectre) via program
+    transformations, directly intersecting with memory safety, program analysis, formal
+    semantics, and sanitizer techniques, though it does not explicitly focus on Rust,
+    type systems, or pointer analysis.
+  updated: '2026-01-06T14:20:59Z'
+  published: '2025-02-05T14:23:43Z'
+  pdf_url: https://arxiv.org/pdf/2502.03203v6
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.PL
