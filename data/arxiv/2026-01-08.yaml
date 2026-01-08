@@ -1,0 +1,43 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-01-08T13:44:40.877210+00:00'
+papers:
+- arxiv_id: 2506.20356v2
+  title: Deadlock-free Context-free Session Types
+  authors:
+  - Andreia Mordido
+  - Jorge A. Pérez
+  summary: 'We tackle the problem of statically ensuring that message-passing programs
+    never run into deadlocks. We focus on concurrent functional programs governed
+    by context-free session types, which can express rich tree-like structures not
+    expressible in standard session types. We propose a new type system based on context-free
+    session types: it enforces both protocol conformance and deadlock freedom, also
+    for programs implementing cyclic communication topologies with recursion and polymorphism.
+    We show how the priority-based approach to deadlock freedom can be extended to
+    this expressive setting. We prove that well-typed concurrent programs respect
+    their protocols and never deadlock.'
+  tldr: '- Addresses the risk of deadlocks in message-passing concurrent programs
+    using expressive, tree-like communication protocols (context-free session types),
+    which standard session types cannot handle.
+
+
+    - Uses a priority-based type system that statically enforces both adherence to
+    these complex protocols and deadlock freedom, even with recursion, polymorphism,
+    and cyclic communication topologies.
+
+
+    - Matters for system security and low-level safety by guaranteeing reliable, predictable
+    concurrent execution without deadlocks, a critical failure mode in distributed
+    systems and parallel software.'
+  ai_score: 7
+  ai_reason: The paper's focus on static deadlock freedom via a type system for message-passing
+    concurrency directly aligns with the researcher's interests in type systems, formal
+    semantics, and program analysis, though its emphasis on session types and concurrency
+    is more specific than the listed memory/temporal/spatial safety and Rust topics.
+  updated: '2026-01-07T16:27:58Z'
+  published: '2025-06-25T12:11:47Z'
+  pdf_url: https://arxiv.org/pdf/2506.20356v2
+  primary_category: cs.PL
+  categories:
+  - cs.PL
