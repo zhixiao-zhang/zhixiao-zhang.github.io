@@ -1,0 +1,44 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-01-15T13:44:16.342818+00:00'
+papers:
+- arxiv_id: 2407.16827v2
+  title: Path-optimal symbolic execution of heap-manipulating programs
+  authors:
+  - Pietro Braione
+  - Giovanni Denaro
+  - Luca Guglielmo
+  summary: Symbolic execution is at the core of many techniques for program analysis
+    and test generation. Traditional symbolic execution of programs with numeric inputs
+    enjoys the property of forking as many analysis traces as the number of analyzed
+    program paths, a property that in this paper we refer to as path optimality. On
+    the contrary, current approaches for symbolic execution of heap-manipulating programs
+    fail to satisfy this property, thereby incurring crucial path explosion effects.
+    This paper introduces POSE, path-optimal symbolic execution, a symbolic execution
+    algorithm that originally achieves path optimality against heap-manipulating programs.
+    We formalize the POSE algorithm and experiment it against a benchmark of programs
+    that take data structures as inputs, supporting the potential of POSE for improving
+    on the state of the art of symbolic execution of heap-manipulating programs.
+  tldr: '- Addresses path explosion in symbolic execution for heap-manipulating programs,
+    where current methods create redundant analysis traces due to aliasing, unlike
+    numeric-input programs which fork only per program path.
+
+    - Introduces POSE, a path-optimal symbolic execution algorithm that ensures each
+    program path is analyzed exactly once by precisely tracking heap states and aliasing
+    conditions.
+
+    - Improves memory safety and low-level security analysis by enabling efficient,
+    exhaustive exploration of heap-dependent program behaviors, crucial for finding
+    bugs in systems code with data structures.'
+  ai_score: 8
+  ai_reason: The paper's focus on symbolic execution for heap-manipulating programs
+    directly addresses memory safety, spatial safety, and pointer analysis through
+    program analysis techniques.
+  updated: '2026-01-14T16:36:39Z'
+  published: '2024-07-23T20:35:33Z'
+  pdf_url: https://arxiv.org/pdf/2407.16827v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+  - cs.LO
