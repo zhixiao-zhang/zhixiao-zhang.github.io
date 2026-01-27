@@ -1,0 +1,92 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-01-27T13:52:09.527189+00:00'
+papers:
+- arxiv_id: 2601.18793v1
+  title: Handling Scope Checks (Extended Version)
+  authors:
+  - Michael Lee
+  - Ningning Xie
+  - Oleg Kiselyov
+  - Jeremy Yallop
+  summary: 'Metaprogramming and effect handlers interact in unexpected, and sometimes
+    undesirable, ways. One example is scope extrusion: the generation of ill-scoped
+    code. Scope extrusion can either be preemptively prevented, via static type systems,
+    or retroactively detected, via dynamic checks. Static type systems exist in theory,
+    but struggle with a range of implementation and usability problems in practice.
+    In contrast, dynamic checks exist in practice (e.g. in MetaOCaml), but are understudied
+    in theory. Designers of metalanguages are thus given little guidance regarding
+    the design and implementation of checks. We present the first formal study of
+    dynamic scope extrusion checks, introducing a calculus ($λ_{\langle\langle\text{op}\rangle\rangle}$)
+    for describing and evaluating checks. Further, we introduce a novel dynamic check
+    $\unicode{x2014}$ the "Cause-for-Concern" check $\unicode{x2014}$ which we prove
+    correct, characterise without reference to its implementation, and argue combines
+    the advantages of existing dynamic checks. Finally, we extend our framework with
+    refined environment classifiers, which statically prevent scope extrusion, and
+    compare their expressivity with the dynamic checks.'
+  tldr: '- Addresses the risk of scope extrusion in metaprogramming, where effect
+    handlers can generate ill-scoped code that may lead to unsafe program behavior,
+    a gap between theoretical type systems and practical dynamic checks in metalanguages.
+
+
+    - Introduces a formal calculus (λ₍₍ₒₚ₎₎) to model dynamic checks and proposes
+    the "Cause-for-Concern" check, a dynamic mechanism that detects scope extrusion
+    by tracking environment interactions without relying on static types.
+
+
+    - Enhances memory and system security by preventing scope extrusion that could
+    cause undefined behavior in low-level code generation, offering a practical, provably
+    correct alternative to static type systems for safer metaprogramming in languages
+    like MetaOCaml.'
+  ai_score: 8
+  ai_reason: The paper's formal study of dynamic scope extrusion checks in metaprogramming
+    directly addresses program analysis, type systems, formal semantics, and sanitizer-like
+    dynamic checks, which are core to the researcher's focus on safety and verification.
+  updated: '2026-01-26T18:55:58Z'
+  published: '2026-01-26T18:55:58Z'
+  pdf_url: https://arxiv.org/pdf/2601.18793v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2601.18745v1
+  title: Symmetric Proofs of Parameterized Programs
+  authors:
+  - Ruotong Cheng
+  - Azadeh Farzan
+  summary: We investigate the problem of safety verification of infinite-state parameterized
+    programs that are formed based on a rich class of topologies. We introduce a new
+    proof system, called parametric proof spaces, which exploits the underlying symmetry
+    in such programs. This is a local notion of symmetry which enables the proof system
+    to reuse proof arguments for isomorphic neighbourhoods in program topologies.
+    We prove a sophisticated relative completeness result for the proof system with
+    respect to a class of universally quantified invariants. We also investigate the
+    problem of algorithmic construction of these proofs. We present a construction,
+    inspired by classic results in model theory, where an infinitary limit program
+    can be soundly and completely verified in place of the parameterized family, under
+    some conditions. Furthermore, we demonstrate how these proofs can be constructed
+    and checked against these programs without the need for axiomatization of the
+    underlying topology for proofs or the programs. Finally, we present conditions
+    under which our algorithm becomes a decision procedure.
+  tldr: '- Addresses the challenge of verifying safety for infinite-state parameterized
+    programs with complex network topologies, where manual or exhaustive verification
+    is infeasible due to scalability.
+
+    - Introduces parametric proof spaces that leverage local symmetry in program topologies
+    to reuse proofs for isomorphic neighborhoods, avoiding axiomatization of the topology.
+
+    - Enables automated, scalable safety verification for low-level concurrent or
+    distributed systems, directly enhancing memory and system security by provably
+    preventing errors in parameterized architectures like grids or rings.'
+  ai_score: 7
+  ai_reason: The paper's focus on safety verification, infinite-state parameterized
+    programs, and algorithmic proof construction for universally quantified invariants
+    aligns directly with the researcher's interests in program analysis, formal semantics,
+    and type systems for ensuring memory and spatial safety.
+  updated: '2026-01-26T18:06:05Z'
+  published: '2026-01-26T18:06:05Z'
+  pdf_url: https://arxiv.org/pdf/2601.18745v1
+  primary_category: cs.LO
+  categories:
+  - cs.LO
+  - cs.PL
