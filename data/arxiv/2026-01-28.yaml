@@ -1,0 +1,71 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-01-28T13:52:27.027759+00:00'
+papers:
+- arxiv_id: 2601.12360v2
+  title: Discovering 100+ Compiler Defects in 72 Hours via LLM-Driven Semantic Logic
+    Recomposition
+  authors:
+  - Xingbang He
+  - Yuanwei Chen
+  - Hao Wu
+  - Jikang Zhang
+  - Zicheng Wang
+  - Ligeng Chen
+  - Junjie Peng
+  - Haiyang Wei
+  - Yi Qian
+  - Tiantai Zhang
+  - Linzhang Wang
+  - Bing Mao
+  summary: "Compilers constitute the foundational root-of-trust in software supply\
+    \ chains; however, their immense complexity inevitably conceals critical defects.\
+    \ Recent research has attempted to leverage historical bugs to design new mutation\
+    \ operators or fine-tune models to increase program diversity for compiler fuzzing.We\
+    \ observe, however, that bugs manifest primarily based on the semantics of input\
+    \ programs rather than their syntax. Unfortunately, current approaches, whether\
+    \ relying on syntactic mutation or general Large Language Model (LLM) fine-tuning,\
+    \ struggle to preserve the specific semantics found in the logic of bug-triggering\
+    \ programs. Consequently, these critical semantic triggers are often lost, resulting\
+    \ in a limitation of the diversity of generated programs.\n  To explicitly reuse\
+    \ such semantics, we propose FeatureFuzz, a compiler fuzzer that combines features\
+    \ to generate programs. We define a feature as a decoupled primitive that encapsulates\
+    \ a natural language description of a bug-prone invariant, such as an out-of-bounds\
+    \ array access, alongside a concrete code witness of its realization. FeatureFuzz\
+    \ operates via a three-stage workflow: it first extracts features from historical\
+    \ bug reports, synthesizes coherent groups of features, and finally instantiates\
+    \ these groups into valid programs for compiler fuzzing.\n  We evaluated FeatureFuzz\
+    \ on GCC and LLVM. Over 24-hour campaigns, FeatureFuzz uncovered 167 unique crashes,\
+    \ which is 2.78x more than the second-best fuzzer. Furthermore, through a 72-hour\
+    \ fuzzing campaign, FeatureFuzz identified 113 bugs in GCC and LLVM, 97 of which\
+    \ have already been confirmed by compiler developers, validating the approach's\
+    \ ability to stress-test modern compilers effectively."
+  tldr: '- The problem is that existing compiler fuzzing methods—relying on syntactic
+    mutations or general LLM fine-tuning—often lose the specific semantic logic (like
+    an out-of-bounds access) that historically triggered bugs, limiting the diversity
+    and effectiveness of generated test programs.
+
+
+    - The core method is FeatureFuzz, which extracts "features" from past bug reports:
+    each feature pairs a natural-language description of a bug-prone invariant with
+    a concrete code snippet. It then recomposes these semantic features into coherent
+    groups and instantiates them into valid C programs to fuzz compilers.
+
+
+    - This matters because compilers are a root-of-trust in software supply chains;
+    defects can lead to security vulnerabilities or silent miscompilation. By preserving
+    and recombining proven bug-triggering semantics, FeatureFuzz more effectively
+    uncovers deep, critical compiler bugs—finding 113 bugs in GCC/LLVM in 72 hours,
+    with 97 confirmed by developers.'
+  ai_score: 8
+  ai_reason: The paper's focus on compiler fuzzing via semantic logic recomposition
+    directly engages program analysis, formal semantics, and type system invariants
+    to uncover memory and spatial safety defects in critical software like GCC and
+    LLVM.
+  updated: '2026-01-27T14:51:37Z'
+  published: '2026-01-18T11:33:45Z'
+  pdf_url: https://arxiv.org/pdf/2601.12360v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
