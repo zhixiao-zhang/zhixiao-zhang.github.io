@@ -1,0 +1,49 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-03T14:07:03.378774+00:00'
+papers:
+- arxiv_id: 2512.10173v2
+  title: 'ATLAS: Automated Toolkit for Large-Scale Verified Code Synthesis'
+  authors:
+  - Mantas Baksys
+  - Stefan Zetzsche
+  - Olivier Bouissou
+  - Remi Delmas
+  - Soonho Kong
+  - Sean B. Holden
+  summary: Large language models have become proficient at generating functional code,
+    but ensuring the output truly matches the programmer's intent remains difficult.
+    Testing improves trust, yet for safety-critical applications, formal verification
+    provides the only true guarantees through machine-checked proofs. However, verified
+    code remains scarce compared to mainstream languages or mathematical theorem proving,
+    limiting LLM capabilities in this domain. We present ATLAS, an automated pipeline
+    that synthesizes verified programs to address this data bottleneck. Applied to
+    the TACO dataset of Python solutions to LeetCode-style problems, ATLAS generates
+    2.7K verified Dafny programs, each with high-quality specifications and machine-checked
+    proofs. Through task decomposition, we extract 19K training examples. Fine-tuning
+    Qwen 2.5 7B Coder on this data improves performance from 32.4% to 56.9% on DafnyBench
+    and from 15.8% to 65.8% on DafnySynthesis, demonstrating that synthetic data generation
+    is a viable path to scaling LLM capabilities for formal verification.
+  tldr: '- The problem is a lack of verified, formally correct code to train large
+    language models, which limits their ability to generate code with machine-checked
+    safety guarantees for critical systems.
+
+    - The core method is an automated pipeline that translates Python solutions into
+    Dafny programs, automatically generates specifications, proves them correct, and
+    decomposes the results into a large-scale synthetic training dataset.
+
+    - This matters because it directly scales the ability to automatically generate
+    memory-safe and functionally correct low-level code, moving from probabilistic
+    trust in testing to deterministic trust in proofs for security-critical software.'
+  ai_score: 7
+  ai_reason: The paper's focus on automated synthesis of formally verified code via
+    an LLM pipeline directly relates to program analysis and formal semantics, which
+    are core to ensuring memory, spatial, and temporal safety properties that the
+    researcher studies.
+  updated: '2026-02-02T17:29:51Z'
+  published: '2025-12-11T00:21:06Z'
+  pdf_url: https://arxiv.org/pdf/2512.10173v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
