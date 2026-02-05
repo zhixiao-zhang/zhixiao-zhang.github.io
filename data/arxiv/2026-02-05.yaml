@@ -1,0 +1,51 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-05T14:07:20.573242+00:00'
+papers:
+- arxiv_id: 2512.14917v2
+  title: Evaluating Code Reasoning Abilities of Large Language Models Under Real-World
+    Settings
+  authors:
+  - Changshu Liu
+  - Alireza Ghazanfari
+  - Yang Chen
+  - Reyhaneh Jabbarvand
+  summary: 'Code reasoning tasks are becoming prevalent in large language model (LLM)
+    assessments. Yet, there is a dearth of studies on the impact of real-world complexities
+    on code reasoning, e.g., inter- or intra-procedural dependencies, API calls, deeply
+    nested constructs, and non-primitive complex types. Evaluating LLMs under such
+    a simplistic setting poses a significant threat to assumptions about their generalizability
+    in practice. To enable a more realistic evaluation of code reasoning, we construct
+    a dataset of 1200 reasoning problems from two sources: existing code reasoning
+    benchmarks and popular GitHub Python repositories. Our pipeline leverages static
+    and dynamic program analysis to automatically serialize/deserialize compound,
+    complex, and custom types galore in real-world code, going far beyond only primitive
+    types used in prior studies. A key feature of our dataset is categorizing each
+    reasoning problem as Lower Complexity (LC) or Higher Complexity (HC) via a principled
+    majority-vote mechanism over nine diverse and interpretable code-complexity metrics,
+    yielding two well-separated, semantically meaningful categories of problem difficulty
+    suitable for precise calibration of LLM reasoning ability. This categorization
+    shows that the problems used in existing code-reasoning evaluation mostly belong
+    to the LC category, failing to represent real-world complexity.'
+  tldr: '- Addresses the risk that current LLM code reasoning evaluations overlook
+    real-world complexities like nested structures and API calls, leading to overestimated
+    practical capabilities.
+
+    - Uses static and dynamic program analysis to automatically serialize complex,
+    custom data types from GitHub repositories, creating a dataset with 1200 problems
+    categorized by difficulty.
+
+    - Reveals that existing benchmarks mostly test lower-complexity scenarios, highlighting
+    a gap in assessing true reasoning ability for secure, reliable low-level code.'
+  ai_score: 7
+  ai_reason: The paper's use of static and dynamic program analysis to evaluate code
+    reasoning on real-world complexities, including non-primitive types and inter-procedural
+    dependencies, directly relates to program analysis and type systems, which are
+    core to the researcher's focus on memory safety, type theory, and formal semantics.
+  updated: '2026-02-04T17:49:45Z'
+  published: '2025-12-16T21:12:53Z'
+  pdf_url: https://arxiv.org/pdf/2512.14917v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
