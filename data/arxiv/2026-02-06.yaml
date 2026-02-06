@@ -1,0 +1,43 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-06T14:03:47.262808+00:00'
+papers:
+- arxiv_id: 2602.05703v1
+  title: 'SEAL: Symbolic Execution with Separation Logic (Competition Contribution)'
+  authors:
+  - Tomáš Brablec
+  - Tomáš Dacík
+  - Tomáš Vojnar
+  summary: SEAL is a static analyser for the verification of programs that manipulate
+    unbounded linked data structures. It is based on separation logic to represent
+    abstract memory states and, unlike other separation-logic-based approaches, it
+    employs a general-purpose separation logic solver Astral for satisfiability and
+    entailment checking, which itself is based on translation to SMT. This design
+    results in a modular architecture intended to be easier to extend and to combine
+    with reasoning in other theories. Although still a prototype, SEAL achieved competitive
+    results in the LinkedLists base category and was one of only four analysers capable
+    of verifying programs with unbounded lists. We believe that the tool's extensibility,
+    combined with further development, can lead to significant improvements in future
+    competitions.
+  tldr: '- Addresses the challenge of automatically verifying memory safety and functional
+    correctness in programs that use unbended linked data structures, a key source
+    of bugs in low-level systems code.
+
+    - Uses separation logic to model complex heap states and a general-purpose solver
+    (Astral) that translates logical reasoning into SMT queries to check program properties.
+
+    - Provides a modular, extensible foundation for proving absence of memory errors
+    (like use-after-free) in heap-manipulating code, which is critical for securing
+    systems software.'
+  ai_score: 8
+  ai_reason: The paper presents a static analysis tool based on separation logic for
+    verifying programs with unbounded linked data structures, directly addressing
+    memory safety, spatial safety, and program analysis through formal semantics and
+    pointer analysis techniques.
+  updated: '2026-02-05T14:29:10Z'
+  published: '2026-02-05T14:29:10Z'
+  pdf_url: https://arxiv.org/pdf/2602.05703v1
+  primary_category: cs.SE
+  categories:
+  - cs.SE
