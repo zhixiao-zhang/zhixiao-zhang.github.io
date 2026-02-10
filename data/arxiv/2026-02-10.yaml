@@ -1,0 +1,58 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-10T14:23:14.570013+00:00'
+papers:
+- arxiv_id: 2602.08750v1
+  title: 'DyMA-Fuzz: Dynamic Direct Memory Access Abstraction for Re-hosted Monolithic
+    Firmware Fuzzing'
+  authors:
+  - Guy Farrelly
+  - Michael Chesser
+  - Seyit Camtepe
+  - Damith C. Ranasinghe
+  summary: The rise of smart devices in critical domains--including automotive, medical,
+    industrial--demands robust firmware testing. Fuzzing firmware in re-hosted environments
+    is a promising method for automated testing at scale, but remains difficult due
+    to the tight coupling of code with a microcontroller's peripherals. Existing fuzzing
+    frameworks primarily address input challenges in providing inputs for Memory-Mapped
+    I/O or interrupts, but largely overlook Direct Memory Access (DMA), a key high-throughput
+    interface used that bypasses the CPU. We introduce DyMA-Fuzz to extend recent
+    advances in stream-based fuzz input injection to DMA-driven interfaces in re-hosted
+    environments. It tackles key challenges--vendor-specific descriptors, heterogeneous
+    DMA designs, and varying descriptor locations--using runtime analysis techniques
+    to infer DMA memory access patterns and automatically inject fuzzing data into
+    target buffers, without manual configuration or datasheets. Evaluated on 94 firmware
+    samples and 8 DMA-guarded CVE benchmarks, DyMA-Fuzz reveals vulnerabilities and
+    execution paths missed by state-of-the-art tools and achieves up to 122% higher
+    code coverage. These results highlight DyMA-Fuzz as a practical and effective
+    advancement in automated firmware testing and a scalable solution for fuzzing
+    complex embedded systems.
+  tldr: '- The paper addresses the gap in existing firmware fuzzing tools, which fail
+    to test Direct Memory Access (DMA) interfaces—a high-throughput hardware feature
+    that allows peripherals to read/write memory directly, bypassing the CPU and creating
+    untested attack surfaces.
+
+
+    - DyMA-Fuzz uses runtime analysis to automatically infer DMA memory access patterns
+    from firmware execution, dynamically identifying DMA descriptors and injecting
+    fuzz inputs into the corresponding data buffers without requiring manual configuration
+    or datasheets.
+
+
+    - This matters for system security because DMA is widely used in critical embedded
+    systems (e.g., automotive, medical devices), and missing DMA testing leaves vulnerabilities
+    undetected; the tool exposed new bugs and increased code coverage by up to 122%
+    on real firmware, improving low-level safety testing.'
+  ai_score: 7
+  ai_reason: The paper's focus on automated firmware testing via fuzzing, runtime
+    analysis for inferring memory access patterns, and addressing DMA interactions
+    aligns with program analysis, memory safety, and sanitizer aspects of the researcher's
+    focus, though it lacks direct emphasis on type systems, formal semantics, or Rust.
+  updated: '2026-02-09T14:52:57Z'
+  published: '2026-02-09T14:52:57Z'
+  pdf_url: https://arxiv.org/pdf/2602.08750v1
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.SE
