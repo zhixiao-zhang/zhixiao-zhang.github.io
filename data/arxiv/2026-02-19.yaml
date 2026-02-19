@@ -1,0 +1,101 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-19T14:11:10.192993+00:00'
+papers:
+- arxiv_id: 2404.02230v4
+  title: A Mixed-Methods Study on the Implications of Unsafe Rust for Interoperation,
+    Encapsulation, and Tooling
+  authors:
+  - Ian McCormack
+  - Tomas Dougan
+  - Sam Estep
+  - Hanan Hibshi
+  - Jonathan Aldrich
+  - Joshua Sunshine
+  summary: The Rust programming language restricts aliasing to provide static safety
+    guarantees. However, in certain situations, developers need to bypass these guarantees
+    by using a set of unsafe features. If they are used incorrectly, these features
+    can reintroduce the types of safety issues that Rust was designed to prevent.
+    We seek to understand how current development tools can be improved to better
+    assist developers who find it necessary to interact with unsafe code. To that
+    end, we study how developers reason about foreign function calls, the limitations
+    of the tools that they currently use, their motivations for using unsafe code,
+    and how they reason about encapsulating it. We conducted a mixed-methods investigation
+    consisting of semi-structured interviews with 19 developers, followed by a survey
+    that reached an additional 160 developers. Our participants were motivated to
+    use unsafe code when they perceived that there was no alternative, and most avoided
+    using it. However, limited tooling support for foreign function calls made participants
+    uncertain about their design choices, and certain foreign aliasing and concurrency
+    patterns were difficult to encapsulate. To overcome these challenges, Rust developers
+    need verification tools that can provide guarantees of soundness within multi-language
+    applications.
+  tldr: '- Addresses the gap where Rust''s unsafe features, needed for tasks like
+    foreign function calls, can reintroduce memory and concurrency bugs due to inadequate
+    tooling for verification and encapsulation.
+
+
+    - Uses mixed-methods research—interviews with 19 developers and a survey of 160—to
+    analyze how developers use unsafe code, revealing struggles with foreign aliasing,
+    concurrency patterns, and limited tool support.
+
+
+    - Matters for memory safety because poor encapsulation of unsafe code undermines
+    Rust''s core guarantees, risking system security; better verification tools are
+    essential for sound multi-language applications.'
+  ai_score: 9
+  ai_reason: The paper directly investigates the use of unsafe Rust features, which
+    directly impacts memory, temporal, and spatial safety, and evaluates tooling needs
+    for program analysis and verification in the context of Rust's type system and
+    formal semantics.
+  updated: '2026-02-18T16:36:08Z'
+  published: '2024-04-02T18:36:21Z'
+  pdf_url: https://arxiv.org/pdf/2404.02230v4
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+- arxiv_id: 2512.10861v2
+  title: Towards Cumulative Abstract Semantics via Handlers
+  authors:
+  - Cade Lueker
+  - Andrew Fox
+  - Bor-Yuh Evan Chang
+  summary: 'We consider the problem of modularizing control flow in a generic abstract
+    interpretation framework. A generic abstract interpretation framework is not truly
+    flexible if it does not allow interpreting with different path- and flow-sensitivities,
+    by going forwards or backwards, and over- or under-approximately. Most interpreters
+    inherently intertwine syntax and semantics, making the implementation antagonistic
+    to modularity. Current approaches to modular designs require the use of complex
+    data structures (e.g., monad transformers), providing modularity but often proving
+    unwieldy (e.g., lifts). We observe that leveraging scoped effects within an interpreter
+    facilitates the accumulation of semantic fragments against a fixed syntax. In
+    this paper, we define cumulative abstract semantics, illustrating the potential
+    for creating multiple dynamic evaluators and static analyses from one interpreter.
+    This modularity is achieved by grouping effects into two categories: syntax elimination
+    and domain-semantic introduction handlers. Our contribution shows the benefits
+    of using effects as an instrument for designing a clean, elegant, and modular
+    abstract interpretation framework.'
+  tldr: '- Addresses the modularity problem in abstract interpretation frameworks,
+    where existing designs tightly couple syntax and semantics, making it difficult
+    to adapt analyses for different sensitivities (e.g., path- or flow-sensitive)
+    or directions (e.g., forward/backward) without complex, unwieldy code.
+
+
+    - Introduces cumulative abstract semantics using scoped effects and handlers,
+    separating syntax elimination from domain-semantic introduction to allow semantic
+    fragments to accumulate independently against a fixed syntactic structure.
+
+
+    - This approach enables a single interpreter to generate multiple dynamic evaluators
+    and static analyses, improving flexibility and maintainability in memory safety
+    and system security tools that rely on precise, adaptable low-level program analysis.'
+  ai_score: 7
+  ai_reason: The paper's focus on modular abstract interpretation frameworks for creating
+    static analyses directly aligns with the researcher's interests in program analysis,
+    abstract interpretation, and formal semantics.
+  updated: '2026-02-17T22:23:32Z'
+  published: '2025-12-11T17:55:35Z'
+  pdf_url: https://arxiv.org/pdf/2512.10861v2
+  primary_category: cs.PL
+  categories:
+  - cs.PL
