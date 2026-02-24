@@ -1,0 +1,161 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-24T14:13:11.053602+00:00'
+papers:
+- arxiv_id: 2602.20064v1
+  title: 'The LLMbda Calculus: AI Agents, Conversations, and Information Flow'
+  authors:
+  - Zac Garby
+  - Andrew D. Gordon
+  - David Sands
+  summary: 'A conversation with a large language model (LLM) is a sequence of prompts
+    and responses, with each response generated from the preceding conversation. AI
+    agents build such conversations automatically: given an initial human prompt,
+    a planner loop interleaves LLM calls with tool invocations and code execution.
+    This tight coupling creates a new and poorly understood attack surface. A malicious
+    prompt injected into a conversation can compromise later reasoning, trigger dangerous
+    tool calls, or distort final outputs. Despite the centrality of such systems,
+    we currently lack a principled semantic foundation for reasoning about their behaviour
+    and safety. We address this gap by introducing an untyped call-by-value lambda
+    calculus enriched with dynamic information-flow control and a small number of
+    primitives for constructing prompt-response conversations. Our language includes
+    a primitive that invokes an LLM: it serializes a value, sends it to the model
+    as a prompt, and parses the response as a new term. This calculus faithfully represents
+    planner loops and their vulnerabilities, including the mechanisms by which prompt
+    injection alters subsequent computation. The semantics explicitly captures conversations,
+    and so supports reasoning about defenses such as quarantined sub-conversations,
+    isolation of generated code, and information-flow restrictions on what may influence
+    an LLM call. A termination-insensitive noninterference theorem establishes integrity
+    and confidentiality guarantees, demonstrating that a formal calculus can provide
+    rigorous foundations for safe agentic programming.'
+  tldr: '- The paper addresses the risk of prompt injection attacks in AI agent systems,
+    where malicious inputs can compromise the agent''s reasoning, trigger dangerous
+    tool calls, or distort outputs, due to the lack of formal models for such systems.
+
+
+    - It introduces a lambda calculus extended with primitives for LLM calls and dynamic
+    information-flow control, explicitly modeling conversations and allowing serialization
+    of prompts and parsing of responses as terms within the calculus.
+
+
+    - This matters because it provides a semantic foundation to formally analyze and
+    enforce safety in agentic programming, enabling reasoning about defenses like
+    conversation quarantine, code isolation, and information-flow restrictions to
+    protect memory and system integrity.'
+  ai_score: 8
+  ai_reason: The paper introduces a formal calculus with information-flow control
+    and semantics to reason about safety and vulnerabilities in AI agent conversations,
+    directly addressing program analysis, formal semantics, and sanitizer aspects
+    of the researcher's focus, though it does not explicitly cover memory, temporary,
+    or spatial safety or Rust.
+  updated: '2026-02-23T17:22:35Z'
+  published: '2026-02-23T17:22:35Z'
+  pdf_url: https://arxiv.org/pdf/2602.20064v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.AI
+  - cs.CR
+- arxiv_id: 2602.19951v1
+  title: Taming Scope Extrusion in Gradual Imperative Metaprogramming
+  authors:
+  - Tianyu Chen
+  - Darshal Shetty
+  - Jeremy G. Siek
+  - Chao-Hong Chen
+  - Weixi Ma
+  - Arnaud Venet
+  - Rocky Liu
+  summary: "Metaprogramming enables the generation of performant code, while gradual\
+    \ typing facilitates the smooth migration from untyped scripts to robust statically\
+    \ typed programs. However, combining these features with imperative state - specifically\
+    \ mutable references - reintroduces the classic peril of scope extrusion, where\
+    \ code fragments containing free variables escape their defining lexical context.\
+    \ While static type systems utilizing environment classifiers have successfully\
+    \ tamed this interaction, enforcing these invariants in a gradual language remains\
+    \ an open challenge.\n  This paper presents $λ^{α,\\star}_{\\text{Ref}}$, the\
+    \ first gradual metaprogramming language that supports mutable references while\
+    \ guaranteeing scope safety. To put $λ^{α,\\star}_{\\text{Ref}}$ on a firm foundation,\
+    \ we also develop its statically typed sister language, $λ^α_{\\text{Ref}}$, that\
+    \ introduces unrestricted subtyping for environment classifiers. Our key innovation,\
+    \ however, is the dynamic enforcement of the environment classifier discipline\
+    \ in $λ^{α,\\star}_{\\text{Ref}}$, enabling the language to mediate between statically\
+    \ verified scopes and dynamically verified scopes. The dynamic enforcement is\
+    \ carried out in a novel cast calculus $\\mathrm{CC}^{α,\\star}_{\\text{Ref}}$\
+    \ that uses an extension of Henglein's Coercion Calculus to handle code types,\
+    \ classifier polymorphism, and subtype constraints. We prove that $λ^{α,\\star}_{\\\
+    text{Ref}}$ satisfies type safety and scope safety. Finally, we provide a space-efficient\
+    \ implementation strategy for the dynamic scope checks, ensuring that the runtime\
+    \ overhead remains practical."
+  tldr: '- **Problem:** Combining gradual typing, metaprogramming, and mutable state
+    risks *scope extrusion*, where generated code can incorrectly access or modify
+    references outside its intended lexical scope, breaking memory safety. Static
+    solutions exist but fail in gradual systems where code may be partially untyped.
+
+
+    - **Core method:** Introduces a gradual language ($λ^{α,\star}_{\text{Ref}}$)
+    with a dynamic cast calculus that enforces *environment classifier* checks at
+    runtime. This tracks and validates the lexical scopes of code fragments containing
+    mutable references, preventing unsafe escapes.
+
+
+    - **Security impact:** It guarantees *scope safety* for low-level metaprogramming
+    with mutable state, ensuring that generated code cannot corrupt memory by accessing
+    dangling or out-of-scope references, which is critical for secure systems programming
+    and safe language interoperation.'
+  ai_score: 8
+  ai_reason: The paper directly addresses memory safety (via scope safety with mutable
+    references), type system (gradual typing, static/dynamic enforcement, subtyping),
+    formal semantics (cast calculus, type safety proofs), and program analysis (environment
+    classifiers, abstract interpretation concepts), aligning closely with the researcher's
+    focus areas.
+  updated: '2026-02-23T15:19:41Z'
+  published: '2026-02-23T15:19:41Z'
+  pdf_url: https://arxiv.org/pdf/2602.19951v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2602.19868v1
+  title: Combining Small-Step and Big-Step Semantics to Verify Loop Optimizations
+  authors:
+  - David Knothe
+  - Oliver Bringmann
+  summary: 'Verified compilers aim to guarantee that compilation preserves the observable
+    behavior of source programs. While small-step semantics are widely used in such
+    compilers, they are not always the most convenient framework for structural transformations
+    such as loop optimizations. This paper proposes an approach that leverages both
+    small-step and big-step semantics: small-step semantics are used for local transformations,
+    while big-step semantics are employed for structural transformations. An abstract
+    behavioral semantics is introduced as a common interface between the two styles.
+    Coinductive big-step semantics is extended to correctly handle divergence with
+    both finite and infinite traces, bringing it on par with the expressiveness of
+    small-step semantics. This enables the insertion of big-step transformations into
+    the middle of an existing small-step pipeline, thereby fully preserving all top-level
+    semantic preservation theorems. This approach is practically demonstrated in CompCert
+    by implementing and verifying a few new loop optimizations in big-step Cminor,
+    including loop unswitching and, notably, full loop unrolling.'
+  tldr: '- Addresses the difficulty of verifying structural compiler optimizations
+    like loop unrolling using only small-step semantics, which are better suited for
+    local, step-by-step transformations.
+
+    - Introduces an abstract behavioral semantics as an interface to combine small-step
+    semantics (for local transformations) with a coinductive big-step semantics (for
+    structural transformations), enabling both to handle finite and infinite execution
+    traces.
+
+    - Allows verified compilers like CompCert to safely incorporate optimizations
+    that reshape program control-flow, directly enhancing the trustworthiness of performance-critical
+    code without compromising memory safety guarantees.'
+  ai_score: 7
+  ai_reason: The paper's core contribution is a formal semantics framework (small-step,
+    big-step, abstract behavioral semantics) to verify compiler optimizations, directly
+    aligning with program analysis, formal semantics, and type system interests, though
+    it lacks explicit focus on memory safety, Rust, or sanitizers.
+  updated: '2026-02-23T14:12:17Z'
+  published: '2026-02-23T14:12:17Z'
+  pdf_url: https://arxiv.org/pdf/2602.19868v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.LO
