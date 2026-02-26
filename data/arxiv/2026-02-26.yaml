@@ -1,0 +1,94 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-26T14:12:06.207558+00:00'
+papers:
+- arxiv_id: 2412.15042v2
+  title: 'Scylla: Translating an Applicative Subset of C to Safe Rust'
+  authors:
+  - Aymeric Fromherz
+  - Jonathan Protzenko
+  summary: "The popularity of the Rust language continues to explode; yet, many critical\
+    \ codebases remain authored in C. Automatically translating C to Rust is thus\
+    \ an appealing course of action. Several works have gone down this path, handling\
+    \ an ever-increasing subset of C through a variety of Rust features, such as unsafe.\
+    \ While the prospect of automation is appealing, producing code that relies on\
+    \ unsafe negates the memory safety guarantees offered by Rust, and therefore the\
+    \ main advantages of porting existing codebases to memory-safe languages. We instead\
+    \ advocate for a different approach, where the programmer iterates on the original\
+    \ C, gradually making the code more structured until it becomes eligible for compilation\
+    \ to safe Rust. This means that redesigns and rewrites can be evaluated incrementally\
+    \ for performance and correctness against existing test suites and production\
+    \ environments.\n  Compiling structured C to safe Rust relies on the following\
+    \ contributions: a type-directed translation from (a subset of) C to safe Rust;\
+    \ a novel static analysis based on \"split trees\" which allows expressing C's\
+    \ pointer arithmetic using Rust's slices and splitting operations; an analysis\
+    \ that infers which borrows need to be mutable; and a compilation strategy for\
+    \ C pointer types that is compatible with Rust's distinction between non-owned\
+    \ and owned allocations. We evaluate our approach on real-world cryptographic\
+    \ libraries, binary parsers and serializers, and a file compression library. We\
+    \ show that these can be rewritten to Rust with small refactors of the original\
+    \ C code, and that the resulting Rust code exhibits similar performance characteristics\
+    \ as the original C code. As part of our translation process, we also identify\
+    \ and report undefined behaviors in the bzip2 compression library and in Microsoft's\
+    \ implementation of the FrodoKEM cryptographic primitive."
+  tldr: "- The problem is that existing C-to-Rust translators often produce `unsafe`\
+    \ Rust code, which loses the memory safety guarantees that motivate porting C\
+    \ code in the first place.  \n- The core method is a type-directed translation\
+    \ for a structured subset of C, using a static \"split tree\" analysis to model\
+    \ C pointer arithmetic with safe Rust slices and borrows, without requiring `unsafe`\
+    \ blocks.  \n- This matters because it enables incremental, verifiable migration\
+    \ of critical C codebases (like cryptographic libraries and parsers) to fully\
+    \ memory-safe Rust, while uncovering hidden undefined behaviors in the original\
+    \ C during translation."
+  ai_score: 9
+  ai_reason: The paper directly addresses memory safety, spatial safety, and type
+    systems by translating C to safe Rust using static analysis, pointer analysis,
+    and formal translation techniques, while also applying program analysis to detect
+    undefined behaviors.
+  updated: '2026-02-25T16:25:13Z'
+  published: '2024-12-19T16:51:29Z'
+  pdf_url: https://arxiv.org/pdf/2412.15042v2
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2602.22075v1
+  title: 'RustyDL: A Program Logic for Rust'
+  authors:
+  - Daniel Drodt
+  - Reiner Hähnle
+  summary: Rust is a modern programming language that guarantees memory safety and
+    the absence of data races with a strong type system. We present RustyDL, a program
+    logic for Rust, as a foundation for an auto-interactive, deductive verification
+    tool for Rust. RustyDL reasons about Rust programs directly on the source code
+    level, in contrast to other tools that are all based on translation to an intermediate
+    language. A source-level program logic for Rust is crucial for a human-in-the-loop
+    (HIL) style of verification that permits proving highly complex functional properties.
+    We discuss specific Rust challenges in designing a program logic and calculus
+    for HIL-style verification and propose a solution in each case. We provide a proof-of-concept
+    of our ideas in the form of a prototype of a Rust instance of the deductive verification
+    tool KeY.
+  tldr: '- Addresses the gap in directly verifying Rust source code for complex functional
+    properties, as existing tools rely on translating code to intermediate languages,
+    which can obscure the original logic and hinder human-guided verification.
+
+
+    - Introduces RustyDL, a program logic that operates directly on Rust source code,
+    enabling precise reasoning about ownership, borrowing, and lifetimes without intermediate
+    translation, and integrates it into the KeY verification tool prototype.
+
+
+    - Matters for memory safety and system security by providing a foundation for
+    rigorous, human-in-the-loop verification of low-level Rust programs, ensuring
+    correctness of safety-critical properties like data-race freedom and memory integrity
+    beyond Rust''s built-in guarantees.'
+  ai_score: 9
+  ai_reason: The paper directly addresses memory safety, type systems, formal semantics,
+    and program analysis for Rust, aligning closely with the researcher's focus areas.
+  updated: '2026-02-25T16:25:04Z'
+  published: '2026-02-25T16:25:04Z'
+  pdf_url: https://arxiv.org/pdf/2602.22075v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.LO
