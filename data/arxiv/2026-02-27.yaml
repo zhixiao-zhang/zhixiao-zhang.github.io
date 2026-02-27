@@ -1,0 +1,62 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-02-27T14:01:30.459781+00:00'
+papers:
+- arxiv_id: 2602.23216v1
+  title: Array-Carrying Symbolic Execution for Function Contract Generation
+  authors:
+  - Weijie Lu
+  - Jingyu Ke
+  - Hongfei Fu
+  - Zhouyue Sun
+  - Yi Zhou
+  - Guoqiang Li
+  - Haokun Li
+  summary: Function contract generation is a classical problem in program analysis
+    that targets the automated analysis of functions in a program with multiple procedures.
+    The problem is fundamental in inter-procedural analysis where properties of functions
+    are first obtained via the generation of function contracts and then the generated
+    contracts are used as building blocks to analyze the whole program. Typical objectives
+    in function contract generation include pre-/post-conditions and assigns information
+    (that specifies the modification information over program variables and memory
+    segments during function execution). In programs with array manipulations, a crucial
+    point in function contract generation is the treatment of array segments that
+    imposes challenges in inferring invariants and assigns information over such segments.
+    To address this challenge, we propose a novel symbolic execution framework that
+    carries invariants and assigns information over contiguous segments of arrays.
+    We implement our framework as a prototype within LLVM, and further integrate our
+    prototype with the ACSL assertion format and the Frama-C software verification
+    platform. Experimental evaluation over a variety of benchmarks from the literature
+    and functions from realistic libraries shows that our framework is capable of
+    handling array manipulating functions that indeed involve the carry of array information
+    and are beyond existing approaches.
+  tldr: '- The paper addresses the challenge of automatically generating precise function
+    contracts (pre-/post-conditions and modification summaries) for programs that
+    manipulate arrays, where existing methods struggle to track invariants and modifications
+    over specific array segments.
+
+
+    - It introduces a symbolic execution technique that explicitly tracks and propagates
+    invariants and modification summaries for contiguous segments of arrays as the
+    analysis proceeds, enabling accurate reasoning about partial array updates.
+
+
+    - This matters because it allows automated verification tools to soundly analyze
+    low-level, array-intensive code (common in systems software) by generating correct
+    contracts, which is essential for scaling formal methods to prove memory safety
+    and functional correctness in inter-procedural analysis.'
+  ai_score: 9
+  ai_reason: The paper directly addresses function contract generation for programs
+    with array manipulations, which is a core program analysis task intersecting memory
+    safety (spatial safety via array segment analysis), type systems (via invariants),
+    and formal semantics (via symbolic execution and contract specification), aligning
+    closely with the researcher's focus areas.
+  updated: '2026-02-26T17:00:10Z'
+  published: '2026-02-26T17:00:10Z'
+  pdf_url: https://arxiv.org/pdf/2602.23216v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.LO
+  - cs.SE
