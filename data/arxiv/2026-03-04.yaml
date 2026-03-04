@@ -1,0 +1,93 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-04T14:00:24.150275+00:00'
+papers:
+- arxiv_id: 2510.25015v4
+  title: 'VeriStruct: AI-assisted Automated Verification of Data-Structure Modules
+    in Verus'
+  authors:
+  - Chuyue Sun
+  - Yican Sun
+  - Daneshvar Amrollahi
+  - Ethan Zhang
+  - Shuvendu Lahiri
+  - Shan Lu
+  - David Dill
+  - Clark Barrett
+  summary: We introduce VeriStruct, a novel framework that extends AI-assisted automated
+    verification from single functions to more complex data structure modules in Verus.
+    VeriStruct employs a planner module to orchestrate the systematic generation of
+    abstractions, type invariants, specifications, and proof code. To address the
+    challenge that LLMs often misunderstand Verus' annotation syntax and verification-specific
+    semantics, VeriStruct embeds syntax guidance within prompts and includes a repair
+    stage to automatically correct annotation errors. In an evaluation on eleven Rust
+    data structure modules, VeriStruct succeeds on ten of the eleven, successfully
+    verifying 128 out of 129 functions (99.2%) in total. These results represent an
+    important step toward the goal of automatic AI-assisted formal verification.
+  tldr: '- Addresses the difficulty of using large language models to automatically
+    verify complex data structure modules in Verus, as LLMs often misinterpret the
+    tool''s specialized annotation syntax and verification semantics.
+
+    - Embeds syntax guidance into prompts and adds an automated repair stage to correct
+    annotation errors, orchestrating the generation of abstractions, type invariants,
+    and proof code.
+
+    - Matters because it automates formal verification for entire data-structure modules
+    (not just single functions), directly improving the assurance of memory safety
+    and correctness in low-level systems code written in Rust.'
+  ai_score: 8
+  ai_reason: The paper directly addresses program analysis, formal semantics, and
+    verification in Rust, which are central to memory, spatial, and temporary safety
+    through automated type invariants and proof generation, aligning closely with
+    the researcher's focus areas.
+  updated: '2026-03-03T18:26:58Z'
+  published: '2025-10-28T22:28:37Z'
+  pdf_url: https://arxiv.org/pdf/2510.25015v4
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+  - cs.AI
+- arxiv_id: 2603.03141v1
+  title: Efficient Dynamic Algorithms to Predict Short Races
+  authors:
+  - Minjian Zhang
+  - Mahesh Viswanathan
+  summary: 'We introduce and study the problem of detecting short races in an observed
+    trace. Specifically, for a race type $R$, given a trace $σ$ and window size $w$,
+    the task is to determine whether there exists an $R$-race $(e_1, e_2)$ in $σ$
+    such that the subtrace starting with $e_1$ and ending with $e_2$ contains at most
+    $w$ events. We present a monitoring framework for short-race prediction and instantiate
+    the framework for happens-before and sync-preserving races, yielding efficient
+    detection algorithms. Our happens-before algorithm runs in the same time as FastTrack
+    but uses space that scales with $\log w$ as opposed to $\log |σ|$. For sync-preserving
+    races, our algorithm runs faster and consumes significantly less space than SyncP.
+    Our experiments validate the effectiveness of these short-race detection algorithms:
+    they run more efficiently, use less memory, and detect significantly more races
+    under the same budget, offering a reasonable balance between resource usage and
+    predictive power.'
+  tldr: '- Addresses the problem of detecting short data races in concurrent program
+    traces, where existing dynamic race detectors can be inefficient or miss races
+    that occur within small windows of events, limiting their practical use in continuous
+    monitoring or resource-constrained environments.
+
+    - Proposes a monitoring framework that focuses on races where the two conflicting
+    events are within a bounded window size \( w \), and provides efficient algorithms
+    for happens-before and sync-preserving race detection that optimize space usage
+    to scale with \( \log w \) rather than the full trace length.
+
+    - Improves memory safety and system security by enabling more scalable and effective
+    dynamic race detection, allowing for real-time or long-term monitoring with lower
+    overhead, which helps identify concurrency bugs that could lead to crashes, data
+    corruption, or security vulnerabilities in low-level systems.'
+  ai_score: 8
+  ai_reason: The paper presents dynamic algorithms for predicting data races, which
+    directly addresses memory safety, program analysis, and sanitizer techniques,
+    aligning with the researcher's focus on detecting concurrency-related safety violations.
+  updated: '2026-03-03T16:28:31Z'
+  published: '2026-03-03T16:28:31Z'
+  pdf_url: https://arxiv.org/pdf/2603.03141v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.DS
