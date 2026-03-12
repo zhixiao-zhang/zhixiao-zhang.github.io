@@ -1,0 +1,51 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-12T14:05:24.650900+00:00'
+papers:
+- arxiv_id: 2603.10840v1
+  title: 'MAD: Memory Allocation meets Software Diversity'
+  authors:
+  - Manuel Wiesinger
+  - Daniel Dorfmeister
+  - Stefan Brunthaler
+  summary: Vulnerabilities emanating from DRAM errors pose a vexing problem that remains,
+    as of yet, unsolved and elusive but cannot be ignored. Prior defenses focused
+    on specific details of early RowHammer attacks and fail to generalize with the
+    generalizations of recent RowHammer attacks. Even worse, it is presently not clear
+    that techniques from prior defenses will be able to cope with these generalizations
+    or if an entirely new approach is required. Although still work-in-progress, we
+    have identified a new approach that combines memory allocation with principles
+    underlying software diversity and shows promising early results. At first glance,
+    software diversity seems to be an unlikely contender, since it faces seemingly
+    insurmountable obstacles, primarily the lack of sufficient entropy in memory subsystems.
+    Our system - called MAD, short for memory allocation diversity - leverages two
+    novel, complementary spatial diversification techniques to overcome this entropy
+    obstacle. Entropy aside, MAD offers ease-of-implementation, negligible performance
+    impact, and is both hardware and software agnostic. From a security perspective,
+    MAD's goal is to deter RowHammer attacks by delaying them to the maximum extent
+    possible. Such a delay opens the door for a variety of additional responses, e.g.,
+    proactive rebooting, or complementary in-depth analysis of ongoing attacks that
+    would be too slow for an always-on defense.
+  tldr: '- Addresses the risk of generalized RowHammer attacks exploiting DRAM errors,
+    which prior defenses fail to cover due to their focus on early, specific attack
+    patterns.
+
+    - Introduces MAD, a system that combines memory allocation with software diversity,
+    using two spatial diversification techniques to create sufficient entropy in memory
+    layouts despite subsystem limitations.
+
+    - Enhances memory safety by delaying RowHammer attacks significantly, enabling
+    proactive responses like system reboots or detailed attack analysis, without requiring
+    hardware changes or incurring performance costs.'
+  ai_score: 7
+  ai_reason: The paper's focus on memory allocation and spatial diversification for
+    mitigating DRAM vulnerabilities like RowHammer relates to memory safety and program
+    analysis, though it does not directly address type systems, formal semantics,
+    or Rust.
+  updated: '2026-03-11T14:47:34Z'
+  published: '2026-03-11T14:47:34Z'
+  pdf_url: https://arxiv.org/pdf/2603.10840v1
+  primary_category: cs.CR
+  categories:
+  - cs.CR
