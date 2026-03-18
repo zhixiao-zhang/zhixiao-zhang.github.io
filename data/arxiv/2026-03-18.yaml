@@ -1,0 +1,62 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-18T14:23:18.880155+00:00'
+papers:
+- arxiv_id: 2603.16437v1
+  title: 'Dimensional Type Systems and Deterministic Memory Management: Design-Time
+    Semantic Preservation in Native Compilation'
+  authors:
+  - Houston Haynes
+  summary: 'We present a compilation framework in which dimensional type annotations
+    persist through multi-stage MLIR lowering, enabling the compiler to jointly resolve
+    numeric representation selection and deterministic memory management as coeffect
+    properties of a single program semantic graph (PSG). Dimensional inference determines
+    value ranges; value ranges determine representation selection; representation
+    selection determines word width and memory footprint; and memory footprint, combined
+    with escape classification, determines allocation strategy and cross-target transfer
+    fidelity. The Dimensional Type System (DTS) extends Hindley-Milner unification
+    with constraints drawn from finitely generated abelian groups, yielding inference
+    that is decidable in polynomial time, complete, and principal. Where conventional
+    systems erase dimensional annotations before code generation, DTS carries them
+    as compilation metadata through each lowering stage, making them available where
+    representation and memory placement decisions occur. Deterministic Memory Management
+    (DMM), formalized as a coeffect discipline within the same graph, unifies escape
+    analysis and memory placement with the dimensional framework. Escape analysis
+    classifies value lifetimes into four categories (stack-scoped, closure-captured,
+    return-escaping, byref-escaping), each mapping to a verified allocation strategy.
+    We identify implications for auto-differentiation: the dimensional algebra is
+    closed under the chain rule, and forward-mode gradient computation exhibits a
+    coeffect signature that the framework can verify. The practical consequence is
+    a development environment where escape diagnostics, allocation strategy, representation
+    fidelity, and cache locality estimation are design-time views over the compilation
+    graph.'
+  tldr: "- Addresses the gap where compilers discard type-level dimensional information\
+    \ early, preventing joint optimization of numeric representation selection and\
+    \ deterministic memory management based on value ranges and lifetimes.  \n- Introduces\
+    \ a Dimensional Type System (DTS) that extends Hindley-Milner with constraints\
+    \ from finitely generated abelian groups, enabling persistent dimensional annotations\
+    \ through MLIR lowering stages to guide representation and memory decisions. \
+    \ \n- Unifies escape analysis and memory placement via a coeffect discipline (Deterministic\
+    \ Memory Management), classifying value lifetimes into four categories to map\
+    \ each to a verified allocation strategy, ensuring memory safety and predictable\
+    \ low-level behavior.  \n- Enables design-time verification of memory allocation\
+    \ strategies, representation fidelity, and cache locality, directly impacting\
+    \ system security by eliminating memory errors through deterministic management\
+    \ and improving performance via precise representation selection."
+  ai_score: 9
+  ai_reason: The paper directly addresses memory safety (via deterministic memory
+    management and escape analysis), spatial safety (via memory footprint and allocation
+    strategies), type systems (via a dimensional type system), program analysis (via
+    inference and coeffect analysis), formal semantics (via semantic preservation
+    and a formalized coeffect discipline), and abstract interpretation (via value
+    range analysis and escape classification), aligning closely with the researcher's
+    focus areas.
+  updated: '2026-03-17T12:19:07Z'
+  published: '2026-03-17T12:19:07Z'
+  pdf_url: https://arxiv.org/pdf/2603.16437v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - math.CT
+  - math.LO
