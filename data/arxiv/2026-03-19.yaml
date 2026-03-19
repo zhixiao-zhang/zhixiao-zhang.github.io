@@ -1,0 +1,62 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-19T14:09:31.785582+00:00'
+papers:
+- arxiv_id: 2508.20866v6
+  title: 'AVIATOR: Towards AI-Agentic Vulnerability Injection Workflow for High-Fidelity,
+    Large-Scale Code Security Dataset'
+  authors:
+  - Amine Lbath
+  - Massih-Reza Amini
+  - Aurelien Delaitre
+  - Vadim Okun
+  summary: The increasing complexity of software systems and the sophistication of
+    cyber-attacks have underscored the need for reliable automated software vulnerability
+    detection. Data-driven approaches using deep learning models show promise but
+    critically depend on the availability of large, accurately labeled datasets. Yet
+    existing datasets either suffer from noisy labels, limited vulnerability coverage,
+    or fail to reflect vulnerabilities as they occur in real-world software. This
+    also limits large-scale benchmarking of such solutions. Automated vulnerability
+    injection provides a way to address these limitations, but existing techniques
+    remain limited in coverage, contextual fidelity, or injection success. In this
+    paper, we present AVIATOR, the first AI-agentic vulnerability injection framework.
+    AVIATOR decomposes vulnerability injection into a coordinated workflow of specialized
+    AI agents, tool-based analysis, and iterative self-correction, explicitly mirroring
+    expert reasoning. It integrates RAG and lightweight LoRA-based fine-tuning to
+    produce realistic, category-specific vulnerabilities without relying on handcrafted
+    patterns. Across three benchmarks, AVIATOR achieves high injection fidelity (91-95%)
+    surpassing existing injection techniques in both accuracy and vulnerability coverage.
+    When used for data augmentation to train deep learning-based vulnerability detection
+    (DLVD) models, AVIATOR provides the strongest downstream gains in vulnerability
+    detection. Across models and base datasets, AVIATOR improves average F1 scores
+    by +22% over no augmentation, +25% over VGX, holding the prior best injection
+    success rate, and +3% over VulScribeR, the prior state-of-the-art LLM-based injection
+    model, with +7% higher recall and no precision loss. Its augmented data exhibits
+    the lowest distributional distortion and scales efficiently with <2% syntax rejection
+    at 4.3x lower cost than VulScribeR.
+  tldr: '- Addresses the lack of large, realistic, and accurately labeled code vulnerability
+    datasets needed to train effective deep-learning vulnerability detection models,
+    which current datasets fail to provide due to noise, limited coverage, or low
+    real-world fidelity.
+
+    - Uses a multi-agent AI framework where specialized agents, guided by retrieval-augmented
+    generation (RAG) and fine-tuned with LoRA, collaboratively analyze code and inject
+    context-aware vulnerabilities by mimicking expert reasoning, without relying on
+    predefined patterns.
+
+    - Produces high-fidelity synthetic vulnerabilities (91–95% success) that improve
+    downstream detection models, boosting F1 scores by up to 25% over prior methods,
+    thereby enhancing the reliability of automated security auditing and memory-safety
+    analysis tools.'
+  ai_score: 7
+  ai_reason: The paper focuses on generating realistic code vulnerabilities for training
+    detection models, which directly supports program analysis and sanitizer development
+    for memory, spatial, and temporal safety.
+  updated: '2026-03-18T15:39:54Z'
+  published: '2025-08-28T14:59:39Z'
+  pdf_url: https://arxiv.org/pdf/2508.20866v6
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.AI
