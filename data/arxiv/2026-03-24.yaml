@@ -1,0 +1,158 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-24T14:20:32.000828+00:00'
+papers:
+- arxiv_id: 2603.22114v1
+  title: Lemma Discovery in Agentic Program Verification
+  authors:
+  - Huan Zhao
+  - Haoxin Tu
+  - Zhengyao Liu
+  - Martin Rinard
+  - Abhik Roychoudhury
+  summary: "Deductive verification provides strong correctness guarantees for code\
+    \ by extracting verification conditions (VCs) and writing formal proofs for them.\
+    \ The expertise-intensive task of VC proving is the main bottleneck in this process,\
+    \ and has been partly automated owing to recent advances in Large Language Model\
+    \ (LLM) agents. However, existing proof agents are not able to discover helper\
+    \ lemmas - auxiliary lemmas that aid in proving - and thus fall short as programs\
+    \ grow in size and complexity.\n  In this paper, we argue that VC proving for\
+    \ program verification is more than a purely mathematical task, and benefits considerably\
+    \ from program comprehension. Our key insight is that human-proof engineers often\
+    \ discover and apply helper lemmas based on their understanding of the program\
+    \ semantics, which are not directly reflected in the VCs produced by VC generators.\
+    \ Inspired by this insight, we propose an LLM agent, LemmaNet, that discovers\
+    \ helper lemmas in two ways. Specifically, the agent first synthesizes lemmas\
+    \ offline by directly analyzing the source code and specifications, and then relating\
+    \ this semantic understanding to the mechanical, verbose encoding produced by\
+    \ VC generators. As the proof unfolds, LemmaNet then adapts existing helper lemmas\
+    \ online to accommodate evolving proof states, enabling the agent to effectively\
+    \ discharge complex VCs on-the-fly.\n  We evaluate LemmaNet on SV-COMP and established\
+    \ real-world subjects, including modules of the Linux kernel, Contiki OS, standard\
+    \ C++ library, and X.509 parser. Our experimental results demonstrate that LemmaNet\
+    \ significantly outperforms state-of-the-art approaches, highlighting the importance\
+    \ of program comprehension-aided lemma discovery in agentic program verification."
+  tldr: '- **Problem:** Deductive verification stalls when proving complex verification
+    conditions (VCs) because automated agents cannot discover the necessary helper
+    lemmas, which are auxiliary facts derived from understanding the program''s semantics,
+    not just its mathematical encoding.
+
+
+    - **Core method:** LemmaNet is an LLM agent that discovers helper lemmas in two
+    stages: offline, by analyzing source code and specifications to synthesize lemmas
+    linked to the program''s meaning, and online, by adapting existing lemmas dynamically
+    as the proof state changes during verification.
+
+
+    - **Security impact:** By automating lemma discovery, the method scales deductive
+    verification to larger, real-world systems (like OS kernels and parsers), directly
+    improving the ability to formally guarantee memory safety and correctness in critical
+    low-level software, reducing security risks from undetected bugs.'
+  ai_score: 8
+  ai_reason: The paper directly addresses program verification and proof automation
+    using formal semantics and program analysis, which are core to ensuring memory,
+    spatial, and temporal safety in systems like Rust.
+  updated: '2026-03-23T15:42:07Z'
+  published: '2026-03-23T15:42:07Z'
+  pdf_url: https://arxiv.org/pdf/2603.22114v1
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+- arxiv_id: 2603.22048v1
+  title: Dynamic analysis enhances issue resolution
+  authors:
+  - Mingwei Liu
+  - Zihao Wang
+  - Zhenxi Chen
+  - Zheng Pei
+  - Yanlin Wang
+  - Zibin Zheng
+  summary: "Translating natural language descriptions into viable code fixes remains\
+    \ a fundamental challenge in software engineering. While the proliferation of\
+    \ agentic large language models (LLMs) has vastly improved automated repository-level\
+    \ debugging, current frameworks hit a ceiling when dealing with sophisticated\
+    \ bugs like implicit type degradations and complex polymorphic control flows.\
+    \ Because these methods rely heavily on static analysis and superficial execution\
+    \ feedback, they lack visibility into intermediate runtime states. Consequently,\
+    \ agents are forced into costly, speculative trial-and-error loops, wasting computational\
+    \ tokens without successfully isolating the root cause.\n  To bridge this gap,\
+    \ we propose DAIRA (Dynamic Analysis-enhanced Issue Resolution Agent), a pioneering\
+    \ automated repair framework that natively embeds dynamic analysis into the agent's\
+    \ reasoning cycle. Driven by a Test Tracing-Driven methodology, DAIRA utilizes\
+    \ lightweight monitors to extract critical runtime data -- such as variable mutations\
+    \ and call stacks -- and synthesizes them into structured semantic reports. This\
+    \ mechanism fundamentally shifts the agent's behavior from blind guesswork to\
+    \ evidence-based, deterministic deduction. When powered by Gemini 3 Flash Preview,\
+    \ DAIRA establishes a new state-of-the-art (SOTA) performance, achieving a 79.4%\
+    \ resolution rate on the SWE-bench Verified dataset. Compared to existing baselines,\
+    \ our framework not only conquers highly complex defects but also cuts overall\
+    \ inference expenses by roughly 10% and decreases input token consumption by approximately\
+    \ 25%."
+  tldr: '- **Problem:** Automated code repair using LLMs often fails on complex bugs
+    (e.g., implicit type errors, polymorphic flows) because it lacks visibility into
+    program runtime behavior, leading to inefficient, speculative guessing.
+
+
+    - **Core Method:** The DAIRA framework integrates lightweight dynamic analysis
+    into the repair agent''s cycle. It uses test tracing to monitor and report runtime
+    data (variable mutations, call stacks), turning the agent''s process into evidence-based
+    deduction.
+
+
+    - **Security/Safety Impact:** By enabling precise, deterministic bug diagnosis
+    and repair, this method directly improves memory and system safety by reliably
+    fixing the root causes of subtle, runtime-dependent vulnerabilities that static
+    analysis alone misses.'
+  ai_score: 7
+  ai_reason: The paper's focus on dynamic analysis for automated bug repair directly
+    engages with program analysis, sanitizer-like monitoring, and memory/temporal/spatial
+    safety issues through runtime state visibility, though it does not explicitly
+    address Rust, type systems, or formal semantics.
+  updated: '2026-03-23T14:48:54Z'
+  published: '2026-03-23T14:48:54Z'
+  pdf_url: https://arxiv.org/pdf/2603.22048v1
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+- arxiv_id: 2603.22032v1
+  title: 'Set-Theoretic Types for Erlang: Theory, Implementation, and Evaluation'
+  authors:
+  - Albert Schimpf
+  - Stefan Wehr
+  - Annette Bieniusa
+  summary: Erlang's dynamic typing discipline can lead to runtime errors that persist
+    even after process restarts. Some of these runtime errors could be prevented through
+    static type checking. While Erlang provides a type specification language, the
+    compiler does not enforce these types, thereby limiting their role to documentation
+    purposes. Type checking Erlang code is challenging due to language features such
+    as dynamic type tests, subtyping, equi-recursive types, polymorphism, intersection
+    types in signatures, and untagged union types. This work presents a set-theoretic
+    type system for Erlang which captures the core features of Erlang's existing type
+    language. The formal type system guarantees type soundness, and ensures that type
+    checking remains decidable. Additionally, an implementation of a type checker
+    is provided, supporting all features of the Erlang type language and most term-level
+    language constructs. A case study with modules from Erlang's standard library,
+    an external project, and the type checker itself demonstrates its effectiveness
+    in verifying real-world Erlang code.
+  tldr: '- Addresses Erlang''s lack of enforced static typing, which allows runtime
+    type errors to persist across process restarts, reducing reliability in concurrent
+    systems.
+
+    - Uses a set-theoretic type system with subtyping, union/intersection types, and
+    recursive types to statically check Erlang''s dynamic type tests and specifications
+    without requiring code changes.
+
+    - Prevents memory-safety issues like badarg exceptions and process crashes by
+    catching type mismatches early, improving system stability in distributed, fault-tolerant
+    environments.'
+  ai_score: 7
+  ai_reason: The paper directly addresses type systems, type theory, and formal semantics
+    for a dynamic language, which are core to the researcher's focus on program analysis
+    and safety.
+  updated: '2026-03-23T14:36:41Z'
+  published: '2026-03-23T14:36:41Z'
+  pdf_url: https://arxiv.org/pdf/2603.22032v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
