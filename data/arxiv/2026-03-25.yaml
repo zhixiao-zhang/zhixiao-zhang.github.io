@@ -1,0 +1,50 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-25T14:19:52.782710+00:00'
+papers:
+- arxiv_id: 2603.23470v1
+  title: 'ConceptCoder: Improve Code Reasoning via Concept Learning'
+  authors:
+  - Md Mahbubur Rahman
+  - Hengbo Tong
+  - Wei Le
+  summary: 'Large language models (LLMs) have shown promising results for software
+    engineering applications, but still struggle with code reasoning tasks such as
+    vulnerability detection (VD). We introduce ConceptCoder, a fine-tuning method
+    that simulates human code inspection: models are trained to first recognize code
+    concepts and then perform reasoning on top of these concepts. In prior work, concepts
+    are extracted by multimodal models or LLMs to explain vision and natural language
+    models. Our work is the first to formulate concepts for code. We define code concepts
+    as human-understandable semantic properties of code and train models to learn
+    such concepts. Our evaluation shows that this approach significantly improves
+    VD accuracy, from 66.32 to 72.15 F1 on average over 9 open-source LLMs. ConceptCoder
+    achieves the best VD performance compared to state-of-the-art (SOTA) baselines,
+    including fine-tuned SOTA open-source LLMs and prompted proprietary models such
+    as GPT-5.2 and Claude-Opus-4.5. Our approach also scales: concepts defined from
+    four types of vulnerabilities benefit general vulnerability datasets with 134
+    CWEs. We further demonstrate that concept-based fine-tuning generalizes beyond
+    VD and improves branch prediction. We release our code and datasets at https://figshare.com/s/1decab8232c653b44f71.'
+  tldr: '- Addresses the gap where large language models (LLMs) struggle with accurate
+    code reasoning, specifically in vulnerability detection, due to a lack of structured
+    semantic understanding of code.
+
+    - Trains models via a two-step fine-tuning method: first to recognize human-understandable
+    semantic properties of code (called "code concepts"), then to perform reasoning
+    tasks using those concepts.
+
+    - Improves vulnerability detection accuracy (e.g., F1 score from 66.32 to 72.15
+    across models) by enabling more reliable, concept-guided analysis, directly enhancing
+    software security through better identification of memory safety flaws and other
+    low-level vulnerabilities.'
+  ai_score: 7
+  ai_reason: The paper introduces a method that improves code reasoning for vulnerability
+    detection, which directly relates to program analysis and security, but its focus
+    on LLM fine-tuning and concept learning is tangential to core systems safety and
+    formal methods topics like type systems and formal semantics.
+  updated: '2026-03-24T17:37:32Z'
+  published: '2026-03-24T17:37:32Z'
+  pdf_url: https://arxiv.org/pdf/2603.23470v1
+  primary_category: cs.SE
+  categories:
+  - cs.SE
