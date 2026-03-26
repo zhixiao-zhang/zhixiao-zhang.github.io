@@ -1,0 +1,91 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-26T14:26:26.906490+00:00'
+papers:
+- arxiv_id: 2603.24468v1
+  title: Nominal Automata with Name Deallocation
+  authors:
+  - Simon Prucker
+  - Stefan Milius
+  - Lutz Schröder
+  summary: Data words with binders formalize concurrently allocated memory. Most name-binding
+    mechanisms in formal languages, such as the $λ$-calculus, adhere to properly nested
+    scoping. In contrast, stateful programming languages with explicit memory allocation
+    and deallocation, such as C, commonly interleave the scopes of allocated memory
+    regions. This phenomenon is captured in dedicated formalisms such as dynamic sequences
+    and bracket algebra, which similarly feature explicit allocation and deallocation
+    of letters. One of the classical formalisms for data languages are register automata,
+    which have been shown to be equivalent to automata models over nominal sets. In
+    the present work, we introduce a nominal automaton model for languages of data
+    words with explicit allocation and deallocation that strongly resemble dynamic
+    sequences, extending existing nominal automata models by adding deallocating transitions.
+    Using a finite NFA-type representation of the model, we establish a Kleene theorem
+    that shows equivalence with a natural expression language. Moreover, we show that
+    our non-deterministic model allows for determinization, a quite unusual phenomenon
+    in the realm of nominal and register automata.
+  tldr: "- Addresses the modeling gap for memory allocation/deallocation patterns\
+    \ in languages like C, where scopes are interleaved rather than nested, unlike\
+    \ formal models such as λ-calculus.  \n- Introduces nominal automata with deallocating\
+    \ transitions that explicitly handle allocation and deallocation of names in data\
+    \ words, enabling a finite NFA-style representation.  \n- Provides a deterministic\
+    \ model for memory-safe reasoning about low-level programs, bridging formal verification\
+    \ and real-world systems with explicit memory management."
+  ai_score: 7
+  ai_reason: The paper introduces a nominal automaton model for data words with explicit
+    allocation and deallocation, directly addressing memory safety, spatial safety,
+    and formal semantics relevant to stateful programming languages like C, and connects
+    to program analysis and abstract interpretation through automata theory.
+  updated: '2026-03-25T16:13:29Z'
+  published: '2026-03-25T16:13:29Z'
+  pdf_url: https://arxiv.org/pdf/2603.24468v1
+  primary_category: cs.FL
+  categories:
+  - cs.FL
+- arxiv_id: 2511.08462v4
+  title: 'QLCoder: A Query Synthesizer For Static Analysis of Security Vulnerabilities'
+  authors:
+  - Claire Wang
+  - Ziyang Li
+  - Saikat Dutta
+  - Mayur Naik
+  summary: Static analysis tools provide a powerful means to detect security vulnerabilities
+    by specifying queries that encode vulnerable code patterns. However, writing such
+    queries is challenging and requires diverse expertise in security and program
+    analysis. To address this challenge, we present QLCoder - an agentic framework
+    that automatically synthesizes queries in CodeQL, a powerful static analysis engine,
+    directly from a given CVE metadata. QLCode embeds an LLM in a synthesis loop with
+    execution feedback, while constraining its reasoning using a custom MCP interface
+    that allows structured interaction with a Language Server Protocol (for syntax
+    guidance) and a RAG database (for semantic retrieval of queries and documentation).
+    This approach allows QLCoder to generate syntactically and semantically valid
+    security queries. We evaluate QLCode on 176 existing CVEs across 111 Java projects.
+    Building upon the Claude Code agent framework, QLCoder synthesizes correct queries
+    that detect the CVE in the vulnerable but not in the patched versions for 53.4%
+    of CVEs. In comparison, using only Claude Code synthesizes 10% correct queries.
+    QLCoder code is available publicly at https://github.com/neuralprogram/QLCoder.
+  tldr: '- **Problem**: Manually writing static analysis queries to detect security
+    vulnerabilities from CVEs requires deep expertise in both security and program
+    analysis, creating a high barrier to effective use of tools like CodeQL.
+
+    - **Method**: QLCoder uses an LLM in a feedback-driven synthesis loop, guided
+    by a structured interface that provides syntax validation via a Language Server
+    Protocol and retrieves relevant query examples and documentation from a RAG database
+    to generate CodeQL queries automatically from CVE metadata.
+
+    - **Impact**: This automation significantly increases the ability to produce precise,
+    executable detection rules for known vulnerabilities, directly enhancing proactive
+    security auditing and reducing the time and skill needed to harden codebases against
+    memory safety and other low-level threats.'
+  ai_score: 8
+  ai_reason: The paper presents a system for automating the creation of static analysis
+    queries to detect security vulnerabilities, directly addressing program analysis,
+    pointer analysis, and sanitizer concerns within the researcher's focus areas.
+  updated: '2026-03-25T15:48:20Z'
+  published: '2025-11-11T17:06:04Z'
+  pdf_url: https://arxiv.org/pdf/2511.08462v4
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.PL
+  - cs.SE
