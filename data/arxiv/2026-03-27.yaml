@@ -1,0 +1,53 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-27T14:13:53.341298+00:00'
+papers:
+- arxiv_id: 2505.12118v2
+  title: Do Code LLMs Do Static Analysis?
+  authors:
+  - Chia-Yi Su
+  - Collin McMillan
+  summary: This paper investigates code LLMs' capability of static analysis during
+    code intelligence tasks such as code summarization and generation. Code LLMs are
+    now household names for their abilities to do some programming tasks that have
+    heretofore required people. The process that people follow to do programming tasks
+    has long been understood to require static analysis. For example, human programmers
+    navigate the call graph of large programs to comprehend the different parts of
+    those programs. Education in programming includes static analysis under the assumption
+    that better static analysis skills beget better programming. While popular culture
+    is replete with anthropomorphic references such as LLM ``reasoning'', in fact
+    code LLMs could exhibit a wholly alien thought process to humans. This paper studies
+    the specific question of static analysis by code LLMs. We use three different
+    static analysis tasks (callgraph generation, AST generation, and dataflow generation)
+    and three different code intelligence tasks (code generation, summarization, and
+    translation) with two different open-source models (Gemini and GPT-4o) and closed-source
+    models (CodeLlaMA and Jam) as our experiments. We found that LLMs show poor performance
+    on static analysis tasks and that pretraining on the static analysis tasks does
+    not generalize to better performance on the code intelligence tasks and vice versa.
+  tldr: '- The paper examines whether code LLMs can perform static analysis—like call
+    graph or dataflow generation—which is essential for human programmers to understand
+    and manipulate code, revealing a gap in LLMs'' ability to replicate this foundational
+    programming skill.
+
+
+    - The core method involves testing LLMs on three static analysis tasks (callgraph,
+    AST, and dataflow generation) and three code intelligence tasks (generation, summarization,
+    translation) using models like Gemini, GPT-4o, CodeLlaMA, and Jam, and evaluating
+    their performance and generalization.
+
+
+    - It matters because poor static analysis capability in LLMs limits their reliability
+    for secure, low-level programming; without accurately analyzing code structure
+    and dependencies, they may produce unsafe code, undermining memory safety and
+    system security in critical applications.'
+  ai_score: 7
+  ai_reason: The paper directly investigates static analysis, a core component of
+    program analysis, which is central to the researcher's focus on memory safety,
+    pointer analysis, and related areas.
+  updated: '2026-03-26T17:20:12Z'
+  published: '2025-05-17T18:55:40Z'
+  pdf_url: https://arxiv.org/pdf/2505.12118v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
