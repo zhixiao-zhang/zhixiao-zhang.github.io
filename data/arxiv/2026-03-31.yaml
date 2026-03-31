@@ -1,0 +1,59 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-03-31T14:27:32.138893+00:00'
+papers:
+- arxiv_id: 2603.28686v1
+  title: 'C2RustXW: Program-Structure-Aware C-to-Rust Translation via Program Analysis
+    and LLM'
+  authors:
+  - Yanyan Yan
+  - Yang Feng
+  - Jiangshan Liu
+  - Di Liu
+  - Zixi Liu
+  - Hao Teng
+  - Baowen Xu
+  summary: The growing adoption of Rust for its memory safety and performance has
+    increased the demand for effective migration of legacy C codebases. However, existing
+    rule-based translators (e.g., \ctorust) often generate verbose, non-idiomatic
+    code that preserves unsafe C semantics, limiting readability, maintainability,
+    and practical adoption. Moreover, manual post-processing of such outputs is labor-intensive
+    and rarely yields high-quality Rust code, posing a significant barrier to large-scale
+    migration. To address these limitations, we present \tool, a program-structure-aware
+    C-to-Rust translation approach that integrates program analysis with Large Language
+    Models (LLMs). \tool extracts the multi-level program structure, including global
+    symbols, function dependencies, and control- and data-flow information, and encodes
+    these as structured textual representations injected into LLM prompts to guide
+    translation and repair. Based on this design, \tool performs dependency-aware
+    translation and adopts a multi-stage repair pipeline that combines rule-based
+    and structure-guided LLM-based techniques to ensure syntactic correctness. For
+    semantic correctness, \tool further integrates execution-based validation with
+    structure-guided reasoning to localize and repair behavioral inconsistencies.
+    Experimental results show that \tool achieves 100\% syntactic correctness on CodeNet
+    and 97.78\% on GitHub, while significantly reducing code size (up to 43.70\%)
+    and unsafe usage (to 5.75\%). At the project level, \tool achieves perfect syntactic
+    correctness and an average semantic correctness of 78.87\%, demonstrating its
+    effectiveness for practical and scalable C-to-Rust migration.
+  tldr: '- Addresses the problem that automated C-to-Rust translators produce syntactically
+    correct but non-idiomatic, unsafe, and unmaintainable Rust code, which hinders
+    practical adoption of memory-safe Rust for legacy systems.
+
+    - Uses program analysis to extract control flow, data flow, and dependencies from
+    C code, then injects this structure into LLM prompts to guide translation and
+    a multi-stage repair pipeline for generating idiomatic Rust.
+
+    - Reduces unsafe code blocks in translated output to under 6% and shrinks code
+    size by up to 44%, directly enhancing memory safety and making large-scale migration
+    to a safer language feasible.'
+  ai_score: 8
+  ai_reason: The paper directly addresses memory safety in Rust via translation of
+    unsafe C code, employs program analysis including pointer and data-flow analysis
+    for semantic correctness, and integrates type systems and formal validation techniques
+    relevant to the researcher's focus.
+  updated: '2026-03-30T17:07:11Z'
+  published: '2026-03-30T17:07:11Z'
+  pdf_url: https://arxiv.org/pdf/2603.28686v1
+  primary_category: cs.SE
+  categories:
+  - cs.SE
