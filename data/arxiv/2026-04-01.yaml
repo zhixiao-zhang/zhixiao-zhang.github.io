@@ -1,0 +1,60 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-04-01T14:42:20.001917+00:00'
+papers:
+- arxiv_id: 2603.29800v1
+  title: Detecting speculative leaks with compositional semantics
+  authors:
+  - Xaver Fabian
+  - Marco Guarnieri
+  - Boris Köpf
+  - Jose F. Morales
+  - Marco Patrignani
+  - Jan Reineke
+  - Andres Sanchez
+  summary: Speculative execution enhances processor performance by predicting intermediate
+    results and executing instructions based on these predictions. However, incorrect
+    predictions can lead to security vulnerabilities, as speculative instructions
+    leave traces in microarchitectural components that attackers can exploit. This
+    is demonstrated by the family of Spectre attacks. Unfortunately, existing countermeasures
+    to these attacks lack a formal security characterization, making it difficult
+    to verify their effectiveness. In this paper, we propose a novel framework for
+    detecting information flows introduced by speculative execution and reasoning
+    about software defenses. The theoretical foundation of our approach is speculative
+    non-interference (SNI), a novel semantic notion of security against speculative
+    execution attacks. SNI relates information leakage observed under a standard non-speculative
+    semantics to leakage arising under semantics that explicitly model speculative
+    execution. To capture their combined effects, we extend our framework with a mechanism
+    to safely compose multiple speculative semantics, each focussing on a single aspect
+    of speculation. This allows us to analyze the complex interactions and resulting
+    leaks that can arise when multiple speculative mechanisms operate together. On
+    the practical side, we develop Spectector, a symbolic analysis tool that uses
+    our compositional framework and leverages SMT solvers to detect vulnerabilities
+    and verify program security with respect to multiple speculation mechanisms. We
+    demonstrate the effectiveness of Spectector through evaluations on standard security
+    benchmarks and new vulnerability scenarios.
+  tldr: '- The paper addresses the lack of formal security guarantees for defenses
+    against speculative execution attacks like Spectre, which exploit microarchitectural
+    traces from incorrect CPU predictions to leak sensitive data.
+
+    - It introduces speculative non-interference (SNI) as a formal security definition
+    and a compositional framework that models multiple speculation mechanisms together,
+    implemented in a tool called Spectector that uses symbolic execution and SMT solvers
+    to detect leaks.
+
+    - This matters because it provides a rigorous method to verify whether software
+    is secure against speculative side-channels, enabling systematic vulnerability
+    detection and defense validation in low-level systems where memory safety failures
+    can be exploited across hardware optimizations.'
+  ai_score: 8
+  ai_reason: The paper introduces a formal semantics (speculative non-interference)
+    and a program analysis tool (Spectector) for detecting security vulnerabilities
+    related to speculative execution, directly addressing memory safety and program
+    analysis within a security context.
+  updated: '2026-03-31T14:32:12Z'
+  published: '2026-03-31T14:32:12Z'
+  pdf_url: https://arxiv.org/pdf/2603.29800v1
+  primary_category: cs.CR
+  categories:
+  - cs.CR
