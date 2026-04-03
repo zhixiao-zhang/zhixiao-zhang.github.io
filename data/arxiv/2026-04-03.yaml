@@ -1,0 +1,316 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-04-03T14:03:46.402691+00:00'
+papers:
+- arxiv_id: 2603.16437v2
+  title: 'Dimensional Type Systems and Deterministic Memory Management: Design-Time
+    Semantic Preservation in Native Compilation'
+  authors:
+  - Houston Haynes
+  summary: 'We present a compilation framework in which dimensional type annotations
+    persist through multi-stage MLIR lowering, enabling the compiler to jointly resolve
+    numeric representation selection and deterministic memory management as coeffect
+    properties of a single program semantic graph (PSG). Dimensional inference determines
+    value ranges; value ranges determine representation selection; representation
+    selection determines word width and memory footprint; and memory footprint, combined
+    with escape classification, determines allocation strategy and cross-target transfer
+    fidelity. The Dimensional Type System (DTS) extends Hindley-Milner unification
+    with constraints drawn from finitely generated abelian groups, yielding inference
+    that is decidable in polynomial time, complete, and principal. Where conventional
+    systems erase dimensional annotations before code generation, DTS carries them
+    as compilation metadata through each lowering stage, making them available where
+    representation and memory placement decisions occur. Deterministic Memory Management
+    (DMM), formalized as a coeffect discipline within the same graph, unifies escape
+    analysis and memory placement with the dimensional framework. Escape analysis
+    classifies value lifetimes into four categories (stack-scoped, closure-captured,
+    return-escaping, byref-escaping), each mapping to a verified allocation strategy.
+    We identify implications for auto-differentiation: the dimensional algebra is
+    closed under the chain rule, and forward-mode gradient computation exhibits a
+    coeffect signature that the framework can verify. The practical consequence is
+    a development environment where escape diagnostics, allocation strategy, representation
+    fidelity, and cache locality estimation are design-time views over the compilation
+    graph.'
+  tldr: '- Addresses the problem that traditional compilers discard type-level dimensional
+    and escape information before code generation, forcing late-stage heuristic choices
+    for memory layout and representation that can introduce memory-safety risks or
+    inefficiencies.
+
+
+    - Uses a Dimensional Type System (DTS) that persists dimensional annotations (like
+    value ranges) through all compilation stages and couples it with a deterministic
+    memory management (DMM) coeffect system to jointly infer numeric representations
+    and provably safe allocation strategies based on escape analysis.
+
+
+    - Matters for system security and memory safety because it replaces heuristic,
+    error-prone memory management with compile-time-verified allocation strategies
+    (e.g., stack vs. heap) for different lifetime categories, preventing use-after-free
+    or bounds violations, and ensures representation choices preserve semantic fidelity
+    across targets.'
+  ai_score: 9
+  ai_reason: The paper directly addresses memory safety, spatial safety, type systems,
+    program analysis, formal semantics, and abstract interpretation through its Dimensional
+    Type System and Deterministic Memory Management framework, which unifies type
+    inference, escape analysis, and memory placement for deterministic resource management.
+  updated: '2026-04-02T16:04:27Z'
+  published: '2026-03-17T12:19:07Z'
+  pdf_url: https://arxiv.org/pdf/2603.16437v2
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - math.CT
+  - math.LO
+- arxiv_id: 2603.27224v2
+  title: Finding Memory Leaks in C/C++ Programs via Neuro-Symbolic Augmented Static
+    Analysis
+  authors:
+  - Huihui Huang
+  - Jieke Shi
+  - Bo Wang
+  - Zhou Yang
+  - David Lo
+  summary: Memory leaks remain prevalent in real-world C/C++ software. Static analyzers
+    such as CodeQL provide scalable program analysis but frequently miss such bugs
+    because they cannot recognize project-specific custom memory-management functions
+    and lack path-sensitive control-flow modeling. We present MemHint, a neuro-symbolic
+    pipeline that addresses both limitations by combining LLMs' semantic understanding
+    of code with Z3-based symbolic reasoning. MemHint parses the target codebase and
+    applies an LLM to classify each function as a memory allocator, deallocator, or
+    neither, producing function summaries that record which argument or return value
+    carries memory ownership, extending the analyzer's built-in knowledge beyond standard
+    primitives such as malloc and free. A Z3-based validation step checks each summary
+    against the function's control-flow graph, discarding those whose claimed memory
+    operation is unreachable on any feasible path. The validated summaries are injected
+    into CodeQL and Infer via their respective extension mechanisms. Z3 path feasibility
+    filtering then eliminates warnings on infeasible paths, and a final LLM-based
+    validation step confirms whether each remaining warning is a genuine bug. On seven
+    real-world C/C++ projects totaling over 3.4M lines of code, MemHint detects 52
+    unique memory leaks (49 confirmed/fixed, 4 CVEs submitted) at approximately $1.7
+    per detected bug, compared to 19 by vanilla CodeQL and 3 by vanilla Infer.
+  tldr: '- Addresses static analyzers'' inability to detect memory leaks involving
+    custom memory-management functions and infeasible control-flow paths in C/C++
+    code.
+
+    - Uses an LLM to classify project-specific functions as allocators or deallocators,
+    validates summaries with Z3 symbolic reasoning, and integrates them into CodeQL/Infer
+    to improve path-sensitive analysis.
+
+    - Enables detection of real-world memory leaks that standard tools miss, reducing
+    manual effort and identifying security-critical bugs, as shown by finding 52 leaks
+    (including CVEs) in large codebases.'
+  ai_score: 7
+  ai_reason: The paper directly addresses memory safety in C/C++ via static program
+    analysis and pointer analysis, enhancing detection of memory leaks through neuro-symbolic
+    techniques, which aligns with the researcher's focus on memory safety, program
+    analysis, and sanitizers, though it does not cover type systems, Rust, or formal
+    semantics.
+  updated: '2026-04-02T16:04:03Z'
+  published: '2026-03-28T10:31:58Z'
+  pdf_url: https://arxiv.org/pdf/2603.27224v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+  - cs.CR
+- arxiv_id: 2601.22978v2
+  title: 'Triosecuris: Formally Verified Protection Against Speculative Control-Flow
+    Hijacking'
+  authors:
+  - Jonathan Baumann
+  - Yonghyun Kim
+  - Yan Farba
+  - Catalin Hritcu
+  - Julay Leatherman-Brooks
+  summary: 'This paper introduces Triosecuris, a formally verified defense against
+    Spectre BTB, RSB, and PHT that combines CET-style hardware-assisted control-flow
+    integrity with compiler-inserted speculative load hardening (SLH). Triosecuris
+    is based on the novel observation that in the presence of CET-style protection,
+    we can precisely detect BTB misspeculation for indirect calls and RSB misspeculation
+    for returns and set the SLH misspeculation flag. We formalize Triosecuris as a
+    transformation in Rocq and provide a machine-checked proof that it achieves relative
+    security: any transformed program running with speculation leaks no more than
+    what the source program leaks without speculation. This strong security guarantee
+    applies to arbitrary programs, even those not following the cryptographic constant-time
+    programming discipline.'
+  tldr: '- Addresses the risk of speculative control-flow hijacking attacks (Spectre-v2
+    variants like BTB, RSB, and PHT) that bypass traditional control-flow integrity
+    by exploiting CPU speculation.
+
+    - Combines CET-style hardware control-flow integrity with compiler-inserted speculative
+    load hardening (SLH), using hardware assistance to precisely detect misspeculation
+    on indirect calls and returns to trigger SLH''s defense mechanisms.
+
+    - Provides a formally verified guarantee that transformed programs leak no more
+    information under speculation than the original program does without speculation,
+    strengthening memory safety for arbitrary code without requiring constant-time
+    programming.'
+  ai_score: 8
+  ai_reason: The paper addresses memory safety and security against speculative execution
+    attacks via formal verification and program transformation, aligning with the
+    researcher's focus on memory safety, program analysis, formal semantics, and sanitizers.
+  updated: '2026-04-02T15:24:31Z'
+  published: '2026-01-30T13:42:43Z'
+  pdf_url: https://arxiv.org/pdf/2601.22978v2
+  primary_category: cs.CR
+  categories:
+  - cs.CR
+  - cs.PL
+- arxiv_id: 2601.17390v2
+  title: 'YASA: Scalable Multi-Language Taint Analysis on the Unified AST at Ant Group'
+  authors:
+  - Yayi Wang
+  - Shenao Wang
+  - Jian Zhao
+  - Shaosen Shi
+  - Ting Li
+  - Yan Cheng
+  - Lizhong Bian
+  - Kan Yu
+  - Yanjie Zhao
+  - Haoyu Wang
+  summary: Modern enterprises increasingly adopt diverse technology stacks with various
+    programming languages, posing significant challenges for static application security
+    testing (SAST). Existing taint analysis tools are predominantly designed for single
+    languages, requiring substantial engineering effort that scales with language
+    diversity. While multi-language tools like CodeQL, Joern, and WALA attempt to
+    address these challenges, they face limitations in intermediate representation
+    design, analysis precision, and extensibility, which make them difficult to scale
+    effectively for large-scale industrial applications at Ant Group. To bridge this
+    gap, we present YASA (Yet Another Static Analyzer), a unified multi-language static
+    taint analysis framework designed for industrial-scale deployment. Specifically,
+    YASA introduces the Unified Abstract Syntax Tree (UAST) that provides a unified
+    abstraction for compatibility across diverse programming languages. Building on
+    the UAST, YASA performs point-to analysis and taint propagation, leveraging a
+    unified semantic model to manage language-agnostic constructs, while incorporating
+    language-specific semantic models to handle other unique language features. When
+    compared to 6 single- and 2 multi-language static analyzers on an industry-standard
+    benchmark, YASA consistently outperformed all baselines across Java, JavaScript,
+    Python, and Go. In real-world deployment within Ant Group, YASA analyzed over
+    100 million lines of code across 7.3K internal applications. It identified 314
+    previously unknown taint paths, with 92 of them confirmed as 0-day vulnerabilities.
+    All vulnerabilities were responsibly reported, with 76 already patched by internal
+    development teams, demonstrating YASA's practical effectiveness for securing large-scale
+    industrial software systems.
+  tldr: '- Addresses the challenge of performing consistent, precise taint analysis
+    across multi-language enterprise codebases, where single-language tools create
+    high engineering overhead and existing multi-language tools lack scalability and
+    precision for industrial use.
+
+    - Introduces a Unified Abstract Syntax Tree (UAST) as a common intermediate representation,
+    enabling point-to analysis and taint propagation through a core language-agnostic
+    model augmented by pluggable, language-specific semantic models.
+
+    - Provides a scalable, unified framework that identified 92 confirmed zero-day
+    vulnerabilities in a 100-million-line industrial deployment, directly enhancing
+    memory and system security by finding unknown data-flow paths that lead to exploitable
+    flaws.'
+  ai_score: 8
+  ai_reason: The paper's focus on scalable multi-language taint analysis, unified
+    abstract syntax trees, and industrial-scale program analysis directly addresses
+    the researcher's interests in program analysis, pointer analysis, and static security
+    testing, though it has less direct emphasis on formal semantics, type theory,
+    and Rust-specific memory safety.
+  updated: '2026-04-02T08:36:02Z'
+  published: '2026-01-24T09:23:55Z'
+  pdf_url: https://arxiv.org/pdf/2601.17390v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+  - cs.CR
+  - cs.PL
+- arxiv_id: 2509.21629v3
+  title: 'Quokka: Accelerating Program Verification with LLMs via Invariant Synthesis'
+  authors:
+  - Anjiang Wei
+  - Tianran Sun
+  - Tarun Suresh
+  - Haoze Wu
+  - Ke Wang
+  - Alex Aiken
+  summary: Program verification relies on loop invariants, yet automatically discovering
+    strong invariants remains a long-standing challenge. We investigate whether large
+    language models (LLMs) can accelerate program verification by generating useful
+    loop invariants. We introduce Quokka, an evaluation-oriented framework for LLM-based
+    invariant synthesis that provides sound evaluation and achieves state-of-the-art
+    performance. Unlike prior work that treats LLM outputs as noisy symbolic material
+    requiring substantial post-processing, Quokka adopts a simpler and evaluation-centric
+    design that directly validates whether each LLM-generated invariant helps prove
+    the target assertion. We construct a benchmark of 866 instances derived from SV-COMP
+    and evaluate 9 state-of-the-art LLMs across multiple model families. We demonstrate
+    that supervised fine-tuning and Best-of-N sampling yield measurable improvements,
+    and we show that Quokka consistently outperforms prior LLM-based verifiers. Our
+    code and data are publicly available at https://github.com/Anjiang-Wei/Quokka
+  tldr: '- The problem is that automated program verification often fails at generating
+    strong loop invariants, which are essential for proving program correctness, especially
+    for complex loops.
+
+    - The core method is Quokka, a framework that uses large language models (LLMs)
+    to directly propose loop invariants and then rigorously checks each proposal with
+    a verifier to see if it suffices to prove the target program assertion.
+
+    - This matters for system security because reliable automated verification of
+    low-level code (e.g., in operating systems or cryptography) can catch memory safety
+    bugs and logic flaws before deployment, and LLMs can potentially make this verification
+    more practical and scalable.'
+  ai_score: 8
+  ai_reason: The paper directly addresses program verification, a core aspect of program
+    analysis, and its method of invariant synthesis relates to formal semantics and
+    type systems, aligning with the researcher's focus on automated reasoning for
+    safety and correctness.
+  updated: '2026-04-02T05:18:42Z'
+  published: '2025-09-25T21:47:02Z'
+  pdf_url: https://arxiv.org/pdf/2509.21629v3
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - cs.AI
+  - cs.CL
+  - cs.LG
+- arxiv_id: 2604.01442v1
+  title: Fuzzing with Agents? Generators Are All You Need
+  authors:
+  - Vasudev Vikram
+  - Rohan Padhye
+  summary: "Modern generator-based fuzzing techniques combine lightweight input generators\
+    \ with coverage-guided mutation as a method of exploring deep execution paths\
+    \ in a target program. A complimentary approach in prior research focuses on creating\
+    \ highly customized, domain-specific generators that encode structural and semantic\
+    \ logic sufficient enough to reach deep program states; the challenge comes from\
+    \ the overhead of writing and testing these complex generators. We investigate\
+    \ whether AI coding agents can automatically synthesize such target-specific generators,\
+    \ and whether the resulting generators are strong enough to obviate the need for\
+    \ coverage guidance and mutation entirely.\n  Our approach, Gentoo, is comprised\
+    \ of an LLM coding agent (provided terminal access and source code of the fuzz\
+    \ target and its library) instructed to iteratively synthesize and refine an input\
+    \ generator, and optionally provided fine-grained predicate-level coverage feedback.\
+    \ We evaluate three configurations of Gentoo against human-written generators\
+    \ on fuzz targets for 7 real-world Java libraries. Our findings show that agent-synthesized\
+    \ generators achieve statistically significantly higher branch coverage than human-written\
+    \ baseline generators on 4 of 7 benchmarks. Critically, the use of coverage guidance\
+    \ and mutation strategies is not statistically significantly beneficial for agent-synthesized\
+    \ generators, but is significant for all human-written generators, suggesting\
+    \ that structural and semantic logic encoded in the agent generators makes coverage\
+    \ guidance largely unnecessary."
+  tldr: '- The paper addresses the high effort and expertise required to manually
+    write effective, domain-specific input generators for fuzzing, which are needed
+    to reach deep, bug-revealing states in software.
+
+    - The core method, Gentoo, uses an LLM coding agent with access to the target''s
+    source code to automatically synthesize and iteratively refine a dedicated input
+    generator, optionally guided by fine-grained coverage feedback.
+
+    - This matters because it shows AI-generated generators can structurally and semantically
+    encode enough logic to achieve high coverage without relying on traditional coverage-guided
+    mutation, potentially automating a key bottleneck in memory and system security
+    testing.'
+  ai_score: 7
+  ai_reason: The paper's focus on automated generation of structurally and semantically
+    correct program inputs via AI agents directly relates to program analysis and
+    sanitizer techniques for uncovering memory, spatial, and temporal safety violations
+    through fuzzing.
+  updated: '2026-04-01T22:28:52Z'
+  published: '2026-04-01T22:28:52Z'
+  pdf_url: https://arxiv.org/pdf/2604.01442v1
+  primary_category: cs.SE
+  categories:
+  - cs.SE
