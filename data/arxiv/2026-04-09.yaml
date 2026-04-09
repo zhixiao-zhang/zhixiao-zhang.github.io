@@ -1,0 +1,59 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-04-09T14:56:28.418935+00:00'
+papers:
+- arxiv_id: 2603.16437v3
+  title: 'Dimensional Type Systems and Deterministic Memory Management: Design-Time
+    Semantic Preservation in Native Compilation'
+  authors:
+  - Houston Haynes
+  summary: 'We present a compilation framework in which dimensional type annotations
+    persist through multi-stage MLIR lowering, enabling the compiler to jointly resolve
+    numeric representation selection and deterministic memory management as coeffect
+    properties of a single program semantic graph (PSG). Dimensional inference determines
+    value ranges; value ranges determine representation selection; representation
+    selection determines word width and memory footprint; and memory footprint, combined
+    with escape classification, determines allocation strategy and cross-target transfer
+    fidelity. The Dimensional Type System (DTS) extends Hindley-Milner unification
+    with constraints drawn from finitely generated abelian groups, yielding inference
+    that is decidable in polynomial time, complete, and principal. Where conventional
+    systems erase dimensional annotations before code generation, DTS carries them
+    as compilation metadata through each lowering stage, making them available where
+    representation and memory placement decisions occur. Deterministic Memory Management
+    (DMM), formalized as a coeffect discipline within the same graph, unifies escape
+    analysis and memory placement with the dimensional framework. Escape analysis
+    classifies value lifetimes into four categories (stack-scoped, closure-captured,
+    return-escaping, byref-escaping), each mapping to a verified allocation strategy.
+    We identify implications for auto-differentiation: the dimensional algebra is
+    closed under the chain rule, and forward-mode gradient computation exhibits a
+    coeffect signature that the framework can verify. The practical consequence is
+    a development environment where escape diagnostics, allocation strategy, representation
+    fidelity, and cache locality estimation are design-time views over the compilation
+    graph.'
+  tldr: '- Addresses the risk of memory safety violations and representation errors
+    in low-level compilation by preserving dimensional type information (e.g., value
+    ranges) through all compilation stages, rather than erasing it early.
+
+    - Uses a Dimensional Type System (DTS) with constraints from finitely generated
+    abelian groups to infer value ranges and a coeffect-based Deterministic Memory
+    Management (DMM) to classify value lifetimes into four escape categories, jointly
+    guiding representation selection and memory allocation.
+
+    - Matters because it enables compile-time verification of memory placement (e.g.,
+    stack vs. heap) and data representation, reducing runtime memory errors and improving
+    cache locality, while also supporting safe auto-differentiation by preserving
+    semantic properties through transformations.'
+  ai_score: 9
+  ai_reason: The paper's focus on dimensional type systems for memory footprint and
+    deterministic memory management directly addresses memory safety, spatial safety,
+    and type system design, with strong connections to formal semantics, program analysis,
+    and Rust-like deterministic memory management principles.
+  updated: '2026-04-08T15:33:30Z'
+  published: '2026-03-17T12:19:07Z'
+  pdf_url: https://arxiv.org/pdf/2603.16437v3
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+  - math.CT
+  - math.LO
