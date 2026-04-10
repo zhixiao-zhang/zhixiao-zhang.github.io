@@ -1,0 +1,52 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-04-10T14:18:32.286852+00:00'
+papers:
+- arxiv_id: 2511.08729v5
+  title: 'Soteria: Efficient Symbolic Execution as a Functional Library'
+  authors:
+  - Sacha-Élie Ayoun
+  - Opale Sjöstedt
+  - Azalea Raad
+  summary: Symbolic execution (SE) tools often rely on intermediate languages (ILs)
+    to support multiple programming languages, promising reusability and efficiency.
+    In practice, this approach introduces trade-offs between performance, accuracy,
+    and language feature support. We argue that building SE engines \emph{directly}
+    for each source language is both simpler and more effective. We present Soteria,
+    a lightweight OCaml library for writing SE engines in a functional style, without
+    compromising on performance, accuracy or feature support. Soteria enables developers
+    to construct SE engines that operate directly over source-language semantics,
+    offering \emph{configurability}, compositional reasoning, and ease of implementation.
+    Using Soteria, we develop Soteria$^{\text{Rust}}$, the \emph{first} Rust SE engine
+    supporting Tree Borrows (the intricate aliasing model of Rust), and Soteria$^{\text{C}}$,
+    a compositional SE engine for C. Both tools are competitive with or outperform
+    state-of-the-art tools such as Kani, Pulse, CBMC and Gillian-C in performance
+    and the number of bugs detected. We formalise the theoretical foundations of Soteria
+    and prove its soundness, demonstrating that sound, efficient, accurate, and expressive
+    SE can be achieved without the compromises of ILs.
+  tldr: '- Addresses the performance and accuracy trade-offs in symbolic execution
+    tools caused by using intermediate languages, which can obscure source-language
+    semantics and limit support for complex language features like Rust''s aliasing
+    model.
+
+
+    - Provides a functional OCaml library (Soteria) that enables building symbolic
+    execution engines directly for source languages, using configurable, compositional
+    reasoning without intermediate compilation steps.
+
+
+    - Matters for memory safety and system security by enabling precise, efficient
+    bug detection in low-level code; demonstrated with the first Rust symbolic execution
+    engine supporting Tree Borrows, outperforming existing tools in finding bugs in
+    Rust and C programs.'
+  ai_score: 8
+  ai_reason: The paper presents a symbolic execution engine directly for Rust (and
+    C), which involves program analysis, formal semantics, and memory safety concerns
+    relevant to Rust's type system and aliasing model (Tree Borrows).
+  updated: '2026-04-09T16:03:48Z'
+  published: '2025-11-11T19:42:14Z'
+  pdf_url: https://arxiv.org/pdf/2511.08729v5
+  primary_category: cs.PL
+  categories:
+  - cs.PL
