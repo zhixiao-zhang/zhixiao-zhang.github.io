@@ -1,0 +1,309 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-04-16T15:00:23.776430+00:00'
+papers:
+- arxiv_id: 2512.18436v2
+  title: 'VeruSAGE: A Study of Agent-Based Verification for Rust Systems'
+  authors:
+  - Chenyuan Yang
+  - Natalie Neamtu
+  - Chris Hawblitzel
+  - Jacob R. Lorch
+  - Shan Lu
+  summary: Large language models (LLMs) have shown impressive capability to understand
+    and develop code. However, their capability to rigorously reason about and prove
+    code correctness remains in question. This paper offers a comprehensive study
+    of LLMs' capability to develop correctness proofs for system software written
+    in Rust. We curate a new system-verification benchmark suite, VeruSAGE-Bench,
+    which consists of 849 proof tasks extracted from eight open-source Verus-verified
+    Rust systems. Furthermore, we design different agent systems to match the strengths
+    and weaknesses of different LLMs (o4-mini, GPT-5, Sonnet 4, and Sonnet 4.5). Our
+    study shows that different tools and agent settings are needed to stimulate the
+    system-verification capability of different types of LLMs. The best LLM-agent
+    combination in our study completes over 80% of system-verification tasks in VeruSAGE-Bench.
+    It also completes over 90% of a set of system proof tasks not part of VeruSAGE-Bench
+    because they had not yet been finished by human experts. This result shows the
+    great potential for LLM-assisted development of verified system software.
+  tldr: '- The paper addresses the gap that while LLMs can generate code, their ability
+    to rigorously prove the correctness of low-level Rust system software using formal
+    verification (specifically the Verus tool) is untested and critical for building
+    secure, memory-safe systems.
+
+
+    - It introduces VeruSAGE-Bench, a benchmark of 849 proof tasks from real verified
+    Rust systems, and designs specialized AI agents that strategically combine different
+    LLMs (like GPT-5 and Sonnet 4.5) with verification tools to break down and solve
+    complex proof obligations.
+
+
+    - This matters because automating formal proof for Rust systems can drastically
+    accelerate the creation of high-assurance, bug-free software, directly enhancing
+    memory safety and system security by ensuring core correctness properties are
+    mathematically verified.'
+  ai_score: 8
+  ai_reason: The paper directly studies the verification of system software written
+    in Rust, which is central to the researcher's focus on memory safety, type systems,
+    and formal semantics, and it employs program analysis and verification techniques
+    relevant to the listed topics.
+  updated: '2026-04-15T16:44:49Z'
+  published: '2025-12-20T17:22:52Z'
+  pdf_url: https://arxiv.org/pdf/2512.18436v2
+  primary_category: cs.OS
+  categories:
+  - cs.OS
+  - cs.AI
+  - cs.FL
+  - cs.SE
+- arxiv_id: 2604.14072v1
+  title: Persistent Iterators with Value Semantics
+  authors:
+  - Yihe Li
+  - Gregory J. Duck
+  summary: "Iterators are a fundamental programming abstraction for traversing and\
+    \ modifying elements in containers in mainstream imperative languages such as\
+    \ C++. Iterators provide a uniform access mechanism that hides low-level implementation\
+    \ details of the underlying data structure. However, iterators over mutable containers\
+    \ suffer from well-known hazards including invalidation, aliasing, data races,\
+    \ and subtle side effects. Immutable data structures, as used in functional programming\
+    \ languages, avoid the pitfalls of mutation but rely on a very different programming\
+    \ model based on recursion and higher-order combinators rather than iteration.\
+    \ However, these combinators are not always well-suited to expressing certain\
+    \ algorithms, and recursion can expose implementation details of the underlying\
+    \ data structure.\n  In this paper, we propose persistent iterators -- a new abstraction\
+    \ that reconciles the familiar iterator-based programming style of imperative\
+    \ languages with the semantics of persistent data structures. A persistent iterator\
+    \ snapshots the version of its underlying container at creation, ensuring safety\
+    \ against invalidation and aliasing. Iterator operations operate on the iterator-local\
+    \ copy of the container, giving true value semantics: variables can be rebound\
+    \ to new persistent values while previous versions remain accessible. We implement\
+    \ our approach in the form of LibFPP -- a C++ container library providing persistent\
+    \ vectors, maps, sets, strings, and other abstractions as persistent counterparts\
+    \ to the Standard Template Library (STL). Our evaluation shows that LibFPP retains\
+    \ the expressiveness of iterator-based programming, eliminates iterator-invalidation,\
+    \ and achieves asymptotic complexities comparable to STL implementations. Our\
+    \ design targets use cases where persistence and safety are desired, while allowing\
+    \ developers to retain familiar iterator-based programming patterns."
+  tldr: '- Addresses the risk of iterator invalidation, aliasing, and side effects
+    in mutable containers (like C++ STL), which can lead to memory corruption, undefined
+    behavior, and security vulnerabilities in low-level systems.
+
+    - Introduces persistent iterators that capture a snapshot of the container at
+    creation, enabling all operations to work on a local, immutable copy with true
+    value semantics, implemented in a C++ library (LibFPP) as persistent versions
+    of STL containers.
+
+    - Enhances memory safety by eliminating iterator invalidation bugs and aliasing
+    issues, making code more predictable and secure without requiring a shift to functional
+    programming models, thus preserving familiar imperative patterns for systems programming.'
+  ai_score: 8
+  ai_reason: The paper directly addresses memory safety (by preventing invalidation
+    and aliasing), spatial/temporal safety (through persistent snapshots and value
+    semantics), and applies program analysis concepts in a C++ context, closely aligning
+    with the researcher's focus on safety, type systems, and formal semantics for
+    imperative languages.
+  updated: '2026-04-15T16:44:37Z'
+  published: '2026-04-15T16:44:37Z'
+  pdf_url: https://arxiv.org/pdf/2604.14072v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2505.17676v3
+  title: 'Asynchronous Global Protocols, Precisely: Full Proofs'
+  authors:
+  - Kai Pischke
+  - Jake Masters
+  - Nobuko Yoshida
+  summary: 'Asynchronous multiparty session types are a type-based framework which
+    ensure the compatibility of components in a distributed system by checking compliance
+    against a specified global protocol. We propose a top-down approach, starting
+    with the global protocol which is then projected into a set of local specifications.
+    Next, we use an asynchronous refinement relation, precise asynchronous multiparty
+    subtyping, to enable local specifications to be optimised by permuting actions
+    within individual asynchronous components. This supports local reasoning, as each
+    component can be independently developed and refined in isolation, before being
+    integrated into a larger system. We show that this methodology guarantees both
+    type soundness and liveness of the collection of optimised components. In this
+    article, we first propose new operational semantics of global protocols which
+    capture sound optimisations in the context of asynchronous message-passing. Next
+    we define an asynchronous association between global protocols and a set of optimised
+    local types. Thirdly, we prove, for the first time, the correctness of the most
+    expressive endpoint projection in the literature, coinductive full merging projection.
+    We then show the main theorems of this article: soundness and completeness of
+    the operational correspondence of the asynchronous association. As a consequence,
+    the association acts as an invariant that can be used to transfer key theorems
+    from the bottom-up system to the top-down system. In particular, we used this
+    to prove type soundness, session-fidelity, deadlock-freedom and liveness of the
+    collection of optimised endpoints.'
+  tldr: '- The paper addresses the risk of deadlocks or communication errors in distributed
+    systems when independently optimized components are composed, by ensuring local
+    refinements (like reordering sends and receives) remain globally safe.
+
+
+    - It introduces an asynchronous refinement relation (precise asynchronous multiparty
+    subtyping) that allows local components to permute message actions without breaking
+    the overall protocol, verified via coinductive full merging projection.
+
+
+    - This matters for system security and low-level safety because it guarantees
+    liveness and deadlock-freedom in message-passing systems, preventing subtle concurrency
+    bugs that could lead to crashes or vulnerabilities in asynchronous distributed
+    software.'
+  ai_score: 8
+  ai_reason: The paper's focus on formal semantics, type systems, and ensuring safety
+    properties like deadlock-freedom and liveness in asynchronous message-passing
+    systems aligns closely with the researcher's interests in type theory, program
+    analysis, and formal verification, though it does not directly address memory,
+    temporary, or spatial safety.
+  updated: '2026-04-15T09:05:57Z'
+  published: '2025-05-23T09:43:37Z'
+  pdf_url: https://arxiv.org/pdf/2505.17676v3
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2604.13638v1
+  title: 'Cerisier: A Program Logic for Attestation in a Capability Machine'
+  authors:
+  - June Rousseau
+  - Denis Carnier
+  - Thomas Van Strydonck
+  - Steven Keuchel
+  - Dominique Devriese
+  - Lars Birkedal
+  summary: "A key feature in trusted computing is attestation, which allows encapsulated\
+    \ components (enclaves) to prove their identity to (local or remote) distrusting\
+    \ components.Reasoning about software that uses the technique requires tracking\
+    \ how trust evolves after successful attestation.This process is security-critical\
+    \ and non-trivial, but no existing formal verification technique supports modular\
+    \ reasoning about attestation of enclaves and their clients, or proving end-to-end\
+    \ properties for systems combining trusted, untrusted and attested code.\n  We\
+    \ contribute Cerisier, the first program logic for modular reasoning about trusted,\
+    \ untrusted and attested code, fully mechanized in the Iris separation logic and\
+    \ the Rocq Prover.We formalize a recent proposal, CHERI-TrEE, to extend capability\
+    \ machines with enclave primitives, as an extension to the Cerise capability machine\
+    \ and program logic.Our program logic comes with a universal contract for untrusted\
+    \ code, which captures both capability safety and local enclave attestation.Like\
+    \ Cerise, this universal contract is phrased in terms of a logical relation defining\
+    \ capabilities' authority.We demonstrate Cerisier by proving end-to-end properties\
+    \ for three representative applications of trusted computing: secure outsourced\
+    \ computation, mutual attestation and a modeled trusted sensor component."
+  tldr: '- Addresses the inability to formally verify and reason about trust evolution
+    in systems using hardware enclave attestation, a critical security gap for trusted
+    computing applications.
+
+    - Introduces Cerisier, a program logic built on Iris separation logic, which extends
+    the Cerise capability machine model to support modular reasoning about trusted,
+    untrusted, and attested code via a universal contract.
+
+    - Provides a foundation for proving end-to-end security properties (like integrity
+    and secrecy) in mixed-trust systems, directly linking low-level capability safety
+    to high-level attestation guarantees.'
+  ai_score: 8
+  ai_reason: The paper presents a program logic for a capability machine with enclave
+    primitives, directly engaging with formal semantics, program analysis, memory
+    safety via capabilities, and type-like reasoning about authority, aligning with
+    the researcher's focus on memory safety, type systems, formal semantics, and program
+    analysis.
+  updated: '2026-04-15T09:04:09Z'
+  published: '2026-04-15T09:04:09Z'
+  pdf_url: https://arxiv.org/pdf/2604.13638v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2507.15671v2
+  title: 'BugScope: Learn to Find Bugs Like Human'
+  authors:
+  - Jinyao Guo
+  - Chengpeng Wang
+  - Dominic Deluca
+  - Jinjie Liu
+  - Zhuo Zhang
+  - Xiangyu Zhang
+  summary: 'Software auditing is an increasingly critical task in the era of rapid
+    code generation. While LLM-based auditors have demonstrated strong potential,
+    their effectiveness remains limited by misalignment with the highly complex, domain-specific
+    nature of bug detection. In this work, we introduce BugScope, a framework that
+    mirrors how human auditors learn specific bug patterns from representative examples
+    and apply this knowledge during code auditing. BugScope structures auditing into
+    three steps: seed identification, context retrieval, and bug detection, and aligns
+    LLMs to each step by analyzing real bug reports and mutated examples, and distilling
+    concise, reusable guidelines. On a curated dataset of 33 real-world bugs from
+    21 widely used open-source projects, BugScope achieves 86.05\% precision and 87.88\%
+    recall, corresponding to an F1 score of 0.87. By comparison, leading industrial
+    tools such as Claude Code (with Claude Opus 4.6) and Cursor BugBot achieve F1
+    scores of only 0.51 and 0.43, respectively. Beyond benchmarks, large-scale evaluation
+    on real-world projects such as the Linux kernel uncovered 184 previously unknown
+    bugs, of which 78 have already been fixed and 7 explicitly confirmed by developers.
+    Our code is available at https://github.com/jinyaoguo/BugScope'
+  tldr: '- Addresses the gap where current LLM-based code auditors underperform because
+    they lack alignment with the specialized, pattern-based reasoning human experts
+    use to find security bugs in complex software.
+
+    - Uses a framework that mimics human auditing: it first identifies seed bug patterns,
+    retrieves relevant contextual code, and then applies distilled, concrete detection
+    guidelines—trained on real bug reports and mutated examples—to scan code.
+
+    - Matters for system security because it significantly improves automated bug
+    detection precision and recall over existing tools, enabling the discovery of
+    numerous previously unknown vulnerabilities in critical software like the Linux
+    kernel.'
+  ai_score: 8
+  ai_reason: The paper introduces a framework for automated bug detection using program
+    analysis techniques, which is highly relevant to the researcher's focus on program
+    analysis, memory safety, and sanitizers, though it does not directly address type
+    systems or formal semantics.
+  updated: '2026-04-15T01:53:23Z'
+  published: '2025-07-21T14:34:01Z'
+  pdf_url: https://arxiv.org/pdf/2507.15671v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+- arxiv_id: 2603.29088v2
+  title: 'WybeCoder: Verified Imperative Code Generation'
+  authors:
+  - Fabian Gloeckle
+  - Mantas Baksys
+  - Darius Feher
+  - Kunhao Zheng
+  - Amaury Hayat
+  - Sean B. Holden
+  - Gabriel Synnaeve
+  - Peter O'Hearn
+  summary: Recent progress in large language models (LLMs) has substantially advanced
+    automatic code generation and formal theorem proving, yet software verification
+    has not seen comparable gains. To address this gap, we propose WybeCoder, an agentic
+    code verification framework that enables prove-as-you-generate development, in
+    which code, invariants, and proofs co-evolve. WybeCoder builds on a recent framework
+    that combines automatic verification condition generation and SMT solving with
+    interactive proofs in Lean. To enable systematic evaluation, we translate two
+    benchmarks for functional verification in Lean, Verina and Clever, into equivalent
+    imperative code specifications. On complex algorithms such as Heapsort, we observe
+    consistent performance improvements as we scale our approach, synthesizing dozens
+    of valid invariants and dispatching dozens of subgoals, ultimately producing hundreds
+    of lines of verified code and overcoming plateaus reported in previous work. Our
+    best system solves 74% of Verina tasks and 62% of Clever tasks at moderate compute
+    budgets, substantially surpassing previous evaluations and paving the way for
+    the automated construction of large-scale datasets of verified imperative code.
+  tldr: '- Addresses the gap in automated verification for imperative code generation,
+    where current LLMs excel at writing code but struggle to produce provably correct,
+    memory-safe implementations.
+
+    - Uses an agentic framework that interleaves code generation with invariant synthesis
+    and proof construction in Lean, leveraging SMT solvers and interactive proving
+    to co-evolve code, invariants, and correctness proofs.
+
+    - Enables scalable production of verified low-level algorithms (like Heapsort),
+    directly reducing risks of memory corruption, undefined behavior, and security
+    vulnerabilities by ensuring generated code meets formal specifications.'
+  ai_score: 7
+  ai_reason: The paper's focus on automated verification of imperative code generation,
+    using invariants and formal proofs, directly addresses program analysis, formal
+    semantics, and type systems for ensuring memory, spatial, and temporal safety,
+    though it does not explicitly target Rust or sanitizers.
+  updated: '2026-04-14T22:21:17Z'
+  published: '2026-03-31T00:06:44Z'
+  pdf_url: https://arxiv.org/pdf/2603.29088v2
+  primary_category: cs.SE
+  categories:
+  - cs.SE
+  - cs.AI
