@@ -1,0 +1,209 @@
+title: Memory Safety / PL / Systems Radar
+description: Recent arXiv papers filtered by my interests in systems security, PL,
+  and memory safety.
+generated_at: '2026-04-17T14:22:22.017638+00:00'
+papers:
+- arxiv_id: 2604.15290v1
+  title: 'Pure Borrow: Linear Haskell Meets Rust-Style Borrowing'
+  authors:
+  - Yusuke Matsushita
+  - Hiromi Ishii
+  summary: "A promising approach to unifying functional and imperative programming\
+    \ paradigms is to localize mutation using linear or affine types. Haskell, a purely\
+    \ functional language, was recently extended with linear types by Bernardy et\
+    \ al., named Linear Haskell. However, it remained unknown whether such a pure\
+    \ language could safely support non-local \\emph{borrowing} in the style of Rust,\
+    \ where each borrower can be freely split and dropped without direct communication\
+    \ of ownership back to the lender.\n  We answer this question affirmatively by\
+    \ \\emph{Pure Borrow}, a novel framework that realizes Rust-style borrowing in\
+    \ Linear Haskell with purity. Notably, it features parallel state mutation with\
+    \ affine mutable references inside pure computation, unlike the IO and ST monads\
+    \ and existing Linear Haskell APIs. It also enjoys purity, lazy evaluation, first-class\
+    \ polymorphism and leak freedom, unlike Rust. We implement Pure Borrow simply\
+    \ as a library in Linear Haskell and demonstrate its power with a case study in\
+    \ parallel computing. We formalize the core of Pure Borrow and build a metatheory\
+    \ that works toward establishing safety, leak freedom and confluence, with a new,\
+    \ history-based model of borrowing."
+  tldr: '- **Problem addressed:** Linear Haskell''s linear types could not support
+    non-local, Rust-style borrowing—where a borrowed reference can be split, dropped,
+    or passed around without explicit ownership return—while preserving language purity.
+
+
+    - **Core technical method:** The Pure Borrow library introduces affine mutable
+    references that allow parallel state mutation within pure computations, using
+    a history-based model to track borrowing relationships without requiring IO or
+    ST monads.
+
+
+    - **Why it matters:** This enables safe, leak-free mutation and parallelism in
+    a purely functional setting, combining Haskell''s purity, lazy evaluation, and
+    first-class polymorphism with Rust-like borrowing, advancing memory safety without
+    runtime overhead or side effects.'
+  ai_score: 10
+  ai_reason: The paper directly integrates Rust-style borrowing, linear types, memory
+    safety, and formal semantics into a functional language, addressing all core research
+    focuses including type systems, program analysis, and abstract interpretation.
+  updated: '2026-04-16T17:53:51Z'
+  published: '2026-04-16T17:53:51Z'
+  pdf_url: https://arxiv.org/pdf/2604.15290v1
+  primary_category: cs.PL
+  categories:
+  - cs.PL
+- arxiv_id: 2604.15266v1
+  title: Simplifying Safety Proofs with Forward-Backward Reasoning and Prophecy
+  authors:
+  - Eden Frenkel
+  - Kenneth L. McMillan
+  - Oded Padon
+  - Sharon Shoham
+  summary: We propose an incremental approach for safety proofs that decomposes a
+    proof with a complex inductive invariant into a sequence of simpler proof steps.
+    Our proof system combines rules for (i) forward reasoning using inductive invariants,
+    (ii) backward reasoning using inductive invariants of a time-reversed system,
+    and (iii) prophecy steps that add witnesses for existentially quantified properties.
+    We prove each rule sound and give a construction that recovers a single safe inductive
+    invariant from an incremental proof. The construction of the invariant demonstrates
+    the increased complexity of a single inductive invariant compared to the invariant
+    formulas used in an incremental proof, which may have simpler Boolean structures
+    and fewer quantifiers and quantifier alternations. Under natural restrictions
+    on the available invariant formulas, each proof rule strictly increases proof
+    power. That is, each rule allows to prove more safety problems with the same set
+    of formulas. Thus, the incremental approach is able to reduce the search space
+    of invariant formulas needed to prove safety of a given system. A case study on
+    Paxos, several of its variants, and Raft demonstrates that forward-backward steps
+    can remove complex Boolean structure while prophecy eliminates quantifiers and
+    quantifier alternations.
+  tldr: '- Addresses the difficulty of constructing complex inductive invariants for
+    verifying safety of concurrent/distributed protocols, where manual proofs are
+    error-prone and automated search struggles with Boolean complexity and quantifiers.
+
+    - Introduces an incremental proof system combining forward reasoning (standard
+    invariants), backward reasoning (invariants of time-reversed system), and prophecy
+    steps (adding witnesses for existential properties) to decompose a single invariant
+    into simpler steps.
+
+    - Reduces the search space for invariants by allowing simpler formulas with fewer
+    quantifiers, making automated verification more tractable for systems like Paxos
+    and Raft, thus improving reliability of memory-safe and secure low-level implementations.'
+  ai_score: 8
+  ai_reason: The paper presents a formal method for constructing safety proofs using
+    inductive invariants, directly addressing core topics like program analysis, formal
+    semantics, and abstract interpretation, though it is not specific to Rust or low-level
+    safety properties like memory or spatial safety.
+  updated: '2026-04-16T17:40:27Z'
+  published: '2026-04-16T17:40:27Z'
+  pdf_url: https://arxiv.org/pdf/2604.15266v1
+  primary_category: cs.LO
+  categories:
+  - cs.LO
+  - cs.PL
+- arxiv_id: 2604.07349v5
+  title: Exact Structural Abstraction and Tractability Limits
+  authors:
+  - Tristan Simas
+  summary: "Any rigorously specified problem determines an admissible-output relation\
+    \ $R$, and exact correctness depends only on the induced classes $s \\sim_R s'\
+    \ \\iff \\mathrm{Adm}_R(s)=\\mathrm{Adm}_R(s')$. Exact relevance certification\
+    \ asks which coordinates recover those classes. Decision, search, approximation,\
+    \ statistical, randomized, horizon, and distributional guarantees all reduce to\
+    \ this same quotient-recovery problem. Tractable cases still admit a finite primitive\
+    \ basis, but optimizer-quotient realizability is maximal, so quotient shape alone\
+    \ cannot mark the frontier.\n  For frontier theorems, orbit gaps are the exact\
+    \ obstruction. Exact classification by closure-law-invariant predicates succeeds\
+    \ exactly when the target is constant on closure orbits; on a closure-closed domain,\
+    \ this is equivalent to disjointness of the positive and negative orbit hulls,\
+    \ and when it holds there is a least exact closure-invariant classifier. Across\
+    \ four natural candidate tractability predicates, a uniform pair-targeted affine\
+    \ witness produces same-orbit disagreements and rules out exact structural classification\
+    \ on the full binary pairwise domain. Because the canonical optimizer-set exact\
+    \ specifications of that witness class are already rigorously specified problems,\
+    \ no universal exact-certification characterization over formal problems escapes\
+    \ the same obstruction; this is by internal witness class, not by asserting that\
+    \ every problem is binary pairwise. Restricting the domain helps only by removing\
+    \ orbit gaps. Approximation also has a strict limit: without explicit gap control,\
+    \ arbitrarily small perturbations can flip relevance and sufficiency."
+  tldr: '- The paper addresses the fundamental impossibility of creating a universal,
+    exact "relevance certification" system for formally specified problems. The core
+    risk is that even with a rigorous problem specification, determining which parts
+    of an input are truly relevant for correctness cannot be done exactly for all
+    problems without encountering intractable cases.
+
+
+    - The core technical method is analyzing problems via their *admissible-output
+    relation* and the induced equivalence classes of inputs. It proves that the barrier
+    to exact classification is the presence of "orbit gaps"—differences between inputs
+    that are not distinguished by any closure-invariant predicate, which are the only
+    predicates a structural classifier can use.
+
+
+    - This matters for system security because it sets a mathematical limit on automated
+    reasoning about program correctness and memory safety. It shows that no single
+    automated tool can exactly and universally certify which program components (e.g.,
+    memory addresses, data fields) are relevant for safety, forcing a reliance on
+    approximations or domain restrictions.
+
+
+    - The paper demonstrates this limit concretely by constructing a "uniform pair-targeted
+    affine witness" problem on binary pairwise domains. For this problem, any two
+    inputs in the same "closure orbit" can disagree on the target output, making exact
+    structural classification impossible. This witness problem is itself a legitimate,
+    rigorously specified problem, proving the obstruction is inherent.'
+  ai_score: 7
+  ai_reason: The paper's focus on exact structural abstraction, tractability limits,
+    and formal classification via closure orbits and invariants aligns closely with
+    program analysis, formal semantics, and abstract interpretation, which are core
+    to the researcher's interests in safety and type systems.
+  updated: '2026-04-16T16:15:00Z'
+  published: '2026-04-08T17:59:47Z'
+  pdf_url: https://arxiv.org/pdf/2604.07349v5
+  primary_category: cs.CC
+  categories:
+  - cs.CC
+  - cs.AI
+  - cs.LO
+- arxiv_id: 2604.15136v1
+  title: Feedback-Driven Execution for LLM-Based Binary Analysis
+  authors:
+  - XiangRui Zhang
+  - Qiang Li
+  - Haining Wang
+  summary: Binary analysis increasingly relies on large language models (LLMs) to
+    perform semantic reasoning over complex program behaviors. However, existing approaches
+    largely adopt a one-pass execution paradigm, where reasoning operates over a fixed
+    program representation constructed by static analysis tools. This formulation
+    limits the ability to adapt exploration based on intermediate results and makes
+    it difficult to sustain long-horizon, multi-path analysis under constrained context.
+    We present FORGE, a system that rethinks LLM-based analysis as a feedback-driven
+    execution process. FORGE interleaves reasoning and tool interaction through a
+    reasoning-action-observation loop, enabling incremental exploration and evidence
+    construction. To address the instability of long-horizon reasoning, we introduce
+    a Dynamic Forest of Agents (FoA), a decomposed execution model that dynamically
+    coordinates parallel exploration while bounding per-agent context. We evaluate
+    FORGE on 3,457 real-world firmware binaries. FORGE identifies 1,274 vulnerabilities
+    across 591 unique binaries, achieving 72.3% precision while covering a broader
+    range of vulnerability types than prior approaches. These results demonstrate
+    that structuring LLM-based analysis as a decomposed, feedback-driven execution
+    system enables both scalable reasoning and high-quality outcomes in long-horizon
+    tasks.
+  tldr: '- Addresses the limitation of one-pass LLM-based binary analysis, which cannot
+    adapt exploration based on intermediate results and struggles with long, multi-path
+    analysis under context constraints.
+
+    - Introduces FORGE, which uses a feedback-driven loop (reasoning-action-observation)
+    and a Dynamic Forest of Agents to coordinate parallel exploration while managing
+    per-agent context.
+
+    - Enables scalable, precise vulnerability discovery in firmware (e.g., 1,274 vulnerabilities
+    found with 72.3% precision), improving memory and system security by effectively
+    analyzing complex, real-world binaries.'
+  ai_score: 8
+  ai_reason: The paper's focus on LLM-driven binary analysis via feedback-driven execution
+    and dynamic agent coordination directly contributes to program analysis techniques,
+    which are foundational for achieving memory, spatial, and temporal safety through
+    improved pointer analysis and semantic reasoning.
+  updated: '2026-04-16T15:15:58Z'
+  published: '2026-04-16T15:15:58Z'
+  pdf_url: https://arxiv.org/pdf/2604.15136v1
+  primary_category: cs.CR
+  categories:
+  - cs.CR
