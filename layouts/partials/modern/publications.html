@@ -1,0 +1,21 @@
+<div class="publication-list">
+{{ range .items }}
+  <article class="publication">
+    <div class="venue">{{ .conference }}</div>
+    <div class="publication-body">
+      <h3>{{ .title }}</h3>
+      <div class="authors">{{ if .author_list }}{{ range $i, $author := .author_list }}{{ if $i }}, {{ end }}<span class="author">{{ if eq $author.name $.page.Site.Params.name }}<strong>{{ $author.name }}</strong>{{ else }}{{ $author.name }}{{ end }}<sup>{{ $author.affiliation }}</sup></span>{{ end }}{{ else }}{{ $.page.RenderString (dict "markup" "goldmark") .authors }}{{ end }}</div>
+      {{ with .affiliations }}<p class="affiliations">{{ . }}</p>{{ end }}
+      {{ if or .pdf .slides .video .code .bib }}
+      <div class="publication-links">
+        {{ with .pdf }}<a href="{{ . }}">PDF</a>{{ end }}
+        {{ with .slides }}<a href="{{ . }}">Slides</a>{{ end }}
+        {{ with .video }}<a href="{{ . }}">Video</a>{{ end }}
+        {{ with .code }}<a href="{{ . }}">Code</a>{{ end }}
+        {{ with .bib }}<details><summary>BibTeX</summary><pre>{{ . }}</pre></details>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}
+</div>

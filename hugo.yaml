@@ -16,18 +16,16 @@ params:
     - news
     - contact
     - experience
+    - publications
 
 menus:
   main:
   - name: "About"
     url: "#about"
     weight: 10
-  - name: "Arxiv"
-    url: "pages/arxiv/"
-    weight: 10
-#  - name: "BibTeX"
-#    weight: 20
-#    url: "/pages/bibtex/"
+  - name: "Publications"
+    url: "/pages/publications"
+    weight: 20
 
 markup:
   defaultMarkdownHandler: org

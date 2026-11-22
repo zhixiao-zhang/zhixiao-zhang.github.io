@@ -1,0 +1,12 @@
+- title: "Dynamic Analysis of Unsafe Rust: Behaviors and Benchmarks"
+  authors: "Jiaye Fang¹, Arsalan Bin Najeeb¹, Dylan O'Neill¹, Prince Noah Johnson², **Zhixiao Zhang**¹, Jie Zhou¹"
+  conference: "ATC 26"
+  details: "ATC 2026"
+  affiliations: "¹ The George Washington University · ² University of Notre Dame"
+  author_list:
+    - {name: Jiaye Fang, affiliation: "1"}
+    - {name: Arsalan Bin Najeeb, affiliation: "1"}
+    - {name: "Dylan O'Neill", affiliation: "1"}
+    - {name: Prince Noah Johnson, affiliation: "2"}
+    - {name: Zhixiao Zhang, affiliation: "1"}
+    - {name: Jie Zhou, affiliation: "1"}

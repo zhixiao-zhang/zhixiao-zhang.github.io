@@ -1,0 +1,7 @@
+---
+title: "Publications"
+layout: "publications"
+url: "/pages/publications/"
+aliases:
+  - /pubs/
+---

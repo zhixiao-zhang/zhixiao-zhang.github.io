@@ -1,0 +1,17 @@
+role: PhD Student in Computer Science
+summary: I study memory safety, program analysis, and programming languages.
+intro: I am a PhD student at The George Washington University, advised by
+advisor: Prof. Jie Zhou
+advisor_url: https://jiezhoucs.github.io/
+research_focus: My research connects programming language theory with practical systems security.
+interests:
+  - Memory safety
+  - Program analysis
+  - Type systems
+  - Formal semantics
+  - Abstract interpretation
+  - Computation theory
+news:
+  - date: "2024-11-17"
+    label: November 2024
+    text: Joining the PhD program in Computer Science at GWU in Fall 2025, advised by Prof. Jie Zhou.
