@@ -29,3 +29,8 @@ menus:
 
 markup:
   defaultMarkdownHandler: org
+
+security:
+  allowContent:
+    # Allow Org content while retaining Hugo's default restriction on HTML content.
+    - '! ^text/html$'
