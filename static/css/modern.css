@@ -1,30 +1,26 @@
 /* A plain, traditional academic homepage. */
 * { box-sizing: border-box; }
 body { margin: 0; background: white; color: #222; font: 17px/1.55 Georgia, "Times New Roman", serif; }
+.homepage { font-family: "Times New Roman", Georgia, serif; }
 a { color: #164a93; text-decoration: underline; text-underline-offset: 2px; }
 a:visited { color: #624687; }
 a:hover { color: #092d64; }
 a:focus-visible, summary:focus-visible { outline: 2px solid #164a93; outline-offset: 4px; }
-.site-header, main, .site-footer { width: min(820px, calc(100% - 48px)); margin-inline: auto; }
-.site-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 25px 0 16px; border-bottom: 1px solid #aaa; margin-bottom: 28px; font-size: 15px; }
-.wordmark { font-weight: bold; }
-.site-header nav { display: flex; gap: 22px; }
+main, .site-footer { width: min(760px, calc(100% - 48px)); margin-inline: auto; }
+main { padding-top: 32px; }
 h1, h2, h3, p { margin: 0; }
 h1 { font-size: 30px; line-height: 1.3; }
-h2 { font-size: 22px; line-height: 1.35; margin-bottom: 14px; }
+h2 { font-size: 22px; }
+h2, .section-title { line-height: 1.35; margin-bottom: 14px; }
 h3 { font-size: 17px; line-height: 1.5; }
-.profile-stage { display: grid; grid-template-columns: minmax(0, 1fr) 140px; align-items: start; gap: 35px; }
+.profile-stage { display: grid; grid-template-columns: minmax(0, 1fr) 104px; align-items: start; gap: 28px; }
 .role { margin-top: 5px; font-size: 16px; }
-.lead { margin-top: 18px; }
-.intro { margin-top: 12px; }
-.portrait { display: block; width: 140px; height: 140px; object-fit: cover; border: 1px solid #aaa; padding: 3px; }
-.contact-links { display: flex; gap: 20px; margin-top: 14px; font-size: 15px; }
-.research { margin-top: 28px; }
-.research ul { margin: 0; padding-left: 23px; columns: 2; column-gap: 30px; }
-.research li { break-inside: avoid; margin-bottom: 3px; }
-.publications-section, .news-section, .education-section { margin-top: 28px; }
-.section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
-.text-link { font-size: 14px; }
+.contact-email { margin-top: 5px; font-size: 15px; overflow-wrap: anywhere; }
+.profile-bio { margin-top: 16px; }
+.intro { margin-top: 8px; }
+.portrait { display: block; width: 104px; height: 104px; object-fit: cover; border: 1px solid #aaa; padding: 3px; }
+.section-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; font-size: 15px; }
+.home-section { margin-top: 20px; padding-top: 16px; border-top: 1px solid #ccc; scroll-margin-top: 12px; }
 .publication { display: grid; grid-template-columns: 65px minmax(0,1fr); gap: 14px; }
 .publication + .publication { margin-top: 22px; }
 .venue { font-size: 14px; padding-top: 2px; }
@@ -48,29 +44,20 @@ h3 { font-size: 17px; line-height: 1.5; }
 .education-item p { font-size: 15px; }
 .education-item .location { color: #555; font-size: 13px; }
 .site-footer { border-top: 1px solid #aaa; padding: 15px 0 28px; margin-top: 32px; font-size: 13px; color: #555; }
-.publications-page { min-height: 65vh; }
-.publications-page h1 { margin-bottom: 25px; }
 .skip-link { position: absolute; top: 8px; left: 8px; transform: translateY(-180%); padding: 8px 12px; background: white; z-index: 2; }
 .skip-link:focus { transform: translateY(0); }
 main:focus { outline: none; }
 img { max-width: 100%; }
 pre { overflow: auto; }
 @media (max-width: 600px) {
-  .site-header, main, .site-footer { width: calc(100% - 36px); }
+  main, .site-footer { width: calc(100% - 36px); }
+  main { padding-top: 22px; }
   body { font-size: 16px; }
-  .site-header { font-size: 14px; gap: 12px; padding-top: 18px; margin-bottom: 23px; }
-  .site-header nav { gap: 15px; }
-  .profile-stage { grid-template-columns: minmax(0,1fr) 88px; gap: 16px; }
-  .profile-copy { display: contents; }
-  .profile-copy h1 { grid-column: 1; grid-row: 1; font-size: 26px; align-self: end; }
-  .profile-copy .role { grid-column: 1; grid-row: 2; margin: 0; font-size: 14px; }
-  .portrait-frame { grid-column: 2; grid-row: 1 / 3; }
-  .portrait { width: 88px; height: 88px; }
-  .lead, .intro, .contact-links { grid-column: 1 / -1; margin-top: 0; }
+  .profile-stage { grid-template-columns: minmax(0, 1fr) 76px; gap: 16px; }
+  .role { font-size: 14px; }
+  .portrait { width: 76px; height: 76px; }
+  .section-nav { column-gap: 10px; }
   h2 { font-size: 21px; }
-  .research ul { columns: 1; }
-  .section-heading { display: block; margin-bottom: 14px; }
-  .section-heading h2 { margin-bottom: 5px; }
   .publication { grid-template-columns: 1fr; gap: 5px; }
   .news-item { grid-template-columns: 1fr; gap: 5px; }
   .education-item { padding-right: 0; }

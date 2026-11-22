@@ -18,15 +18,6 @@ params:
     - experience
     - publications
 
-menus:
-  main:
-  - name: "About"
-    url: "#about"
-    weight: 10
-  - name: "Publications"
-    url: "/pages/publications"
-    weight: 20
-
 markup:
   defaultMarkdownHandler: org
 

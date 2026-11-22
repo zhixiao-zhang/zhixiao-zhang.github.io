@@ -1,39 +1,51 @@
 {{ partial "header.html" . }}
 {{ $sections := .Site.Params.homepage }}
-{{ if in $sections "about" }}
-<section id="about" class="profile-stage" aria-labelledby="profile-name">
-  <div class="profile-copy">
-    <h1 id="profile-name">{{ .Site.Params.name }}</h1>
+{{ $showAbout := in $sections "about" }}
+{{ $showPublications := in $sections "publications" }}
+{{ $showExperience := in $sections "experience" }}
+{{ if $showAbout }}
+<header id="about" class="profile-stage">
+  <div id="contact">
+    <p id="profile-name"><b><big>{{ .Site.Params.name }}</big></b></p>
     <p class="role">{{ .Site.Data.homepage.role }}</p>
-    <p class="lead">{{ .Site.Data.homepage.summary }}</p>
-    <p class="intro">{{ .Site.Data.homepage.intro }} <a href="{{ .Site.Data.homepage.advisor_url }}">{{ .Site.Data.homepage.advisor }}</a>. {{ .Site.Data.homepage.research_focus }}</p>
-    <div id="contact" class="contact-links">
-      {{ range .Site.Data.contact }}
-      {{ with .email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
-      {{ with .github }}{{ $url := . }}{{ if not (hasPrefix $url "https://") }}{{ $url = printf "https://github.com/%s" . }}{{ end }}<a href="{{ $url }}">GitHub</a>{{ end }}
-      {{ end }}
-    </div>
+    {{ range .Site.Data.contact }}
+      {{ with .email }}<p class="contact-email"><a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+    {{ end }}
   </div>
   {{ with .Site.Params.avatar }}<div class="portrait-frame"><img class="portrait" src="{{ printf "images/%s" . | relURL }}" alt="{{ $.Site.Params.name }}'s illustrated avatar" width="576" height="576" fetchpriority="high"></div>{{ end }}
-</section>
-<div class="research"><h2>Research interests</h2><ul>{{ range .Site.Data.homepage.interests }}<li>{{ . }}</li>{{ end }}</ul></div>
+</header>
+<div class="profile-bio">
+  <p>{{ .Site.Data.homepage.summary }}</p>
+  <p class="intro">{{ .Site.Data.homepage.intro }} <a href="{{ .Site.Data.homepage.advisor_url }}">{{ .Site.Data.homepage.advisor }}</a>. {{ .Site.Data.homepage.research_focus }}</p>
+</div>
 {{ end }}
-{{ if in $sections "publications" }}
-<section id="publications" class="publications-section" aria-labelledby="publications-heading">
-  <div class="section-heading"><h2 id="publications-heading">Selected publications</h2><a class="text-link" href="{{ "/pages/publications/" | relURL }}">View all publications</a></div>
-  {{ partial "modern/publications.html" (dict "page" . "items" .Site.Data.selectpub) }}
-</section>
+{{ if or $showPublications $showExperience (and $showAbout .Site.Data.contact) }}
+<nav class="section-nav" aria-label="Homepage links">
+  {{ if $showAbout }}
+    {{ range .Site.Data.contact }}
+      {{ with .github }}{{ $url := . }}{{ if not (hasPrefix $url "https://") }}{{ $url = printf "https://github.com/%s" . }}{{ end }}<a href="{{ $url }}">GitHub</a>{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if $showPublications }}<a href="#publications">Publications</a>{{ end }}
+  {{ if $showExperience }}<a href="#experience">Experience</a>{{ end }}
+</nav>
 {{ end }}
-<div class="background-grid">
 {{ if in $sections "news" }}
-<section id="news" class="news-section" aria-labelledby="news-heading"><h2 id="news-heading">News</h2>
+<section id="news" class="home-section" aria-labelledby="news-heading">
+  <p id="news-heading" class="section-title"><b><big>News</big></b></p>
   {{ range .Site.Data.homepage.news }}<article class="news-item"><time datetime="{{ .date }}">{{ .label }}</time><p>{{ .text }}</p></article>{{ end }}
 </section>
 {{ end }}
-{{ if in $sections "experience" }}
-<section id="experience" class="education-section" aria-labelledby="education-heading"><h2 id="education-heading">Education</h2>
+{{ if $showPublications }}
+<section id="publications" class="home-section" aria-labelledby="publications-heading">
+  <p id="publications-heading" class="section-title"><b><big>Publications</big></b></p>
+  {{ partial "modern/publications.html" (dict "page" . "items" .Site.Data.pubs) }}
+</section>
+{{ end }}
+{{ if $showExperience }}
+<section id="experience" class="home-section" aria-labelledby="experience-heading">
+  <p id="experience-heading" class="section-title"><b><big>Experience</big></b></p>
   {{ range .Site.Data.education }}<article class="education-item"><span class="education-date">{{ .date | replaceRE "-" "–" }}</span><h3>{{ .institution }}</h3><p>{{ .degree }}</p><p class="location">{{ .location }}</p></article>{{ end }}
 </section>
 {{ end }}
-</div>
 {{ partial "footer.html" . }}
