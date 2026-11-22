@@ -9,8 +9,8 @@ params:
   description: "An academic website"
   email: "zhixiao.zhang@gwu.edu"
   github_url: "https://github.com/zhixiao-zhang"
-  scholar_url: ""
-  orcid_url: ""
+  scholar_url: "https://scholar.google.com/citations?user=VpZiYcoAAAAJ"
+  orcid_url: "https://orcid.org/0009-0006-2940-8837"
   footer: "© Zhixiao Zhang 2025 -- Present"
   avatar: "profile.jpeg"
 
