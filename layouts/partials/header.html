@@ -7,7 +7,6 @@
   <title>{{ if .IsHome }}{{ .Site.Params.name }}{{ else }}{{ .Title }} · {{ .Site.Params.name }}{{ end }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="stylesheet" href="{{ "css/modern.css" | relURL }}">
-  {{ partial "head_custom.html" . }}
 </head>
 <body{{ if .IsHome }} class="homepage"{{ end }}>
 <a class="skip-link" href="#main">Skip to content</a>

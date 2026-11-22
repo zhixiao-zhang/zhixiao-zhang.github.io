@@ -16,10 +16,11 @@ h3 { font-size: 17px; line-height: 1.5; }
 .profile-stage { display: grid; grid-template-columns: minmax(0, 1fr) 104px; align-items: start; gap: 28px; }
 .role { margin-top: 5px; font-size: 16px; }
 .contact-email { margin-top: 5px; font-size: 15px; overflow-wrap: anywhere; }
-.profile-bio { margin-top: 16px; }
 .intro { margin-top: 8px; }
 .portrait { display: block; width: 104px; height: 104px; object-fit: cover; border: 1px solid #aaa; padding: 3px; }
-.section-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; font-size: 15px; }
+.profile-links, .section-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 15px; }
+.profile-links { margin-top: 5px; }
+.section-nav { margin-top: 16px; }
 .home-section { margin-top: 20px; padding-top: 16px; border-top: 1px solid #ccc; scroll-margin-top: 12px; }
 .publication { display: grid; grid-template-columns: 65px minmax(0,1fr); gap: 14px; }
 .publication + .publication { margin-top: 22px; }
@@ -56,6 +57,7 @@ pre { overflow: auto; }
   .profile-stage { grid-template-columns: minmax(0, 1fr) 76px; gap: 16px; }
   .role { font-size: 14px; }
   .portrait { width: 76px; height: 76px; }
+  .profile-links { column-gap: 8px; }
   .section-nav { column-gap: 10px; }
   h2 { font-size: 21px; }
   .publication { grid-template-columns: 1fr; gap: 5px; }

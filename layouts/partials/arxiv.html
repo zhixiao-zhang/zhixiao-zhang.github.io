@@ -1,0 +1,73 @@
+{{ $ctx := . }}
+
+{{ $keys := slice }}
+{{ range $k, $_ := $ctx.Site.Data.arxiv }}
+  {{ $keys = $keys | append $k }}
+{{ end }}
+
+{{ $sortedKeys := sort $keys "value" "desc" }}
+<div class="bibs">
+  <h1>Arxiv Selected Papers</h1>
+  {{ range $key := $sortedKeys }}
+    {{ $day := index $ctx.Site.Data.arxiv $key }}
+    {{ $papers := $day.papers | default (slice) }}
+
+    {{ if gt (len $papers) 0 }}
+      <h2>{{ $key }}</h2>
+    {{ with $day.generated_at }}
+      {{ $t := time.AsTime . }}
+      {{ $local := $t.Local }}
+      Generated at {{ time.Format "2006-01-02 15:04 MST" $local }}
+    {{ end }}
+    <ul style="list-style: none; padding: 0; margin: 0;">
+    {{ range $p := $papers }}
+      <li>
+        <strong>{{ $p.title }}</strong>
+        <div style="color: #666; font-style: italic">
+          Author(s):
+          {{ if $p.authors }}
+            {{ delimit $p.authors ", " }}
+          {{ else }}
+            (unknown)
+          {{ end }}
+          <div>Primary Category:
+            {{ with $p.primary_category }}{{ . }}{{ else }}(none){{ end }}
+          </div>
+          <div>
+            Categories:
+            {{ if $p.categories }}
+              {{ delimit $p.categories ", " }}
+            {{ else }}
+              (none)
+            {{ end }}
+          </div>
+          <div>
+            Last Updated:
+            {{ with $p.updated }}
+              {{ $t := time . }}
+              {{ $local := $t.Local }}
+              {{ time.Format "2006-01-02 15:04 MST" $local }}
+            {{ end }}
+          </div>
+        </div>
+        <a href="{{ $p.pdf_url }}" target="_blank">
+          <i class="fa-regular fa-file-pdf"></i>
+        </a>
+        {{ if $p.tldr }}
+        <details>
+          <summary>TL;DR</summary>
+          <div class="bib">
+            <pre style="background:#fffbea; border:1px solid #ffe58f; border-radius:6px;
+              padding:0.75rem; white-space:pre-wrap; word-wrap:break-word;
+              font-size:0.85rem; line-height:1.5;">
+              {{ $p.tldr | markdownify }}
+            </pre>
+          </div>
+        </details>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</div>
+{{ end }}

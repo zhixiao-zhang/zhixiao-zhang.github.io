@@ -1,22 +1,18 @@
 baseurl: "https://zhixiao-zhang.github.io"
 languageCode: "en-us"
 title: "Welcome to my academic page"
-theme: "hugo-academic-min"
 footnotereturnlinkcontents: "↩"
 
 params:
   author: "Zhixiao Zhang"
   name: "Zhixiao Zhang"
   description: "An academic website"
-  mail: "zhixiao.zhang at gwu dot edu"
+  email: "zhixiao.zhang@gwu.edu"
+  github_url: "https://github.com/zhixiao-zhang"
+  scholar_url: ""
+  orcid_url: ""
   footer: "© Zhixiao Zhang 2025 -- Present"
   avatar: "profile.jpeg"
-  homepage:
-    - about
-    - news
-    - contact
-    - experience
-    - publications
 
 markup:
   defaultMarkdownHandler: org

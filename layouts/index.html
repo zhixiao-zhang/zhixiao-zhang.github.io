@@ -1,51 +1,38 @@
 {{ partial "header.html" . }}
-{{ $sections := .Site.Params.homepage }}
-{{ $showAbout := in $sections "about" }}
-{{ $showPublications := in $sections "publications" }}
-{{ $showExperience := in $sections "experience" }}
-{{ if $showAbout }}
-<header id="about" class="profile-stage">
-  <div id="contact">
+<header id="contact" class="profile-stage">
+  <div>
     <p id="profile-name"><b><big>{{ .Site.Params.name }}</big></b></p>
     <p class="role">{{ .Site.Data.homepage.role }}</p>
-    {{ range .Site.Data.contact }}
-      {{ with .email }}<p class="contact-email"><a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+    {{ with .Site.Params.email }}<p class="contact-email"><a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+    {{ if or .Site.Params.github_url .Site.Params.scholar_url .Site.Params.orcid_url }}
+    <nav class="profile-links" aria-label="Profile links">
+      {{ with .Site.Params.github_url }}<a href="{{ . }}">GitHub</a>{{ end }}
+      {{ with .Site.Params.scholar_url }}<a href="{{ . }}">Google Scholar</a>{{ end }}
+      {{ with .Site.Params.orcid_url }}<a href="{{ . }}">ORCID</a>{{ end }}
+    </nav>
     {{ end }}
   </div>
   {{ with .Site.Params.avatar }}<div class="portrait-frame"><img class="portrait" src="{{ printf "images/%s" . | relURL }}" alt="{{ $.Site.Params.name }}'s illustrated avatar" width="576" height="576" fetchpriority="high"></div>{{ end }}
 </header>
-<div class="profile-bio">
+<section id="about" class="home-section" aria-label="About">
   <p>{{ .Site.Data.homepage.summary }}</p>
   <p class="intro">{{ .Site.Data.homepage.intro }} <a href="{{ .Site.Data.homepage.advisor_url }}">{{ .Site.Data.homepage.advisor }}</a>. {{ .Site.Data.homepage.research_focus }}</p>
-</div>
-{{ end }}
-{{ if or $showPublications $showExperience (and $showAbout .Site.Data.contact) }}
-<nav class="section-nav" aria-label="Homepage links">
-  {{ if $showAbout }}
-    {{ range .Site.Data.contact }}
-      {{ with .github }}{{ $url := . }}{{ if not (hasPrefix $url "https://") }}{{ $url = printf "https://github.com/%s" . }}{{ end }}<a href="{{ $url }}">GitHub</a>{{ end }}
-    {{ end }}
-  {{ end }}
-  {{ if $showPublications }}<a href="#publications">Publications</a>{{ end }}
-  {{ if $showExperience }}<a href="#experience">Experience</a>{{ end }}
-</nav>
-{{ end }}
-{{ if in $sections "news" }}
+  <nav class="section-nav" aria-label="On this page">
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+  </nav>
+</section>
 <section id="news" class="home-section" aria-labelledby="news-heading">
   <p id="news-heading" class="section-title"><b><big>News</big></b></p>
   {{ range .Site.Data.homepage.news }}<article class="news-item"><time datetime="{{ .date }}">{{ .label }}</time><p>{{ .text }}</p></article>{{ end }}
 </section>
-{{ end }}
-{{ if $showPublications }}
 <section id="publications" class="home-section" aria-labelledby="publications-heading">
   <p id="publications-heading" class="section-title"><b><big>Publications</big></b></p>
   {{ partial "modern/publications.html" (dict "page" . "items" .Site.Data.pubs) }}
 </section>
-{{ end }}
-{{ if $showExperience }}
 <section id="experience" class="home-section" aria-labelledby="experience-heading">
   <p id="experience-heading" class="section-title"><b><big>Experience</big></b></p>
   {{ range .Site.Data.education }}<article class="education-item"><span class="education-date">{{ .date | replaceRE "-" "–" }}</span><h3>{{ .institution }}</h3><p>{{ .degree }}</p><p class="location">{{ .location }}</p></article>{{ end }}
 </section>
-{{ end }}
 {{ partial "footer.html" . }}
